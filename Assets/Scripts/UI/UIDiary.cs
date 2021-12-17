@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class UIDiary : MonoBehaviour
 {
+    public NavigationController NavigationController;
+    public Canvas Canvas;
     public Text UIDate;
     public InputField UIEntry;
     public Button UIMoodNegative;
@@ -50,9 +52,9 @@ public class UIDiary : MonoBehaviour
     public void SetMood(Diary.DiaryEntry.DiaryMood mood)
     {
         //Reset all colors
-        UIMoodNegative.GetComponent<Image>().color = Color.white;
-        UIMoodNeutral.GetComponent<Image>().color = Color.white;
-        UIMoodPositive.GetComponent<Image>().color = Color.white;
+        UIMoodNegative.GetComponent<Image>().color = Color.gray;
+        UIMoodNeutral.GetComponent<Image>().color = Color.gray;
+        UIMoodPositive.GetComponent<Image>().color = Color.gray;
 
         //Give color if necessary (not in case of Diary.DiaryEntry.DiaryMood.Empty)
         switch (mood)
@@ -84,15 +86,15 @@ public class UIDiary : MonoBehaviour
     /// <returns>Mood of the entry.</returns>
     public Diary.DiaryEntry.DiaryMood GetMood()
     {
-        if (UIMoodNegative.GetComponent<Image>().color != Color.white)
+        if (UIMoodNegative.GetComponent<Image>().color != Color.gray)
         {
             return Diary.DiaryEntry.DiaryMood.Negative;
         }
-        if (UIMoodNeutral.GetComponent<Image>().color != Color.white)
+        if (UIMoodNeutral.GetComponent<Image>().color != Color.gray)
         {
             return Diary.DiaryEntry.DiaryMood.Neutral;
         }
-        if (UIMoodPositive.GetComponent<Image>().color != Color.white)
+        if (UIMoodPositive.GetComponent<Image>().color != Color.gray)
         {
             return Diary.DiaryEntry.DiaryMood.Positive;
         }
