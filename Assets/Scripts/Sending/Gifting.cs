@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Gifting : MonoBehaviour
 {
-    [SerializeField] private GameObject _selectMotivationalMessageUI;
+    public GameObject _selectMotivationalMessageUI;
+    public GameObject _selectIncludeGiftUI;
+    
     [SerializeField] private WebRequest _sendMessageRequest;
+
     private MotivationalText _motivationalText;
 
     private void Start()
@@ -24,10 +27,16 @@ public class Gifting : MonoBehaviour
         _selectMotivationalMessageUI.SetActive(true);
     }
 
-    public void SelectCustomizationStep(MotivationalText motivationalText)
+    public void SelectIncludeGift(MotivationalText motivationalText)
     {
-        _selectMotivationalMessageUI.SetActive(false);
         _motivationalText = motivationalText;
+        _selectMotivationalMessageUI.SetActive(false);
+        _selectIncludeGiftUI.SetActive(true);
+    }
+
+    public void SelectCustomizationStep()
+    {
+        _selectIncludeGiftUI.SetActive(false);
         // No customization step stuff yet
         Send();
     }
