@@ -18,15 +18,18 @@ public class WebRequest : MonoBehaviour
 
     public RequestMethod Method;
     public string Uri;
-    public UnityEvent<UnityWebRequest.Result> OnRequestFinished = new UnityEvent<UnityWebRequest.Result>();
+    public UnityEvent<UnityWebRequest> OnRequestFinished = new UnityEvent<UnityWebRequest>();
 
-    public void Execute(Dictionary<string, string> uriParams, WWWForm data = null)
+    public void Execute(Dictionary<string, string> uriParams = null, WWWForm data = null)
     {
         string _processedUri = Uri;
-        for(int i = 0; i < uriParams.Count; i++)
+        if(uriParams != null)
         {
-            _processedUri.Replace(uriParams.Keys.ElementAt(i), uriParams.Values.ElementAt(i));
-        }
+            for(int i = 0; i < uriParams.Count; i++)
+            {
+                _processedUri = _processedUri.Replace(uriParams.Keys.ElementAt(i), uriParams.Values.ElementAt(i));
+            }
+        }       
 
         switch (Method)
         {
@@ -43,6 +46,6 @@ public class WebRequest : MonoBehaviour
     private IEnumerator ExecuteCoro(UnityWebRequest request)
     {
         yield return request.SendWebRequest();
-        OnRequestFinished?.Invoke(request.result);
+        OnRequestFinished?.Invoke(request);
     }
 }
