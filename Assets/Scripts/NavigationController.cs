@@ -9,6 +9,7 @@ public class NavigationController : MonoBehaviour
     public Animator StickerAnimator;
 
     public GameObject CanvasCompanionActions;
+    public Canvas Canvas;
 
     #region Screen Navigation
 
@@ -52,5 +53,14 @@ public class NavigationController : MonoBehaviour
             CanvasCompanionActions.SetActive(true);
         }
         UICompanionActionsAnimator.Play("Fade " + (showing ? "In" : "Out") + " Companion Actions");
+    }
+
+    /// <summary>
+    /// Sets the rendermode of the UI.
+    /// </summary>
+    /// <param name="renderMode">The render mode to use.</param>
+    public void SetRenderMode(RenderMode renderMode)
+    {
+        Canvas.renderMode = renderMode;
     }
 }
