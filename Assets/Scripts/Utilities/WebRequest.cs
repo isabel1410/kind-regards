@@ -19,6 +19,8 @@ public class WebRequest : MonoBehaviour
     public RequestMethod Method;
     public string Uri;
     public UnityEvent<UnityWebRequest> OnRequestFinished = new UnityEvent<UnityWebRequest>();
+    public bool IncludeDeviceUniqueIDAsAuthToken;
+    public string AuthToken;
 
     public void Execute(Dictionary<string, string> uriParams = null, WWWForm data = null)
     {
@@ -45,6 +47,9 @@ public class WebRequest : MonoBehaviour
 
     private IEnumerator ExecuteCoro(UnityWebRequest request)
     {
+        if (IncludeDeviceUniqueIDAsAuthToken) request.SetRequestHeader("Authorization", "Bearer " + SystemInfo.deviceUniqueIdentifier);
+        if (!string.IsNullOrEmpty(AuthToken)) request.SetRequestHeader("Authorization", "Bearer " + AuthToken);
+
         yield return request.SendWebRequest();
         OnRequestFinished?.Invoke(request);
     }
