@@ -7,4 +7,14 @@ public class TEMP : MonoBehaviour
     {
         GetComponent<UnityEngine.UI.RawImage>().color = Color.green;
     }
+
+    public string[] GetRequestMessages()
+    {
+        System.Collections.Generic.List<string> requestMessages = new System.Collections.Generic.List<string>();
+        for (byte counter = 1; counter <= 50; counter++)
+        {
+            requestMessages.Add("Request message " + counter);
+        }
+        return requestMessages.ToArray();
+    }
 }

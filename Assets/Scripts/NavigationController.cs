@@ -5,7 +5,7 @@ public class NavigationController : MonoBehaviour
     public Animator UIAnimator;
     public Animator UICompanionActionsAnimator;
     public Animator DiaryAnimator;
-    public Animator OwlAnimator;
+    public Animator CompanionAnimator;
     public Animator StickerAnimator;
 
     public GameObject CanvasCompanionActions;
@@ -21,7 +21,7 @@ public class NavigationController : MonoBehaviour
         string animationStateName = "Navigation - Home to Diary";
 
         UIAnimator.Play(animationStateName);
-        OwlAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
         DiaryAnimator.Play(animationStateName);
         StickerAnimator.Play(animationStateName);
     }
@@ -34,9 +34,39 @@ public class NavigationController : MonoBehaviour
         string animationStateName = "Navigation - Diary to Home";
 
         UIAnimator.Play(animationStateName);
-        OwlAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
         DiaryAnimator.Play(animationStateName);
         StickerAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transition from the home screen to the requests screen.
+    /// </summary>
+    public void HomeToRequests()
+    {
+        string animationStateName = "Navigation - Home to Requests";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transition from the requests screen to the home screen.
+    /// </summary>
+    public void RequestsToHome()
+    {
+        string animationStateName = "Navigation - Requests to Home";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transition from the home screen (companion actions) to the requests screen.
+    /// </summary>
+    public void CompanionActionsToRequests()
+    {
+        UICompanionActionsAnimator.Play("Fade Out Companion Actions To Requests");
     }
 
     #endregion
