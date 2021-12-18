@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Contains functions to update the UI of the diary screen.
+/// </summary>
 public class UIDiary : MonoBehaviour
 {
     public NavigationController NavigationController;
