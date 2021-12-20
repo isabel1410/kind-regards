@@ -15,10 +15,12 @@ public class Request : MonoBehaviour
     /// Load all diaries and shows the <see cref="DiaryEntry"/> of today.
     /// </summary>
     /// <returns>True if loading was succesful.</returns>
+    /// <exception cref="NotImplementedException">Api call not implemented.</exception>
     public bool LoadMessages()
     {
         try
         {
+            throw new NotImplementedException();
             requestMessages = GameObject.Find("TEMP").GetComponent<TEMP>().GetRequestMessages();
             return true;
         }
@@ -49,8 +51,8 @@ public class Request : MonoBehaviour
     {
         if (LoadMessages())
         {
-            NavigationController.HomeToRequests();
             UIRequest.ShowRequestMessages(requestMessages);
+            NavigationController.HomeToRequests();
         }
     }
 
