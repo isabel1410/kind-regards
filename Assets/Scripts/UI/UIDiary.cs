@@ -6,8 +6,6 @@ using UnityEngine.UI;
 /// </summary>
 public class UIDiary : MonoBehaviour
 {
-    public NavigationController NavigationController;
-    public Canvas Canvas;
     public Text UIDate;
     public InputField UIEntry;
     public Button UIMoodNegative;

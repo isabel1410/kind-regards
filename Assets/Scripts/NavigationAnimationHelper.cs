@@ -7,6 +7,7 @@ public class NavigationAnimationHelper : MonoBehaviour
 {
     public NavigationController NavigationController;
     public UIRequest UIRequest;
+    public UIMailbox UIMailbox;
 
     /// <summary>
     /// Sets the rendermode of the UI.
@@ -25,8 +26,19 @@ public class NavigationAnimationHelper : MonoBehaviour
         NavigationController.HomeToRequests();
     }
 
+    /// <summary>
+    /// Destroy the request buttons from the requests screen.
+    /// </summary>
     public void DestroyRequestButtons()
     {
         UIRequest.DestroyRequestButtons();
+    }
+
+    /// <summary>
+    /// Destroys the mail gameobjects from the mailbox screen.
+    /// </summary>
+    public void DestroyMailboxGameObjects()
+    {
+        UIMailbox.DestroyMailboxGameObjects();
     }
 }

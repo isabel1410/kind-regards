@@ -10,18 +10,22 @@ public class UIRequest : MonoBehaviour
     public Request Request;
     public Transform RequestsContainerTransform;
 
+    private float height;
+
+    /// <summary>
+    /// Called before the first frame update.
+    /// </summary>
+    private void Start()
+    {
+        height = RequestsContainerTransform.GetComponentInParent<RectTransform>().rect.height;
+    }
+
     /// <summary>
     /// Creates a <see cref="Button"/> for each request message.
     /// </summary>
     /// <param name="requestMessages">Request messages to show.</param>
     public void ShowRequestMessages(string[] requestMessages)
     {
-        //Set the height of the container based on the amount of messages and the height of the prefab
-        RectTransform containerRectTransform = RequestsContainerTransform.GetComponent<RectTransform>();
-        containerRectTransform.sizeDelta = new Vector2(
-            containerRectTransform.sizeDelta.x,
-            RequestMessageButtonPrefab.GetComponent<RectTransform>().rect.height * requestMessages.Length + containerRectTransform.sizeDelta.y);
-
         //Create buttons and add the necessary properties
         float positionY = 0;
         foreach (string requestMessage in requestMessages)
@@ -37,6 +41,12 @@ public class UIRequest : MonoBehaviour
 
             positionY -= rectTransform.rect.height;
         }
+
+        //Set the height of the container based on the amount of messages and the height of the prefab
+        RectTransform containerRectTransform = RequestsContainerTransform.GetComponent<RectTransform>();
+        containerRectTransform.sizeDelta = new Vector2(
+            containerRectTransform.sizeDelta.x,
+            Mathf.Abs(positionY) - height);
     }
 
     /// <summary>

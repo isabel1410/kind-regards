@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Used to register control input events.
+/// </summary>
 public class InputProcessor : MonoBehaviour
 {
     public ScrollEvent OnScroll;
 
+    /// <summary>
+    /// Direction the used has scrolled in.
+    /// </summary>
     public enum ScrollDirection
     {
         None,
@@ -19,5 +25,8 @@ public class InputProcessor : MonoBehaviour
     }
 }
 
+/// <summary>
+/// Used to invoke an input scroll event.
+/// </summary>
 [System.Serializable]
 public class ScrollEvent : UnityEvent<InputProcessor.ScrollDirection> { }

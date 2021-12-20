@@ -7,6 +7,7 @@ public class NavigationController : MonoBehaviour
     public Animator DiaryAnimator;
     public Animator CompanionAnimator;
     public Animator StickerAnimator;
+    public Animator GiftAnimator;
 
     public GameObject CanvasCompanionActions;
     public Canvas Canvas;
@@ -59,6 +60,58 @@ public class NavigationController : MonoBehaviour
 
         UIAnimator.Play(animationStateName);
         CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transition from the home screen to the mailbox screen.
+    /// </summary>
+    public void HomeToMailbox()
+    {
+        string animationStateName = "Navigation - Home to Mailbox";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transition from the mailbox screen to the home screen.
+    /// </summary>
+    public void MailboxToHome()
+    {
+        string animationStateName = "Navigation - Mailbox to Home";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transition from the mailbox screen to the mail screen.
+    /// </summary>
+    /// <param name="giftIncluded">True to play gift animation.</param>
+    public void MailboxToMail(bool giftIncluded)
+    {
+        string animationStateName = "Navigation - Mailbox to Mail";
+
+        UIAnimator.Play(animationStateName);
+        if (giftIncluded)
+        {
+            GiftAnimator.Play(animationStateName);
+        }
+    }
+
+    /// <summary>
+    /// Transition from the mail screen to the mailbox screen.
+    /// </summary>
+    /// <param name="giftIncluded">True to play gift animation.</param>
+    public void MailToMailbox(bool giftIncluded)
+    {
+        string animationStateName = "Navigation - Mail to Mailbox";
+
+        UIAnimator.Play(animationStateName);
+        if (giftIncluded)
+        {
+            GiftAnimator.Play(animationStateName);
+        }
     }
 
     /// <summary>

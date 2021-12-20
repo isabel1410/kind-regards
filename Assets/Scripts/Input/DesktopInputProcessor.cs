@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// <see cref="InputProcessor"/> for desktop. Currently for testing purposes only.
+/// </summary>
 public class DesktopInputProcessor : InputProcessor
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Called once per frame.
+    /// </summary>
+    private void Update()
     {
         float scrollY = Input.mouseScrollDelta.y;
         if (scrollY!= 0)
