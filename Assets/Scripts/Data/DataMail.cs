@@ -4,6 +4,8 @@ using UnityEngine;
 /// <summary>
 /// Base mail.
 /// </summary>
+/// 
+[Serializable]
 public class DataMail : MonoBehaviour, IComparable<DataMail>
 {
     public string SentMessage;

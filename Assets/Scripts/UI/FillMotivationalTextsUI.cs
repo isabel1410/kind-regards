@@ -10,7 +10,7 @@ public class FillMotivationalTextsUI : MonoBehaviour
     public WebRequest GetMotivationalMessagesRequest;
     public GameObject MotivationalMessagesUIPrefab;
     public GameObject TargetToFill;
-    public UnityEvent<MotivationalText> OnMotivationalTextSelected;
+    public UnityEvent<DataText> OnMotivationalTextSelected;
 
     void Start()
     {
@@ -21,8 +21,8 @@ public class FillMotivationalTextsUI : MonoBehaviour
     {
         if (request.result != UnityWebRequest.Result.Success) return;
 
-        List<MotivationalText> texts = JsonConvert.DeserializeObject<List<MotivationalText>>(request.downloadHandler.text);
-        foreach(MotivationalText text in texts)
+        List<DataText> texts = JsonConvert.DeserializeObject<List<DataText>>(request.downloadHandler.text);
+        foreach(DataText text in texts)
         {
             GameObject obj = Instantiate(MotivationalMessagesUIPrefab, TargetToFill.transform);
             var ui = obj.GetComponent<MotivationalTextUI>();
@@ -37,6 +37,6 @@ public class FillMotivationalTextsUI : MonoBehaviour
 
     private void OnMotivationalTextSelect(DataHolder data)
     {
-        OnMotivationalTextSelected?.Invoke(data.Data as MotivationalText);
+        OnMotivationalTextSelected?.Invoke(data.Data as DataText);
     }
 }

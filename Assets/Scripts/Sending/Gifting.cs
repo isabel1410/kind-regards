@@ -9,7 +9,7 @@ public class Gifting : MonoBehaviour
     
     [SerializeField] private WebRequest _sendMessageRequest;
 
-    private MotivationalText _motivationalText;
+    private DataText _motivationalText;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class Gifting : MonoBehaviour
         _selectMotivationalMessageUI.SetActive(true);
     }
 
-    public void SelectIncludeGift(MotivationalText motivationalText)
+    public void SelectIncludeGift(DataText motivationalText)
     {
         _motivationalText = motivationalText;
         _selectMotivationalMessageUI.SetActive(false);
