@@ -24,11 +24,11 @@ public class UIRequest : MonoBehaviour
     /// Creates a <see cref="Button"/> for each request message.
     /// </summary>
     /// <param name="requestMessages">Request messages to show.</param>
-    public void ShowRequestMessages(string[] requestMessages)
+    public void ShowRequestMessages(DataText[] requestMessages)
     {
         //Create buttons and add the necessary properties
         float positionY = 0;
-        foreach (string requestMessage in requestMessages)
+        foreach (DataText requestMessage in requestMessages)
         {
             Button requestMessageButton = Instantiate(RequestMessageButtonPrefab);
             RectTransform rectTransform = requestMessageButton.gameObject.GetComponent<RectTransform>();
@@ -36,8 +36,8 @@ public class UIRequest : MonoBehaviour
             requestMessageButton.transform.SetParent(RequestsContainerTransform, false);
             rectTransform.anchoredPosition = new Vector2(0, positionY);
 
-            requestMessageButton.onClick.AddListener(delegate { Request.SendRequestMessage(requestMessage); });
-            requestMessageButton.GetComponentInChildren<Text>().text = requestMessage;
+            requestMessageButton.onClick.AddListener(() => Request.SendRequestMessage(requestMessage));
+            requestMessageButton.GetComponentInChildren<Text>().text = requestMessage.Text;
 
             positionY -= rectTransform.rect.height;
         }

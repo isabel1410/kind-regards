@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -6,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Request : MonoBehaviour
 {
-    private string[] requestMessages;
+    private DataText[] requestMessages;
 
     public NavigationController NavigationController;
     public UIRequest UIRequest;
@@ -20,8 +21,7 @@ public class Request : MonoBehaviour
     {
         try
         {
-            throw new NotImplementedException();
-            requestMessages = GameObject.Find("TEMP").GetComponent<TEMP>().GetRequestMessages();
+            requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
             return true;
         }
         catch (Exception exception)
@@ -34,12 +34,11 @@ public class Request : MonoBehaviour
     /// <summary>
     /// Send a request.
     /// </summary>
-    /// <param name="requestMessage">Message to send.</param>
-    public void SendRequestMessage(string requestMessage)
+    /// <param name="requestText">Message to send.</param>
+    public void SendRequestMessage(DataText requestText)
     {
-        print("Message sent: " + requestMessage);
-        throw new NotImplementedException();
-        //Call api
+        print("Message sent: " + requestText.Text);
+        APIManager.Instance.SendGiftRequest(requestText);
     }
 
     #region Visuals

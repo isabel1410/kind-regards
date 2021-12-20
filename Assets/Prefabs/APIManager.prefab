@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8098559901576395180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8098559901576395177}
+  - component: {fileID: 8098559901576395182}
+  - component: {fileID: 8098559901576395183}
+  - component: {fileID: 8098559901576395176}
+  - component: {fileID: 8098559901576395179}
+  - component: {fileID: 1169853634990929887}
+  - component: {fileID: -2530967928278862884}
+  m_Layer: 0
+  m_Name: APIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8098559901576395177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8098559901576395182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c2b39f6d3b10f46aa0f56257d85f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getUserDataRequest: {fileID: 1169853634990929887}
+  getCategoriesRequest: {fileID: 8098559901576395183}
+  getTextsRequest: {fileID: 8098559901576395176}
+  postGiftRequest: {fileID: 8098559901576395179}
+  postRegisterUserRequest: {fileID: -2530967928278862884}
+  DataTextCategories: []
+  DataTexts: []
+--- !u!114 &8098559901576395183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://localhost:3000/categories
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 
+--- !u!114 &8098559901576395176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://localhost:3000/categories/:id/texts
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 
+--- !u!114 &8098559901576395179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 1
+  Uri: http://localhost:3000/request
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+--- !u!114 &1169853634990929887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://localhost:3000/users/authenticate
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+--- !u!114 &-2530967928278862884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 1
+  Uri: http://localhost:3000/users/register
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 
