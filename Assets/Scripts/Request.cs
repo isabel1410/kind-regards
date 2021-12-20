@@ -21,7 +21,17 @@ public class Request : MonoBehaviour
     {
         try
         {
-            requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
+#if UNITY_EDITOR
+            if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
+            else requestMessages = new DataText[]
+            {
+                new DataText() {Text = "Message 1"},
+                new DataText() {Text = "Message 2"},
+                new DataText() {Text = "Message 3"}
+            };
+#else
+            if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
+#endif
             return true;
         }
         catch (Exception exception)
@@ -38,7 +48,7 @@ public class Request : MonoBehaviour
     public void SendRequestMessage(DataText requestText)
     {
         print("Message sent: " + requestText.Text);
-        APIManager.Instance.SendGiftRequest(requestText);
+        if(APIManager.Instance) APIManager.Instance.SendGiftRequest(requestText);
     }
 
     #region Visuals
