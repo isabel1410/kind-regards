@@ -125,6 +125,26 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
+    /// Transitions from the home screen to the customization screen.
+    /// </summary>
+    public void HomeToCustomization()
+    {
+        string animationStateName = "Navigation - Home to Customization";
+
+        UIAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transitions from the customization screen to the home screen.
+    /// </summary>
+    public void CustomizationToHome()
+    {
+        string animationStateName = "Navigation - Customization to Home";
+
+        UIAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
     /// Transitions from the mail screen to the mailbox screen.
     /// </summary>
     /// <param name="giftIncluded">True to play gift animation.</param>
@@ -177,6 +197,14 @@ public class NavigationController : MonoBehaviour
     public void CompanionActionsToReply()
     {
         UICompanionActionsAnimator.Play("Fade Out Companion Actions To Reply");
+    }
+
+    /// <summary>
+    /// Transitions from the home screen (companion actions) to the customization screen.
+    /// </summary>
+    public void CompanionActionsToCustomization()
+    {
+        UICompanionActionsAnimator.Play("Fade Out Companion Actions To Customization");
     }
 
     #endregion

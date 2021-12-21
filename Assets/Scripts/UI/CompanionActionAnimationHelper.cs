@@ -8,6 +8,7 @@ public class CompanionActionAnimationHelper : MonoBehaviour
     public NavigationController NavigationController;
     public Request Request;
     public Reply Reply;
+    public Companion Companion;
 
     /// <summary>
     /// Sets the canvas inactive once the companion action dialogue choices are hidden.
@@ -32,6 +33,15 @@ public class CompanionActionAnimationHelper : MonoBehaviour
     public void CompanionActionsToReply()
     {
         Reply.Show();
+        DeactivateCompanionActions();
+    }
+
+    /// <summary>
+    /// Activates transition to customization screen and sets the canvas inactive once the companion action dialogue choices are hidden.
+    /// </summary>
+    public void CompanionActionsToCustomization()
+    {
+        Companion.ShowCustomization();
         DeactivateCompanionActions();
     }
 }
