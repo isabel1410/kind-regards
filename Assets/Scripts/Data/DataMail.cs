@@ -10,7 +10,7 @@ public class DataMail : MonoBehaviour, IComparable<DataMail>
 {
     public string SentMessage;
     public DateTime DateTime;
-    public uint Id;
+    public int Id { get; set; }
     public bool Read;
 
     /// <summary>

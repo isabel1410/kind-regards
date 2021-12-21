@@ -18,7 +18,7 @@ public class Mail : MonoBehaviour
         print(DataReply.SentMessage + ": Thanked sender");
         UIMail.UIThank.interactable = false;
         //api call
-        throw new System.NotImplementedException();
+        if (APIManager.Instance) APIManager.Instance.SendMessageThanks(DataReply);
     }
 
     /// <summary>

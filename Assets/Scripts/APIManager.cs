@@ -14,6 +14,7 @@ public class APIManager : MonoBehaviour
     [SerializeField] private WebRequest getTextsRequest;
     [SerializeField] private WebRequest postGiftRequest;
     [SerializeField] private WebRequest postRegisterUserRequest;
+    [SerializeField] private WebRequest postMessageThankRequest;
 
     public List<DataTextCategory> DataTextCategories;
     public List<DataText> DataTexts;
@@ -86,5 +87,10 @@ public class APIManager : MonoBehaviour
         WWWForm data = new WWWForm();
         data.AddField("text_id", requestText.Id);
         postGiftRequest.Execute(data: data);
+    }
+
+    public void SendMessageThanks(DataMail dataMail)
+    {
+        postMessageThankRequest.Execute(new Dictionary<string, string>() { { ":id", dataMail.Id.ToString() } });
     }
 }
