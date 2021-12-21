@@ -15,6 +15,7 @@ public class Diary : MonoBehaviour
     private DiaryEntry currentEntry;
 
     public UIDiary UIDiary;
+    public UIError UIError;
     public NavigationController NavigationController;
 
     #region File Management
@@ -50,6 +51,7 @@ public class Diary : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
+            UIError.Show("Loading diary entries failed");
             return false;
         }
 
@@ -97,6 +99,7 @@ public class Diary : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
+            UIError.Show("Saving diary entry failed");
             return false;
         }
     }
@@ -126,6 +129,7 @@ public class Diary : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
+            UIError.Show("Deleting diary entry failed");
             return false;
         }
     }

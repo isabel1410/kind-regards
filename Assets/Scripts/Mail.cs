@@ -6,6 +6,7 @@ using UnityEngine;
 public class Mail : MonoBehaviour
 {
     public UIMail UIMail;
+    public UIError UIError;
     public NavigationController NavigationController;
     public DataReply DataReply;
 
@@ -15,10 +16,18 @@ public class Mail : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Api call not implemented.</exception>
     public void ThankSender()
     {
-        print(DataReply.SentMessage + ": Thanked sender");
-        UIMail.UIThank.interactable = false;
-        //api call
-        if (APIManager.Instance) APIManager.Instance.SendMessageThanks(DataReply);
+        try
+        {
+            //api call
+            throw new System.NotImplementedException();
+
+            UIMail.UIThank.interactable = false;
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
+        }
     }
 
     /// <summary>
@@ -27,8 +36,16 @@ public class Mail : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Animation not included</exception>
     public void OpenGift()
     {
-        print(DataReply.SentMessage + ": Opened gift");
-        throw new System.NotImplementedException();
+        try
+        {
+            //api call
+            throw new System.NotImplementedException();
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
+        }
     }
 
     #region Visuals

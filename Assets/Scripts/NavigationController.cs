@@ -203,4 +203,22 @@ public class NavigationController : MonoBehaviour
     {
         Canvas.renderMode = renderMode;
     }
+
+    /// <summary>
+    /// Shows <see cref="UIError"/>.
+    /// </summary>
+    /// <param name="canvasErrorAnimator"><see cref="Animator"/> component of <see cref="UIError"/>.</param>
+    public void ShowError(Animator canvasErrorAnimator)
+    {
+        canvasErrorAnimator.Play("Show Error");
+    }
+
+    /// <summary>
+    /// Exits out of <see cref="UIError"/>.
+    /// </summary>
+    /// <param name="canvasErrorAnimator"><see cref="Animator"/> component of <see cref="UIError"/>.</param>
+    public void ExitError(Animator canvasErrorAnimator)
+    {
+        canvasErrorAnimator.Play("Exit Error");
+    }
 }

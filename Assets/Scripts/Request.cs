@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -11,6 +10,7 @@ public class Request : MonoBehaviour
 
     public NavigationController NavigationController;
     public UIRequest UIRequest;
+    public UIError UIError;
 
     /// <summary>
     /// Load all diaries and shows the <see cref="DiaryEntry"/> of today.
@@ -37,6 +37,7 @@ public class Request : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
             return false;
         }
     }
@@ -47,8 +48,15 @@ public class Request : MonoBehaviour
     /// <param name="requestText">Message to send.</param>
     public void SendRequestMessage(DataText requestText)
     {
-        print("Message sent: " + requestText.Text);
-        if(APIManager.Instance) APIManager.Instance.SendGiftRequest(requestText);
+        try
+        {
+            if (APIManager.Instance) APIManager.Instance.SendGiftRequest(requestText);
+        }
+        catch (Exception exception)
+        {
+            Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
+        }
     }
 
     #region Visuals

@@ -8,6 +8,7 @@ public class Reply : MonoBehaviour
     public NavigationController NavigationController;
     public UIReply UIReply;
     public UIGift UIGift;
+    public UIError UIError;
     public Gift Gift;
 
     private DataMail message;
@@ -21,6 +22,8 @@ public class Reply : MonoBehaviour
     {
         try
         {
+            //api call
+            throw new System.NotImplementedException();
             TEMP temp = GameObject.Find("TEMP").GetComponent<TEMP>();
             message = temp.GetMessage();
             replies = temp.GetRepliesForMessage(message);
@@ -29,6 +32,7 @@ public class Reply : MonoBehaviour
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
             return false;
         }
     }
