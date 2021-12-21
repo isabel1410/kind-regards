@@ -9,6 +9,7 @@ public class Mailbox : MonoBehaviour
 {
     public NavigationController NavigationController;
     public UIMailbox UIMailbox;
+    public UIError UIError;
     public Mail Mail;
 
     private List<DataReply> dataReplies;
@@ -22,7 +23,8 @@ public class Mailbox : MonoBehaviour
     {
         try
         {
-            //throw new System.NotImplementedException();
+            //api call
+            throw new System.NotImplementedException();
             List<DataReply> mail = GameObject.Find("TEMP").GetComponent<TEMP>().GetReplies().ToList();
             mail.Sort();
             dataReplies = mail;
@@ -31,6 +33,7 @@ public class Mailbox : MonoBehaviour
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
             return false;
         }
     }
@@ -56,11 +59,12 @@ public class Mailbox : MonoBehaviour
         try
         {
             //api call
-            //throw new System.NotImplementedException();
+            throw new System.NotImplementedException();
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
             return false;
         }
         UIMailbox.DestroyMailGameObject(sender);

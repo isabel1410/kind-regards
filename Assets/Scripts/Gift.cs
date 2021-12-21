@@ -7,6 +7,7 @@ public class Gift : MonoBehaviour
 {
     public NavigationController NavigationController;
     public UIGift UIGift;
+    public UIError UIError;
     public DataGift DataGift;
 
     /// <summary>
@@ -25,7 +26,16 @@ public class Gift : MonoBehaviour
     /// </summary>
     public void AddSticker()
     {
-        throw new System.NotImplementedException();
+        try
+        {
+            //api call
+            throw new System.NotImplementedException();
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
+        }
     }
 
     /// <summary>
@@ -33,8 +43,16 @@ public class Gift : MonoBehaviour
     /// </summary>
     public void Send()
     {
-        //api call
-        throw new System.NotImplementedException();
+        try
+        {
+            //api call
+            throw new System.NotImplementedException();
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogException(exception);
+            UIError.Show("Make sure you have an internet connection");
+        }
     }
 
     #region Visuals
