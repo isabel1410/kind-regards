@@ -8,6 +8,7 @@ using UnityEngine;
 [Serializable]
 public class DataGift : MonoBehaviour
 {
+    public Color Color;
     //Customization
     //Sticker
 }

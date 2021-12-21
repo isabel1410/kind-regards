@@ -7,6 +7,7 @@ public class CompanionActionAnimationHelper : MonoBehaviour
 {
     public NavigationController NavigationController;
     public Request Request;
+    public Reply Reply;
 
     /// <summary>
     /// Sets the canvas inactive once the companion action dialogue choices are hidden.
@@ -22,6 +23,15 @@ public class CompanionActionAnimationHelper : MonoBehaviour
     public void CompanionActionsToRequests()
     {
         Request.Show();
+        DeactivateCompanionActions();
+    }
+
+    /// <summary>
+    /// Activates transition to reply screen and sets the canvas inactive once the companion action dialogue choices are hidden.
+    /// </summary>
+    public void CompanionActionsToReply()
+    {
+        Reply.Show();
         DeactivateCompanionActions();
     }
 }

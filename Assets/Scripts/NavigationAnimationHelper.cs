@@ -7,6 +7,7 @@ public class NavigationAnimationHelper : MonoBehaviour
 {
     public NavigationController NavigationController;
     public UIRequest UIRequest;
+    public UIReply UIReply;
     public UIMailbox UIMailbox;
 
     /// <summary>
@@ -27,11 +28,27 @@ public class NavigationAnimationHelper : MonoBehaviour
     }
 
     /// <summary>
+    /// Transition from the home screen to the reply screen.
+    /// </summary>
+    public void HomeToReply()
+    {
+        NavigationController.HomeToReply();
+    }
+
+    /// <summary>
     /// Destroy the request buttons from the requests screen.
     /// </summary>
     public void DestroyRequestButtons()
     {
         UIRequest.DestroyRequestButtons();
+    }
+
+    /// <summary>
+    /// Destroy the reqply buttons from the reply screen.
+    /// </summary>
+    public void DestroyReplyButtons()
+    {
+        UIReply.DestroyReplyButtons();
     }
 
     /// <summary>
