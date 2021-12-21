@@ -451,8 +451,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 280535379}
-        m_TargetAssemblyTypeName: UINavigation, Assembly-CSharp
+      - m_Target: {fileID: 1528519403}
+        m_TargetAssemblyTypeName: Companion, Assembly-CSharp
         m_MethodName: ToggleCompanionActions
         m_Mode: 1
         m_Arguments:
@@ -1854,7 +1854,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 475113933}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1528519403}
+        m_TargetAssemblyTypeName: Companion, Assembly-CSharp
+        m_MethodName: Talk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &475113933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6308,7 +6320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -237.5, y: 337.5}
+  m_AnchoredPosition: {x: -237.49997, y: 337.5}
   m_SizeDelta: {x: -675, y: -1075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292529158
@@ -7964,6 +7976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1528519402}
   - component: {fileID: 1528519407}
+  - component: {fileID: 1528519403}
   m_Layer: 0
   m_Name: Companion
   m_TagString: Untagged
@@ -7986,6 +7999,21 @@ Transform:
   m_Father: {fileID: 1029779357}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1528519403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528519401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e552b14df9d68f841adda7b8fc98c485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UICompanion: {fileID: 2056996717}
+  Diary: {fileID: 1907334665}
+  NavigationController: {fileID: 280535379}
 --- !u!95 &1528519407
 Animator:
   serializedVersion: 3
@@ -9711,13 +9739,14 @@ GameObject:
   - component: {fileID: 2056996712}
   - component: {fileID: 2056996715}
   - component: {fileID: 2056996716}
+  - component: {fileID: 2056996717}
   m_Layer: 5
   m_Name: Canvas Companion Actions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2056996711
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9839,6 +9868,19 @@ MonoBehaviour:
   NavigationController: {fileID: 280535379}
   Request: {fileID: 1488048857}
   Reply: {fileID: 1243980603}
+--- !u!114 &2056996717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056996710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac25c0e9330cb8d4f863ce1147104b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UISpeechBubble: {fileID: 852604120}
 --- !u!1 &2073652074
 GameObject:
   m_ObjectHideFlags: 0
