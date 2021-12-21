@@ -1,12 +1,15 @@
 using UnityEngine;
 
+/// <summary>
+/// Calls animations for UI screens and the respectful gameObjects if necessary.
+/// </summary>
 public class NavigationController : MonoBehaviour
 {
     public Animator UIAnimator;
     public Animator UICompanionActionsAnimator;
     public Animator DiaryAnimator;
     public Animator CompanionAnimator;
-    public Animator StickerAnimator;
+    public Animator StickerBookAnimator;
     public Animator GiftAnimator;
 
     public GameObject CanvasCompanionActions;
@@ -15,7 +18,7 @@ public class NavigationController : MonoBehaviour
     #region Screen Navigation
 
     /// <summary>
-    /// Transition from the home screen to the diary screen.
+    /// Transitions from the home screen to the diary screen.
     /// </summary>
     public void HomeToDiary()
     {
@@ -24,11 +27,11 @@ public class NavigationController : MonoBehaviour
         UIAnimator.Play(animationStateName);
         CompanionAnimator.Play(animationStateName);
         DiaryAnimator.Play(animationStateName);
-        StickerAnimator.Play(animationStateName);
+        StickerBookAnimator.Play(animationStateName);
     }
 
     /// <summary>
-    /// Transition from the diary screen to the home screen.
+    /// Transitions from the diary screen to the home screen.
     /// </summary>
     public void DiaryToHome()
     {
@@ -37,11 +40,11 @@ public class NavigationController : MonoBehaviour
         UIAnimator.Play(animationStateName);
         CompanionAnimator.Play(animationStateName);
         DiaryAnimator.Play(animationStateName);
-        StickerAnimator.Play(animationStateName);
+        StickerBookAnimator.Play(animationStateName);
     }
 
     /// <summary>
-    /// Transition from the home screen to the requests screen.
+    /// Transitions from the home screen to the requests screen.
     /// </summary>
     public void HomeToRequests()
     {
@@ -52,7 +55,7 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the requests screen to the home screen.
+    /// Transitions from the requests screen to the home screen.
     /// </summary>
     public void RequestsToHome()
     {
@@ -63,7 +66,7 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the home screen to the mailbox screen.
+    /// Transitions from the home screen to the mailbox screen.
     /// </summary>
     public void HomeToMailbox()
     {
@@ -74,7 +77,7 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the mailbox screen to the home screen.
+    /// Transitions from the mailbox screen to the home screen.
     /// </summary>
     public void MailboxToHome()
     {
@@ -85,7 +88,29 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the mailbox screen to the mail screen.
+    /// Transitions from the mailbox screen to the home screen.
+    /// </summary>
+    public void ReplyToHome()
+    {
+        string animationStateName = "Navigation - Reply to Home";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transitions from the mailbox screen to the home screen.
+    /// </summary>
+    public void HomeToReply()
+    {
+        string animationStateName = "Navigation - Home to Reply";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transitions from the mailbox screen to the mail screen.
     /// </summary>
     /// <param name="giftIncluded">True to play gift animation.</param>
     public void MailboxToMail(bool giftIncluded)
@@ -100,7 +125,7 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the mail screen to the mailbox screen.
+    /// Transitions from the mail screen to the mailbox screen.
     /// </summary>
     /// <param name="giftIncluded">True to play gift animation.</param>
     public void MailToMailbox(bool giftIncluded)
@@ -115,11 +140,43 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the home screen (companion actions) to the requests screen.
+    /// Transitions from the reply screen to the gift screen.
+    /// </summary>
+    public void ReplyToGift()
+    {
+        string animationStateName = "Navigation - Reply to Gift";
+
+        UIAnimator.Play(animationStateName);
+        GiftAnimator.Play(animationStateName);
+        StickerBookAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transitions from the gift screen to the reply screen.
+    /// </summary>
+    public void GiftToReply()
+    {
+        string animationStateName = "Navigation - Gift to Reply";
+
+        UIAnimator.Play(animationStateName);
+        GiftAnimator.Play(animationStateName);
+        StickerBookAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transitions from the home screen (companion actions) to the requests screen.
     /// </summary>
     public void CompanionActionsToRequests()
     {
         UICompanionActionsAnimator.Play("Fade Out Companion Actions To Requests");
+    }
+
+    /// <summary>
+    /// Transitions from the home screen (companion actions) to the reply screen.
+    /// </summary>
+    public void CompanionActionsToReply()
+    {
+        UICompanionActionsAnimator.Play("Fade Out Companion Actions To Reply");
     }
 
     #endregion
