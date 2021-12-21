@@ -24,7 +24,7 @@ public class Diary : MonoBehaviour
     /// Load all diaries and shows the <see cref="DiaryEntry"/> of today.
     /// </summary>
     /// <returns>True if loading was succesful.</returns>
-    public bool Load()
+    public bool Load(out DiaryEntry[] diaryEntries)
     {
         entries = new List<DiaryEntry>();
 
@@ -47,11 +47,13 @@ public class Diary : MonoBehaviour
                 }
                 entries.Sort();
             }
+            diaryEntries = entries.ToArray();
         }
         catch (Exception exception)
         {
             Debug.LogException(exception);
             UIError.Show("Loading diary entries failed");
+            diaryEntries = null;
             return false;
         }
 
@@ -63,6 +65,12 @@ public class Diary : MonoBehaviour
         ShowEntry(entries[entries.Count - 1]);
 
         return true;
+    }
+
+    public DiaryEntry[] GetDiaryEntries()
+    {
+        Load(out DiaryEntry[] entries);
+        return entries;
     }
 
     /// <summary>
@@ -236,7 +244,7 @@ public class Diary : MonoBehaviour
     /// </summary>
     public void Show()
     {
-        if (Load())
+        if (Load(out _))
         {
             NavigationController.HomeToDiary();
         }

@@ -82,4 +82,49 @@ public class TEMP : MonoBehaviour
         }
         return replies.ToArray();
     }
+
+    /// <summary>
+    /// Get default messages the owl can speak.
+    /// </summary>
+    /// <returns>Messages.</returns>
+    public string[] GetCompanionMessages()
+    {
+        return new string[]
+        {
+            "You are amazing!",
+            "You are doing great!",
+            "How are you today?",
+            "I hope you have an amazing day",
+            "It's nice to see you",
+            "Welcome back!"
+        };
+    }
+
+    /// <summary>
+    /// Get messages the owl can speak when the mood is negative.
+    /// </summary>
+    /// <returns>Messages.</returns>
+    public string[] GetCompanionMessagesNegative()
+    {
+        return new string[]
+        {
+            "I'm here for you!",
+            "I hope you're day is going well",
+            "Let's do something fun today!"
+        };
+    }
+
+    /// <summary>
+    /// Get messages the owl can speak when the mood is positive.
+    /// </summary>
+    /// <returns>Messages.</returns>
+    public string[] GetCompanionMessagesPositive()
+    {
+        return new string[]
+        {
+            "You rock!",
+            "You're awesome!",
+            "I hope today is amazing!"
+        };
+    }
 }
