@@ -58,7 +58,7 @@ public class Mail : MonoBehaviour
     public void Show(DataMessage reply)
     {
         DataReply = reply;
-        if(!DataReply.Seen && !DataReply.Gift) DataReply.MarkSeen();
+        if(!DataReply.Seen && reply.Gift == null) DataReply.MarkSeen();
         UIMail.ShowMail(DataReply);
         NavigationController.MailboxToMail(reply.Gift != null);
     }

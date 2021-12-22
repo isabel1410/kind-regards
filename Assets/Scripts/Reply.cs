@@ -49,7 +49,7 @@ public class Reply : MonoBehaviour
     /// <param name="reply">Message to send.</param>
     public void SendReply(DataText reply)
     {
-        Gift.Show(reply);
+        Gift.Show(message, reply);
     }
 
     #region Visuals

@@ -9,14 +9,14 @@ public class UIGift : MonoBehaviour
     public Text UIMessage;
     public GameObject GiftGameObject;
 
-    private Color giftStartColor;
+    public Color GiftStartColor { get; private set; }
 
     /// <summary>
     /// Called before the start of the first frame.
     /// </summary>
     private void Start()
     {
-        giftStartColor = GiftGameObject.GetComponent<Renderer>().material.color;
+        GiftStartColor = GiftGameObject.GetComponent<Renderer>().material.color;
     }
 
     /// <summary>
@@ -42,6 +42,6 @@ public class UIGift : MonoBehaviour
     /// </summary>
     public void ResetColor()
     {
-        GiftGameObject.GetComponent<Renderer>().material.color = giftStartColor;
+        GiftGameObject.GetComponent<Renderer>().material.color = GiftStartColor;
     }
 }

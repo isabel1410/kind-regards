@@ -18,6 +18,7 @@ public class APIManager : MonoBehaviour
     [SerializeField] private WebRequest postRegisterUserRequest;
     [SerializeField] private WebRequest postMessageThankRequest;
     [SerializeField] private WebRequest postMessageSeenRequest;
+    [SerializeField] private WebRequest postGiftSendRequest;
 
     public List<DataTextCategory> DataTextCategories;
     public List<DataText> DataTexts;
@@ -71,6 +72,15 @@ public class APIManager : MonoBehaviour
         var data = JsonConvert.DeserializeObject<DataMessage>(request.downloadHandler.text);
 
         DataMessages[DataMessages.FindIndex(d => d.Id == data.Id)] = data;
+    }
+
+    public void SendMessage(DataRequest request, DataText text, DataCustomization customization)
+    {
+        WWWForm data = new WWWForm();
+        data.AddField("text_id", text.Id);
+        data.AddField("customization", JsonConvert.SerializeObject(customization, Formatting.None, new ColorConverter()));
+        data.AddField("sticker_id", 1);
+        postGiftSendRequest.Execute(new Dictionary<string, string>() { { ":id", request.Id.ToString() } }, data);
     }
 
     private void OnUserDataReceived(UnityWebRequest request)
