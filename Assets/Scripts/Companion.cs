@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using static Diary;
 
@@ -6,9 +7,82 @@ using static Diary;
 /// </summary>
 public class Companion : MonoBehaviour
 {
+    public UICustomization UICustomization;
     public UICompanion UICompanion;
+    public UIError UIError;
     public Diary Diary;
     public NavigationController NavigationController;
+    public DataCustomization DataCustomization;
+
+    private string CUSTOMIZATIONPATH => $"{Application.persistentDataPath}{Path.DirectorySeparatorChar}Customization.json";
+
+    /// <summary>
+    /// Called before the first frame update.
+    /// </summary>
+    private void Start()
+    {
+        LoadCustomization();
+        UICustomization.ApplyCustomization(DataCustomization);
+    }
+
+    #region File Management
+
+    /// <summary>
+    /// Loads the customization from a local file. (<see cref="CUSTOMIZATIONPATH"/>)
+    /// </summary>
+    /// <returns>True if the loading succeeded.</returns>
+    public bool LoadCustomization()
+    {
+        try
+        {
+            if (!File.Exists(CUSTOMIZATIONPATH))
+            {
+                return SaveCustomization();
+            }
+            JsonUtility.FromJsonOverwrite(File.ReadAllText(CUSTOMIZATIONPATH), DataCustomization);
+            return true;
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogException(exception);
+            UIError.Show("Loading customization failed");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Saves the customization to a local file. (<see cref="CUSTOMIZATIONPATH"/>)
+    /// </summary>
+    /// <returns>True if the saving succeeded.</returns>
+    private bool SaveCustomization()
+    {
+        try
+        {
+            File.WriteAllText(CUSTOMIZATIONPATH, JsonUtility.ToJson(DataCustomization));
+            return true;
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogException(exception);
+            UIError.Show("Saving customization failed");
+            return false;
+        }
+    }
+
+    #endregion
+
+    #region Actions
+
+    /// <summary>
+    /// Changes the color of the companion.
+    /// </summary>
+    /// <param name="sender"></param>
+    public void ChangeColor(GameObject sender)
+    {
+        Color color = sender.GetComponent<UnityEngine.UI.Image>().color;
+        DataCustomization.Color = color;
+        UICustomization.ChangeColor(color);
+    }
 
     /// <summary>
     /// Lets the companion display a message.
@@ -35,6 +109,19 @@ public class Companion : MonoBehaviour
     }
 
     /// <summary>
+    /// Toggles companion actions screen and resets the speechbubble of the companion.
+    /// </summary>
+    public void ToggleCompanionActions()
+    {
+        UICompanion.ResetText();
+        NavigationController.ToggleCompanionActions();
+    }
+
+    #endregion
+
+    #region Messages
+
+    /// <summary>
     /// Get a random message.
     /// </summary>
     /// <returns>Message.</returns>
@@ -53,28 +140,38 @@ public class Companion : MonoBehaviour
     private string GetMoodMessage(DiaryEntry[] entries)
     {
         TEMP TEMP = GameObject.Find("TEMP").GetComponent<TEMP>();
-        string[] messages;
-        switch (entries[entries.Length - 1].Mood)
+        string[] messages = entries[entries.Length - 1].Mood switch
         {
-            default://DiaryEntry.DiaryMood.Neutral or DiaryEntry.DiaryMood.Empty
-                messages = TEMP.GetCompanionMessages();
-                break;
-            case DiaryEntry.DiaryMood.Negative:
-                messages = TEMP.GetCompanionMessagesNegative();
-                break;
-            case DiaryEntry.DiaryMood.Positive:
-                messages = TEMP.GetCompanionMessagesPositive();
-                break;
-        }
+            DiaryEntry.DiaryMood.Negative => TEMP.GetCompanionMessagesNegative(),
+            DiaryEntry.DiaryMood.Positive => TEMP.GetCompanionMessagesPositive(),
+            //DiaryEntry.DiaryMood.Neutral or DiaryEntry.DiaryMood.Empty
+            _ => TEMP.GetCompanionMessages(),
+        };
         return messages[Random.Range(0, messages.Length)];
     }
 
+    #endregion
+
+    #region Visuals
+
     /// <summary>
-    /// Toggles companion actions screen and resets the speechbubble of the companion.
+    /// Loads the customization and transitions from the home screen to the customization screen.
     /// </summary>
-    public void ToggleCompanionActions()
+    public void ShowCustomization()
     {
-        UICompanion.ResetText();
-        NavigationController.ToggleCompanionActions();
+        NavigationController.HomeToCustomization();
     }
+
+    /// <summary>
+    /// Saves the customization and exits to the home screen.
+    /// </summary>
+    public void ExitCustomization()
+    {
+        if (SaveCustomization())
+        {
+            NavigationController.CustomizationToHome();
+        }
+    }
+
+    #endregion
 }

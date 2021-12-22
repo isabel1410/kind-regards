@@ -20,7 +20,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the home screen to the requests screen.
+    /// Transitions from the home screen to the requests screen.
     /// </summary>
     public void HomeToRequests()
     {
@@ -28,7 +28,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     }
 
     /// <summary>
-    /// Transition from the home screen to the reply screen.
+    /// Transitions from the home screen to the reply screen.
     /// </summary>
     public void HomeToReply()
     {
@@ -36,7 +36,15 @@ public class NavigationAnimationHelper : MonoBehaviour
     }
 
     /// <summary>
-    /// Destroy the request buttons from the requests screen.
+    /// Transitions from the home screen to the customization screen.
+    /// </summary>
+    public void HomeToCustomization()
+    {
+        NavigationController.HomeToCustomization();
+    }
+
+    /// <summary>
+    /// Destroys the request buttons from the requests screen.
     /// </summary>
     public void DestroyRequestButtons()
     {
@@ -44,7 +52,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     }
 
     /// <summary>
-    /// Destroy the reqply buttons from the reply screen.
+    /// Destroys the reqply buttons from the reply screen.
     /// </summary>
     public void DestroyReplyButtons()
     {
