@@ -38,21 +38,16 @@ public class Mail : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Animation not included</exception>
     public void OpenGift()
     {
-<<<<<<< Assets/Scripts/Mail.cs
-        print(DataReply.DataText.Text + ": Opened gift");
-        if (!DataReply.Seen) DataReply.MarkSeen();
-=======
         try
         {
-            //api call
-            throw new System.NotImplementedException();
+            print(DataReply.DataText.Text + ": Opened gift");
+            if (!DataReply.Seen) DataReply.MarkSeen();
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
             UIError.Show("Make sure you have an internet connection");
         }
->>>>>>> Assets/Scripts/Mail.cs
     }
 
     #region Visuals
