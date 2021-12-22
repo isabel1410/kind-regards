@@ -7,10 +7,14 @@ using UnityEngine;
 /// </summary>
 public class Mailbox : MonoBehaviour
 {
-    public NavigationController NavigationController;
-    public UIMailbox UIMailbox;
-    public UIError UIError;
-    public Mail Mail;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private UIMailbox UIMailbox;
+    [SerializeField]
+    private UIError UIError;
+    [SerializeField]
+    private Mail Mail;
 
     private List<DataMessage> dataReplies;
 

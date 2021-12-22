@@ -6,9 +6,12 @@ using UnityEngine.UI;
 /// </summary>
 public class UIRequest : MonoBehaviour
 {
-    public Button RequestMessageButtonPrefab;
-    public Request Request;
-    public Transform RequestsContainerTransform;
+    [SerializeField]
+    private Button RequestMessageButtonPrefab;
+    [SerializeField]
+    private Request Request;
+    [SerializeField]
+    private Transform RequestsContainerTransform;
 
     private float height;
 

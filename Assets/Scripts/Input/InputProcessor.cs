@@ -6,7 +6,7 @@ using UnityEngine.Events;
 /// </summary>
 public class InputProcessor : MonoBehaviour
 {
-    public ScrollEvent OnScroll;
+    protected ScrollEvent OnScroll;
 
     /// <summary>
     /// Direction the used has scrolled in.

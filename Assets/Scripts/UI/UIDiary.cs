@@ -6,13 +6,20 @@ using UnityEngine.UI;
 /// </summary>
 public class UIDiary : MonoBehaviour
 {
-    public Text UIDate;
-    public InputField UIEntry;
-    public Button UIMoodNegative;
-    public Button UIMoodNeutral;
-    public Button UIMoodPositive;
-    public Button UIPrevious;
-    public Button UINext;
+    [SerializeField]
+    private Text UIDate;
+    [SerializeField]
+    private InputField UIEntry;
+    [SerializeField]
+    private Button UIMoodNegative;
+    [SerializeField]
+    private Button UIMoodNeutral;
+    [SerializeField]
+    private Button UIMoodPositive;
+    [SerializeField]
+    private Button UIPrevious;
+    [SerializeField]
+    private Button UINext;
 
     /// <summary>
     /// Update the UI to show a <see cref="Diary.DiaryEntry"/>.

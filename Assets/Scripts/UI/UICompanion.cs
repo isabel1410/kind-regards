@@ -7,7 +7,8 @@ using UnityEngine.UI;
 /// </summary>
 public class UICompanion : MonoBehaviour
 {
-    public Text UISpeechBubble;
+    [SerializeField]
+    private Text UISpeechBubble;
 
     private IEnumerator dialogueRunner;
     private string owlActionsQuestion;

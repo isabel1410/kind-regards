@@ -6,8 +6,10 @@ using UnityEngine.UI;
 /// </summary>
 public class UIError : MonoBehaviour
 {
-    public Text UIException;
-    public NavigationController NavigationController;
+    [SerializeField]
+    private Text UIException;
+    [SerializeField]
+    private NavigationController NavigationController;
 
     private Animator animator;
     private Canvas canvas;

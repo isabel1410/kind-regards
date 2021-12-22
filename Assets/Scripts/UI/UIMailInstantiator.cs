@@ -6,11 +6,15 @@ using UnityEngine.UI;
 /// </summary>
 public class UIMailInstantiator : MonoBehaviour
 {
-    public Mailbox Mailbox;
-    public UIMailbox UIMailbox;
+    [SerializeField]
+    private Mailbox Mailbox;
+    [SerializeField]
+    private UIMailbox UIMailbox;
 
-    public Button DeleteButton;
-    public Button OpenButton;
+    [SerializeField]
+    private Button DeleteButton;
+    [SerializeField]
+    private Button OpenButton;
 
     /// <summary>
     /// Instantiates the <paramref name="replyInput"/> by adding the event listeners and setting the <see cref="DataMessage"/>, after which this script is destroyed.

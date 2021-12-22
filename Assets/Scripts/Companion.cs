@@ -7,12 +7,18 @@ using static Diary;
 /// </summary>
 public class Companion : MonoBehaviour
 {
-    public UICustomization UICustomization;
-    public UICompanion UICompanion;
-    public UIError UIError;
-    public Diary Diary;
-    public NavigationController NavigationController;
-    public DataCustomization DataCustomization;
+    [SerializeField]
+    private UICustomization UICustomization;
+    [SerializeField]
+    private UICompanion UICompanion;
+    [SerializeField]
+    private UIError UIError;
+    [SerializeField]
+    private Diary Diary;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private DataCustomization DataCustomization;
 
     private string CUSTOMIZATIONPATH => $"{Application.persistentDataPath}{Path.DirectorySeparatorChar}Customization.json";
 

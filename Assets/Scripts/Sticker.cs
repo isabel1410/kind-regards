@@ -1,20 +1,22 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Redirects calls for the stickerbook.
+/// </summary>
 public class Sticker : MonoBehaviour
 {
     public NavigationController NavigationController;
 
     [SerializeField]
     private List<GameObject> pages;
-    int currentPage;
+    private int currentPage;
 
-    public UISticker UISticker;
+    [SerializeField]
+    private UISticker UISticker;
 
     /// <summary>
-    /// Sticker book opens at the first page by default.
+    /// Sticker book opens the first page by default.
     /// </summary>
     private void Start()
     {
@@ -60,10 +62,15 @@ public class Sticker : MonoBehaviour
         currentPage = previousPage;
     }
 
+    /// <summary>
+    /// Shows the page based on <paramref name="index"/> and disables / enables next / previous buttons.
+    /// </summary>
+    /// <param name="index">Index of the page to load.</param>
     public void LoadPage(int index)
     {
-        UISticker.Default(pages, index);
+        UISticker.ToggleButtons(pages, index);
         UISticker.ShowPage(pages, index);
     }
+
     #endregion
 }

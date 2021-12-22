@@ -14,9 +14,12 @@ public class Diary : MonoBehaviour
     private List<DiaryEntry> entries;
     private DiaryEntry currentEntry;
 
-    public UIDiary UIDiary;
-    public UIError UIError;
-    public NavigationController NavigationController;
+    [SerializeField]
+    private UIDiary UIDiary;
+    [SerializeField]
+    private UIError UIError;
+    [SerializeField]
+    private NavigationController NavigationController;
 
     #region File Management
 

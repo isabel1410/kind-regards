@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class UICustomization : MonoBehaviour
 {
-    public GameObject CompanionGameObject;
+    [SerializeField]
+    private GameObject CompanionGameObject;
 
     /// <summary>
     /// Changes the color of the entire body of the companion.

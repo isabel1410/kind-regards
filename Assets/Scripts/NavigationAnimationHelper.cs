@@ -5,10 +5,14 @@ using UnityEngine;
 /// </summary>
 public class NavigationAnimationHelper : MonoBehaviour
 {
-    public NavigationController NavigationController;
-    public UIRequest UIRequest;
-    public UIReply UIReply;
-    public UIMailbox UIMailbox;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private UIRequest UIRequest;
+    [SerializeField]
+    private UIReply UIReply;
+    [SerializeField]
+    private UIMailbox UIMailbox;
 
     /// <summary>
     /// Sets the rendermode of the UI.

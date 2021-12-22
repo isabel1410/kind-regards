@@ -6,9 +6,12 @@ using UnityEngine.UI;
 /// </summary>
 public class UIMail : MonoBehaviour
 {
-    public Text UIMessage;
-    public Text UIReply;
-    public Button UIThank;
+    [SerializeField]
+    private Text UIMessage;
+    [SerializeField]
+    private Text UIReply;
+    [SerializeField]
+    private Button UIThank;
 
     /// <summary>
     /// Shows <paramref name="mail"/> and disables the "Thank the sender" button if necessary.
@@ -19,5 +22,13 @@ public class UIMail : MonoBehaviour
         UIMessage.text = mail.Request.DataText.Text;
         UIReply.text = mail.DataText.Text;
         UIThank.interactable = !mail.Thanked;
+    }
+
+    /// <summary>
+    /// Disables the button to thank the sender;
+    /// </summary>
+    public void DisableThank()
+    {
+        UIThank.interactable = false;
     }
 }

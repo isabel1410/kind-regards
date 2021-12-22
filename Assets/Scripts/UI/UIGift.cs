@@ -6,8 +6,10 @@ using UnityEngine.UI;
 /// </summary>
 public class UIGift : MonoBehaviour
 {
-    public Text UIMessage;
-    public GameObject GiftGameObject;
+    [SerializeField]
+    private Text UIMessage;
+    [SerializeField]
+    private GameObject GiftGameObject;
 
     public Color GiftStartColor { get; private set; }
 

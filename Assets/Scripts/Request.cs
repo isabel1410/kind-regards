@@ -8,9 +8,12 @@ public class Request : MonoBehaviour
 {
     private DataText[] requestMessages;
 
-    public NavigationController NavigationController;
-    public UIRequest UIRequest;
-    public UIError UIError;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private UIRequest UIRequest;
+    [SerializeField]
+    private UIError UIError;
 
     /// <summary>
     /// Load all diaries and shows the <see cref="DiaryEntry"/> of today.

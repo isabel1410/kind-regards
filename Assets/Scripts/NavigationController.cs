@@ -5,15 +5,23 @@ using UnityEngine;
 /// </summary>
 public class NavigationController : MonoBehaviour
 {
-    public Animator UIAnimator;
-    public Animator UICompanionActionsAnimator;
-    public Animator DiaryAnimator;
-    public Animator CompanionAnimator;
-    public Animator StickerBookAnimator;
-    public Animator GiftAnimator;
+    [SerializeField]
+    private Animator UIAnimator;
+    [SerializeField]
+    private Animator UICompanionActionsAnimator;
+    [SerializeField]
+    private Animator DiaryAnimator;
+    [SerializeField]
+    private Animator CompanionAnimator;
+    [SerializeField]
+    private Animator StickerBookAnimator;
+    [SerializeField]
+    private Animator GiftAnimator;
 
-    public GameObject CanvasCompanionActions;
-    public Canvas Canvas;
+    [SerializeField]
+    private GameObject CanvasCompanionActions;
+    [SerializeField]
+    private Canvas Canvas;
 
     #region Screen Navigation
 
@@ -62,7 +70,7 @@ public class NavigationController : MonoBehaviour
         string animationStateName = "Navigation - Home to Sticker";
         UIAnimator.Play(animationStateName);
         CompanionAnimator.Play(animationStateName);
-        StickerAnimator.Play("Sticker Book - Show Stickers");
+        StickerBookAnimator.Play("Sticker Book - Show Stickers");
     }
 
     public void StickerToHome()
@@ -70,7 +78,7 @@ public class NavigationController : MonoBehaviour
         string animationStateName = "Navigation - Sticker to Home";
         UIAnimator.Play(animationStateName);
         CompanionAnimator.Play(animationStateName);
-        StickerAnimator.Play("Sticker Book - Hide Stickers");
+        StickerBookAnimator.Play("Sticker Book - Hide Stickers");
     }
 
     /// <summary>

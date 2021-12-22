@@ -6,11 +6,16 @@ using UnityEngine.UI;
 /// </summary>
 public class UIReply : MonoBehaviour
 {
+    [SerializeField]
+    private Text UIMessage;
+    [SerializeField]
+    private Button ReplyButtonPrefab;
+    [SerializeField]
+    private Reply Reply;
+    [SerializeField]
+    private Transform RepliesContainerTransform;
+
     private float height;
-    public Text UIMessage;
-    public Button ReplyButtonPrefab;
-    public Reply Reply;
-    public Transform RepliesContainerTransform;
 
     /// <summary>
     /// Called before the first frame update.

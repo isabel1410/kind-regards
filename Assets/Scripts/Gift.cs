@@ -5,12 +5,15 @@ using UnityEngine;
 /// </summary>
 public class Gift : MonoBehaviour
 {
-    public NavigationController NavigationController;
-    public UIGift UIGift;
-    public UIError UIError;
-    public DataRequest DataRequest;
-    public DataText DataText;
-    public DataCustomization DataGiftCustomization;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private UIGift UIGift;
+    [SerializeField]
+    private UIError UIError;
+    private DataRequest DataRequest;
+    private DataText DataText;
+    private DataCustomization DataGiftCustomization;
     //public DataSticker DataSticker;
 
     /// <summary>
