@@ -5,10 +5,14 @@ using UnityEngine;
 /// </summary>
 public class CompanionActionAnimationHelper : MonoBehaviour
 {
-    public NavigationController NavigationController;
-    public Request Request;
-    public Reply Reply;
-    public Companion Companion;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private Request Request;
+    [SerializeField]
+    private Reply Reply;
+    [SerializeField]
+    private Companion Companion;
 
     /// <summary>
     /// Sets the canvas inactive once the companion action dialogue choices are hidden.

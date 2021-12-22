@@ -5,11 +5,16 @@ using UnityEngine;
 /// </summary>
 public class Reply : MonoBehaviour
 {
-    public NavigationController NavigationController;
-    public UIReply UIReply;
-    public UIGift UIGift;
-    public UIError UIError;
-    public Gift Gift;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private UIReply UIReply;
+    [SerializeField]
+    private UIGift UIGift;
+    [SerializeField]
+    private UIError UIError;
+    [SerializeField]
+    private Gift Gift;
 
     private DataRequest message;
     private DataText[] replies;

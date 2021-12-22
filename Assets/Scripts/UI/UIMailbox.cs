@@ -7,10 +7,14 @@ using UnityEngine.UI;
 /// </summary>
 public class UIMailbox : MonoBehaviour
 {
-    public GameObject MailGameObjectPrefab;
-    public Mailbox Mailbox;
-    public Mail Mail;
-    public Transform MailContainerTransform;
+    [SerializeField]
+    private GameObject MailGameObjectPrefab;
+    [SerializeField]
+    private Mailbox Mailbox;
+    [SerializeField]
+    private Mail Mail;
+    [SerializeField]
+    private Transform MailContainerTransform;
 
     private float height;
 

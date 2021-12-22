@@ -5,10 +5,14 @@ using UnityEngine;
 /// </summary>
 public class Mail : MonoBehaviour
 {
-    public UIMail UIMail;
-    public UIError UIError;
-    public NavigationController NavigationController;
-    public DataMessage DataReply;
+    [SerializeField]
+    private UIMail UIMail;
+    [SerializeField]
+    private UIError UIError;
+    [SerializeField]
+    private NavigationController NavigationController;
+    [SerializeField]
+    private DataMessage DataReply;
 
     /// <summary>
     /// Thanks the sender of the reply.
@@ -19,11 +23,10 @@ public class Mail : MonoBehaviour
         try
         {
             print(DataReply.DataText.Text + ": Thanked sender");
-            UIMail.UIThank.interactable = false;
             //api call
             if (APIManager.Instance) APIManager.Instance.SendMessageThanks(DataReply);
 
-            UIMail.UIThank.interactable = false;
+            UIMail.DisableThank();
         }
         catch (System.Exception exception)
         {

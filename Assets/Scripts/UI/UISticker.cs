@@ -1,9 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles UI interactions for the stickerbook.
+/// </summary>
 public class UISticker : MonoBehaviour
 {
     [SerializeField]
@@ -11,7 +12,12 @@ public class UISticker : MonoBehaviour
     [SerializeField]
     private Button UINext;
 
-    public void Default(List<GameObject> pages, int currentPage)
+    /// <summary>
+    /// Enables / disables buttons based on the shown page.
+    /// </summary>
+    /// <param name="pages">Pages of the stickerbook.</param>
+    /// <param name="currentPage">Index of the page which is shown.</param>
+    public void ToggleButtons(List<GameObject> pages, int currentPage)
     {
         if (currentPage == 0 && pages.Count - 1 == 0)
         {
@@ -35,6 +41,11 @@ public class UISticker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Hides all the pages and shows the correct page.
+    /// </summary>
+    /// <param name="pages">Pages of the stickerbook.</param>
+    /// <param name="currentPage">Index of the page to show.</param>
     public void ShowPage(List<GameObject> pages, int currentPage)
     {
         for (int i = 0; i < pages.Count; i++)
