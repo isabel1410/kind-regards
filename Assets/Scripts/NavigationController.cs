@@ -55,7 +55,26 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
-    /// Transitions from the requests screen to the home screen.
+    /// Transition from the home screen to the stickers screen.
+    /// </summary>
+    public void HomeToSticker()
+    {
+        string animationStateName = "Navigation - Home to Sticker";
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+        StickerAnimator.Play("Sticker Book - Show Stickers");
+    }
+
+    public void StickerToHome()
+    {
+        string animationStateName = "Navigation - Sticker to Home";
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+        StickerAnimator.Play("Sticker Book - Hide Stickers");
+    }
+
+    /// <summary>
+    /// Transition from the requests screen to the home screen.
     /// </summary>
     public void RequestsToHome()
     {
