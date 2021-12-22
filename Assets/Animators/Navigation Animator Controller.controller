@@ -156,6 +156,58 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-3282576192633106949
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Navigation - Home to Sticker
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a49c105cfc1c13c4eabe7a1c9854cdfc, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-3086562485296152943
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Navigation - Sticker to Home
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 18b3deb51bde5b74fa99a27d13d6b9df, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &-1553843493482888624
 AnimatorStateMachine:
   serializedVersion: 6
@@ -193,26 +245,17 @@ AnimatorStateMachine:
     m_State: {fileID: -3427333212473965685}
     m_Position: {x: 400, y: 540, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 7938272618653514453}
-    m_Position: {x: 435, y: 605, z: 0}
+    m_State: {fileID: -3282576192633106949}
+    m_Position: {x: 50, y: 350, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -7572394285857537805}
-    m_Position: {x: 470, y: 670, z: 0}
+    m_State: {fileID: -3086562485296152943}
+    m_Position: {x: 85, y: 415, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -3979812613887678723}
-    m_Position: {x: 505, y: 735, z: 0}
+    m_State: {fileID: -911819945836854024}
+    m_Position: {x: 120, y: 480, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -771881465516999146}
-    m_Position: {x: 540, y: 800, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3757726049826802637}
-    m_Position: {x: 575, y: 865, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 5373671017393656618}
-    m_Position: {x: 610, y: 930, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 2723420178732489352}
-    m_Position: {x: 645, y: 995, z: 0}
+    m_State: {fileID: 7487497154166260157}
+    m_Position: {x: 155, y: 545, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -223,14 +266,14 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -5762179432328358338}
---- !u!1102 &-771881465516999146
+--- !u!1102 &-911819945836854024
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Navigation - Gift to Home
+  m_Name: Stickers - Show
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -243,7 +286,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 00787325fcc934842862a39a85de6a6c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 424507779a5aeb24a940d5b2f61ee638, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -501,14 +544,14 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &7938272618653514453
+--- !u!1102 &7487497154166260157
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Navigation - Reply to Home
+  m_Name: Sticker Book - Hide Stickers
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -521,7 +564,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dd18044d697bb1e4db3574377c415f07, type: 2}
+  m_Motion: {fileID: 7400000, guid: 698cabf587914fb4ba26d9e2a965cf6e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

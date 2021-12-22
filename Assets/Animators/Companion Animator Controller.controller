@@ -20,22 +20,22 @@ AnimatorStateMachine:
     m_Position: {x: 50, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2061753326816150653}
-    m_Position: {x: 85, y: 285, z: 0}
+    m_Position: {x: 310, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4213611326978385884}
-    m_Position: {x: 120, y: 350, z: 0}
+    m_Position: {x: 310, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7770670780149080982}
-    m_Position: {x: 155, y: 415, z: 0}
+    m_Position: {x: 60, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5761015310257441776}
-    m_Position: {x: 190, y: 480, z: 0}
+    m_Position: {x: 60, y: 360, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -1274306755927914962}
-    m_Position: {x: 225, y: 545, z: 0}
+    m_State: {fileID: 7004306186892616736}
+    m_Position: {x: 310, y: 310, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 4100009187835816138}
-    m_Position: {x: 260, y: 610, z: 0}
+    m_State: {fileID: -6505924879053255466}
+    m_Position: {x: 310, y: 360, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -43,7 +43,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ExitPosition: {x: 540, y: 360, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -6270019982283277203}
 --- !u!1102 &-7770670780149080982
@@ -67,6 +67,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: eb19e02c16d2e594d86e197a2270c26b, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-6505924879053255466
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Navigation - Sticker to Home
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: b5a74073db6f45f4a97f3eae19cb7d68, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -297,6 +323,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 807275550cf77b14d899f094f15b36bc, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &7004306186892616736
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Navigation - Home to Sticker
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a7c94706ef612414e90c5f6720bca950, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
