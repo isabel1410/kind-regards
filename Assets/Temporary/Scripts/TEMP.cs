@@ -7,9 +7,9 @@ using UnityEngine;
 /// </summary>
 public class TEMP : MonoBehaviour
 {
-    public DataReply DataReply;
+    public DataMessage DataReply;
     public DataGift DataGift;
-    public DataMail DataMail;
+    public DataRequest DataMail;
 
     /// <summary>
     /// Called before the first frame update.
@@ -39,22 +39,22 @@ public class TEMP : MonoBehaviour
     /// </summary>
     /// <example>"I see you", "You are not alone".</example>
     /// <returns>Replies.</returns>
-    public DataReply[] GetReplies()
+    public DataMessage[] GetReplies()
     {
-        List<DataReply> mail = new List<DataReply>();
+        List<DataMessage> mail = new List<DataMessage>();
         for (byte counter = 1; counter <= 50; counter++)
         {
-            DateTime dateTime = DateTime.Now;
-            dateTime = dateTime.AddMinutes(-UnityEngine.Random.Range(0, 1000000));
-            DataReply newMail = Instantiate(DataReply);
-            newMail.gameObject.hideFlags = HideFlags.HideInHierarchy;
-            newMail.Gift = UnityEngine.Random.value < .5 ? DataGift : null;
-            newMail.SentMessage = "Message " + counter;
-            newMail.DateTime = dateTime;
-            newMail.Id = counter;
-            newMail.Thanked = UnityEngine.Random.value < .5;
-            newMail.Seen = UnityEngine.Random.value < .5;
-            mail.Add(newMail);
+            //DateTime dateTime = DateTime.Now;
+            //dateTime = dateTime.AddMinutes(-UnityEngine.Random.Range(0, 1000000));
+            //DataMessage newMail = Instantiate(DataReply);
+            //newMail.gameObject.hideFlags = HideFlags.HideInHierarchy;
+            //newMail.Gift = UnityEngine.Random.value < .5 ? DataGift : null;
+            //newMail.SentMessage = "Message " + counter;
+            //newMail.DateTime = dateTime;
+            //newMail.Id = counter;
+            //newMail.Thanked = UnityEngine.Random.value < .5;
+            //newMail.Seen = UnityEngine.Random.value < .5;
+            //mail.Add(newMail);
         }
         return mail.ToArray();
     }
@@ -63,9 +63,9 @@ public class TEMP : MonoBehaviour
     /// Get a message the player could have sent.
     /// </summary>
     /// <returns>Message</returns>
-    public DataMail GetMessage()
+    public DataRequest GetMessage()
     {
-        return Instantiate(DataMail);
+        return null; //Instantiate(DataMail);
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class TEMP : MonoBehaviour
     /// </summary>
     /// <param name="_">Message to get reply messages from.</param>
     /// <returns>Reply messages.</returns>
-    public string[] GetRepliesForMessage(DataMail _)
+    public string[] GetRepliesForMessage(DataRequest _)
     {
         List<string> replies = new List<string>();
         for (byte counter = 1; counter <= 50; counter++)

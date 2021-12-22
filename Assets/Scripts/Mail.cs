@@ -8,7 +8,7 @@ public class Mail : MonoBehaviour
     public UIMail UIMail;
     public UIError UIError;
     public NavigationController NavigationController;
-    public DataReply DataReply;
+    public DataMessage DataReply;
 
     /// <summary>
     /// Thanks the sender of the reply.
@@ -18,8 +18,10 @@ public class Mail : MonoBehaviour
     {
         try
         {
+            print(DataReply.DataText.Text + ": Thanked sender");
+            UIMail.UIThank.interactable = false;
             //api call
-            throw new System.NotImplementedException();
+            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(DataReply);
 
             UIMail.UIThank.interactable = false;
         }
@@ -36,6 +38,10 @@ public class Mail : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Animation not included</exception>
     public void OpenGift()
     {
+<<<<<<< Assets/Scripts/Mail.cs
+        print(DataReply.DataText.Text + ": Opened gift");
+        if (!DataReply.Seen) DataReply.MarkSeen();
+=======
         try
         {
             //api call
@@ -46,6 +52,7 @@ public class Mail : MonoBehaviour
             Debug.LogException(exception);
             UIError.Show("Make sure you have an internet connection");
         }
+>>>>>>> Assets/Scripts/Mail.cs
     }
 
     #region Visuals
@@ -53,10 +60,10 @@ public class Mail : MonoBehaviour
     /// <summary>
     /// Transitions from the mailbox screen to the mail screen.
     /// </summary>
-    public void Show(DataReply reply)
+    public void Show(DataMessage reply)
     {
         DataReply = reply;
-        DataReply.Seen = true;
+        if(!DataReply.Seen && !DataReply.Gift) DataReply.MarkSeen();
         UIMail.ShowMail(DataReply);
         NavigationController.MailboxToMail(reply.Gift != null);
     }

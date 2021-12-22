@@ -12,13 +12,18 @@ public class APIManager : MonoBehaviour
     [SerializeField] private WebRequest getUserDataRequest;
     [SerializeField] private WebRequest getCategoriesRequest;
     [SerializeField] private WebRequest getTextsRequest;
+    [SerializeField] private WebRequest getGiftRequestsRequest;
+    [SerializeField] private WebRequest getGiftMessagesRequest;
     [SerializeField] private WebRequest postGiftRequest;
     [SerializeField] private WebRequest postRegisterUserRequest;
     [SerializeField] private WebRequest postMessageThankRequest;
+    [SerializeField] private WebRequest postMessageSeenRequest;
 
     public List<DataTextCategory> DataTextCategories;
     public List<DataText> DataTexts;
     public DataUser DataUser;
+    public List<DataRequest> DataRequests;
+    public List<DataMessage> DataMessages;
 
     public void Awake()
     {
@@ -34,6 +39,38 @@ public class APIManager : MonoBehaviour
 
         getCategoriesRequest.OnRequestFinished.AddListener(OnCategoriesReceived);
         getCategoriesRequest.Execute();
+
+        getGiftRequestsRequest.OnRequestFinished.AddListener(OnRequestsReceived);
+        getGiftRequestsRequest.Execute();
+
+        getGiftMessagesRequest.OnRequestFinished.AddListener(OnMessagesReceived);
+        getGiftMessagesRequest.Execute();
+    }
+
+    private void OnMessagesReceived(UnityWebRequest request)
+    {
+        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Messages could not be retrieved.");
+        DataMessages = JsonConvert.DeserializeObject<List<DataMessage>>(request.downloadHandler.text);
+    }
+
+    private void OnRequestsReceived(UnityWebRequest request)
+    {
+        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Requests could not be retrieved.");
+        DataRequests = JsonConvert.DeserializeObject<List<DataRequest>>(request.downloadHandler.text);
+    }
+
+    public void MarkMessageSeen(DataMessage dataMessage)
+    {
+        postMessageSeenRequest.OnRequestFinished.AddListener(OnMessageMarkedSeen);
+        postMessageSeenRequest.Execute(new Dictionary<string, string>() { { ":id", dataMessage.Id.ToString() } });
+    }
+
+    private void OnMessageMarkedSeen(UnityWebRequest request)
+    {
+        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Requests could not be retrieved.");
+        var data = JsonConvert.DeserializeObject<DataMessage>(request.downloadHandler.text);
+
+        DataMessages[DataMessages.FindIndex(d => d.Id == data.Id)] = data;
     }
 
     private void OnUserDataReceived(UnityWebRequest request)
@@ -74,11 +111,6 @@ public class APIManager : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Texts could not be retrieved.");
         List<DataText> newTexts = JsonConvert.DeserializeObject<List<DataText>>(request.downloadHandler.text);
 
-        for(int i = 0; i < newTexts.Count; i++)
-        {   
-            newTexts[i].Category = DataTextCategories.Find(cat => cat.Id == newTexts[i].CategoryId);
-        }
-
         DataTexts.AddRange(newTexts);
     }
 
@@ -89,8 +121,8 @@ public class APIManager : MonoBehaviour
         postGiftRequest.Execute(data: data);
     }
 
-    public void SendMessageThanks(DataMail dataMail)
+    public void SendMessageThanks(DataMessage dataMessage)
     {
-        postMessageThankRequest.Execute(new Dictionary<string, string>() { { ":id", dataMail.Id.ToString() } });
+        postMessageThankRequest.Execute(new Dictionary<string, string>() { { ":id", dataMessage.Id.ToString() } });
     }
 }

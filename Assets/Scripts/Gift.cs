@@ -60,7 +60,7 @@ public class Gift : MonoBehaviour
     /// <summary>
     /// Transitions from the mailbox screen to the mail screen.
     /// </summary>
-    public void Show(string reply)
+    public void Show(DataText reply)
     {
         UIGift.ShowMessage(reply);
         NavigationController.ReplyToGift();

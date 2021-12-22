@@ -11,8 +11,8 @@ public class Reply : MonoBehaviour
     public UIError UIError;
     public Gift Gift;
 
-    private DataMail message;
-    private string[] replies;
+    private DataRequest message;
+    private DataText[] replies;
 
     /// <summary>
     /// Loads all replies.
@@ -22,12 +22,17 @@ public class Reply : MonoBehaviour
     {
         try
         {
-            //api call
-            throw new System.NotImplementedException();
-            TEMP temp = GameObject.Find("TEMP").GetComponent<TEMP>();
-            message = temp.GetMessage();
-            replies = temp.GetRepliesForMessage(message);
-            return true;
+            if (APIManager.Instance)
+            {
+                if (APIManager.Instance.DataRequests.Count > 0) message = APIManager.Instance.DataRequests.Random();
+                else return false;
+                replies = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "RESPONSE").ToArray();
+                return true;
+            }
+            //TEMP temp = GameObject.Find("TEMP").GetComponent<TEMP>();
+            //message = temp.GetMessage();
+            //replies = temp.GetRepliesForMessage(message);
+            return false;
         }
         catch (System.Exception exception)
         {
@@ -42,7 +47,7 @@ public class Reply : MonoBehaviour
     /// </summary>
     /// <param name="reply">Message to send.</param>
     /// <param name="reply">Message to send.</param>
-    public void SendReply(string reply)
+    public void SendReply(DataText reply)
     {
         Gift.Show(reply);
     }
