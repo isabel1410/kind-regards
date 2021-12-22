@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavigationController: {fileID: 280535379}
   UIMailbox: {fileID: 26033571}
-  UIError: {fileID: 1313747868}
+  UIError: {fileID: 0}
   Mail: {fileID: 1258501795}
 --- !u!114 &26033571
 MonoBehaviour:
@@ -6575,7 +6575,7 @@ MonoBehaviour:
   NavigationController: {fileID: 280535379}
   UIReply: {fileID: 1243980604}
   UIGift: {fileID: 1479657583}
-  UIError: {fileID: 1313747868}
+  UIError: {fileID: 0}
   Gift: {fileID: 1479657584}
 --- !u!114 &1243980604
 MonoBehaviour:
@@ -7057,9 +7057,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIMail: {fileID: 1258501796}
-  UIError: {fileID: 1313747868}
+  UIError: {fileID: 0}
   NavigationController: {fileID: 280535379}
-  DataReply: {fileID: 0}
+  DataReply:
+    Gift: {fileID: 0}
 --- !u!114 &1258501796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8573,7 +8574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavigationController: {fileID: 280535379}
   UIGift: {fileID: 1479657583}
-  UIError: {fileID: 1313747868}
+  UIError: {fileID: 0}
   DataGift: {fileID: 1479657585}
 --- !u!114 &1479657585
 MonoBehaviour:
@@ -8756,7 +8757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavigationController: {fileID: 280535379}
   UIRequest: {fileID: 1488048856}
-  UIError: {fileID: 1313747868}
+  UIError: {fileID: 0}
 --- !u!1 &1524633796
 GameObject:
   m_ObjectHideFlags: 0
@@ -9164,8 +9165,6 @@ GameObject:
   - component: {fileID: 1678409302}
   - component: {fileID: 1678409301}
   - component: {fileID: 1678409304}
-  - component: {fileID: 1678409305}
-  - component: {fileID: 1678409306}
   m_Layer: 5
   m_Name: TEMP
   m_TagString: Untagged
@@ -9204,9 +9203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b9b60d4636b8543b3189a4a9992c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DataReply: {fileID: 1678409305}
+  DataReply:
+    Gift: {fileID: 0}
   DataGift: {fileID: 1678409304}
-  DataMail: {fileID: 1678409306}
 --- !u!114 &1678409302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9255,38 +9254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Color: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &1678409305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678409299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe681c841abf8d49b753a33e16f1a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SentMessage: 
-  Read: 0
-  Gift: {fileID: 0}
-  ReplyMessage: 
-  Thanked: 0
-  Seen: 0
---- !u!114 &1678409306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678409299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b6e4e5933b75c478c638a13d7cde66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SentMessage: I feel lonely
-  Read: 0
 --- !u!1 &1764428514
 GameObject:
   m_ObjectHideFlags: 0
@@ -10046,7 +10013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entries: []
   UIDiary: {fileID: 1199672914}
-  UIError: {fileID: 1313747868}
+  UIError: {fileID: 0}
   NavigationController: {fileID: 280535379}
 --- !u!95 &1907334668
 Animator:
@@ -10979,7 +10946,7 @@ MonoBehaviour:
   NavigationController: {fileID: 280535379}
   Request: {fileID: 1488048857}
   Reply: {fileID: 1243980603}
-  Companion: {fileID: 1528519403}
+  Companion: {fileID: 0}
 --- !u!114 &2056996717
 MonoBehaviour:
   m_ObjectHideFlags: 0
