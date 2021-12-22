@@ -28,11 +28,11 @@ public class UIMailbox : MonoBehaviour
     /// Creates and instantiates a <see cref="GameObject"/> for each reply.
     /// </summary>
     /// <param name="replies">Replies to show.</param>
-    public void ShowReplies(DataReply[] replies)
+    public void ShowReplies(DataMessage[] replies)
     {
         //Create gameObjects and add the necessary properties
         float positionY = 0;
-        foreach (DataReply reply in replies)
+        foreach (DataMessage reply in replies)
         {
             GameObject mailGameObject = Instantiate(MailGameObjectPrefab);
             RectTransform rectTransform = mailGameObject.GetComponent<RectTransform>();
@@ -71,7 +71,7 @@ public class UIMailbox : MonoBehaviour
     /// <summary>
     /// Decreases the container height and destroys <paramref name="mailGameObject"/>.
     /// </summary>
-    /// <param name="mailGameObject"><see cref="GameObject"/> the holds the <see cref="DataMail"/> in the <see cref="UIMailbox"/>.</param>
+    /// <param name="mailGameObject"><see cref="GameObject"/> the holds the <see cref="DataRequest"/> in the <see cref="UIMailbox"/>.</param>
     public void DestroyMailGameObject(GameObject mailGameObject)
     {
         RectTransform containerRectTransform = MailContainerTransform.GetComponent<RectTransform>();

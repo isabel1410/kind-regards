@@ -31,6 +31,7 @@ public class Request : MonoBehaviour
             };
 #else
             if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
+            else return false;
 #endif
             return true;
         }

@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 1169853634990929887}
   - component: {fileID: -2530967928278862884}
   - component: {fileID: 1740364271426477802}
+  - component: {fileID: 737793754}
+  - component: {fileID: 5501933780569951084}
+  - component: {fileID: 8394511132527421016}
   m_Layer: 0
   m_Name: APIManager
   m_TagString: Untagged
@@ -52,11 +55,16 @@ MonoBehaviour:
   getUserDataRequest: {fileID: 1169853634990929887}
   getCategoriesRequest: {fileID: 8098559901576395183}
   getTextsRequest: {fileID: 8098559901576395176}
+  getGiftRequestsRequest: {fileID: 737793754}
+  getGiftMessagesRequest: {fileID: 5501933780569951084}
   postGiftRequest: {fileID: 8098559901576395179}
   postRegisterUserRequest: {fileID: -2530967928278862884}
   postMessageThankRequest: {fileID: 1740364271426477802}
+  postMessageSeenRequest: {fileID: 8394511132527421016}
   DataTextCategories: []
   DataTexts: []
+  DataRequests: []
+  DataMessages: []
 --- !u!114 &8098559901576395183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +174,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Method: 0
   Uri: http://localhost:3000/users/messages/:id/thank
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+--- !u!114 &737793754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://localhost:3000/request
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 
+--- !u!114 &5501933780569951084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://localhost:3000/users/messages
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+--- !u!114 &8394511132527421016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://localhost:3000/users/messages/:id/seen
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []

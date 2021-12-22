@@ -12,7 +12,7 @@ public class Mailbox : MonoBehaviour
     public UIError UIError;
     public Mail Mail;
 
-    private List<DataReply> dataReplies;
+    private List<DataMessage> dataReplies;
 
     /// <summary>
     /// Load all the replies.
@@ -23,9 +23,9 @@ public class Mailbox : MonoBehaviour
     {
         try
         {
-            //api call
-            throw new System.NotImplementedException();
-            List<DataReply> mail = GameObject.Find("TEMP").GetComponent<TEMP>().GetReplies().ToList();
+            List<DataMessage> mail = new List<DataMessage>();
+            if (APIManager.Instance) mail = APIManager.Instance.DataMessages;
+            else return false;
             mail.Sort();
             dataReplies = mail;
             return true;
@@ -41,8 +41,8 @@ public class Mailbox : MonoBehaviour
     /// <summary>
     /// Transitions to the mail screen.
     /// </summary>
-    /// <param name="reply">The <see cref="DataReply"/> to show.</param>
-    public void OpenMail(DataReply reply)
+    /// <param name="reply">The <see cref="DataMessage"/> to show.</param>
+    public void OpenMail(DataMessage reply)
     {
         Mail.Show(reply);
     }
@@ -50,11 +50,11 @@ public class Mailbox : MonoBehaviour
     /// <summary>
     /// Removes the mail from the list.
     /// </summary>
-    /// <param name="reply">The <see cref="DataReply"/> to delete.</param>
+    /// <param name="reply">The <see cref="DataMessage"/> to delete.</param>
     /// <param name="sender">The <see cref="GameObject"/> to destroy.</param>
     /// <returns>True if the deletion was succesful.</returns>
     /// <exception cref="System.NotImplementedException">Api call not implemented.</exception>
-    public bool DeleteMail(DataReply reply, GameObject sender)
+    public bool DeleteMail(DataMessage reply, GameObject sender)
     {
         try
         {
@@ -72,7 +72,7 @@ public class Mailbox : MonoBehaviour
         return true;
     }
 
-    #region Visuals
+#region Visuals
 
     /// <summary>
     /// Loads the replies and transitions from the home screen to the requests screen.
@@ -94,5 +94,5 @@ public class Mailbox : MonoBehaviour
         NavigationController.MailboxToHome();
     }
 
-    #endregion
+#endregion
 }

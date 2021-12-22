@@ -24,20 +24,22 @@ public class UIReply : MonoBehaviour
     /// Show the sent message in the UI.
     /// </summary>
     /// <param name="message">Sent message to show.</param>
-    public void ShowMessage(DataMail message)
+    public void ShowMessage(DataRequest message)
     {
-        UIMessage.text = message.SentMessage;
+        if (message == null) return;
+        UIMessage.text = message.DataText.Text;
     }
 
     /// <summary>
     /// Creates a <see cref="Button"/> for each reply.
     /// </summary>
     /// <param name="replies">Replies to show.</param>
-    public void ShowReplies(string[] replies)
+    public void ShowReplies(DataText[] replies)
     {
+        if (replies == null) return;
         //Create buttons and add the necessary properties
         float positionY = 0;
-        foreach (string reply in replies)
+        foreach (DataText reply in replies)
         {
             Button requestMessageButton = Instantiate(ReplyButtonPrefab);
             RectTransform rectTransform = requestMessageButton.gameObject.GetComponent<RectTransform>();
@@ -46,7 +48,7 @@ public class UIReply : MonoBehaviour
             rectTransform.anchoredPosition = new Vector2(0, positionY);
 
             requestMessageButton.onClick.AddListener(delegate { Reply.SendReply(reply); });
-            requestMessageButton.GetComponentInChildren<Text>().text = reply;
+            requestMessageButton.GetComponentInChildren<Text>().text = reply.Text;
 
             positionY -= rectTransform.rect.height;
         }

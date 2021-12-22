@@ -23,9 +23,9 @@ public class UIGift : MonoBehaviour
     /// Displays the message.
     /// </summary>
     /// <param name="message">Message to show.</param>
-    public void ShowMessage(string message)
+    public void ShowMessage(DataText message)
     {
-        UIMessage.text = message;
+        UIMessage.text = message.Text;
     }
 
     /// <summary>
