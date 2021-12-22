@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using UnityEngine;
 
@@ -6,9 +7,10 @@ using UnityEngine;
 /// </summary>
 /// 
 [Serializable]
-public class DataGift : MonoBehaviour
+public class DataGift
 {
-    public Color Color;
     //Customization
+    [JsonProperty("customization")] public DataCustomization DataCustomization { get; set; }
+    [JsonProperty("sticker_id")] public int StickerId { get; set; }
     //Sticker
 }

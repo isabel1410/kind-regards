@@ -8,16 +8,26 @@ public class Gift : MonoBehaviour
     public NavigationController NavigationController;
     public UIGift UIGift;
     public UIError UIError;
-    public DataGift DataGift;
+    public DataRequest DataRequest;
+    public DataText DataText;
+    public DataCustomization DataGiftCustomization;
+    //public DataSticker DataSticker;
 
     /// <summary>
     /// Changes the color of the gift box.
     /// </summary>
     /// <param name="sender">Button which invoked the event.</param>
+    /// 
+
+    private void Start()
+    {
+        DataGiftCustomization.Color = UIGift.GiftStartColor;
+    }
+
     public void ChangeColor(GameObject sender)
     {
         Color color = sender.GetComponent<UnityEngine.UI.Image>().color;
-        DataGift.Color = color;
+        DataGiftCustomization.Color = color;
         UIGift.ChangeColor(color);
     }
 
@@ -45,8 +55,8 @@ public class Gift : MonoBehaviour
     {
         try
         {
-            //api call
-            throw new System.NotImplementedException();
+            APIManager.Instance.SendMessage(DataRequest, DataText, DataGiftCustomization);
+            NavigationController.GiftToReply();
         }
         catch (System.Exception exception)
         {
@@ -60,9 +70,11 @@ public class Gift : MonoBehaviour
     /// <summary>
     /// Transitions from the mailbox screen to the mail screen.
     /// </summary>
-    public void Show(DataText reply)
+    public void Show(DataRequest request, DataText text)
     {
-        UIGift.ShowMessage(reply);
+        DataRequest = request;
+        DataText = text;
+        UIGift.ShowMessage(text);
         NavigationController.ReplyToGift();
     }
 

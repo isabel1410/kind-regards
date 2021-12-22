@@ -17,7 +17,7 @@ public class DataMessage : IComparable<DataMessage>
         }
     }
 
-    // Needs to still be implemented in API
+    [JsonProperty("gift_id")] public int GiftId { get; set; }
     public DataGift Gift;
     
     [JsonProperty("text_id")] public int TextId { get; set; }
