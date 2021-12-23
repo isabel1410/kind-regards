@@ -13,7 +13,7 @@ public class Gift : MonoBehaviour
     private UIError UIError;
     private DataRequest DataRequest;
     private DataText DataText;
-    private DataCustomization DataGiftCustomization;
+    private DataCustomization DataGiftCustomization = new DataCustomization();
     //public DataSticker DataSticker;
 
     /// <summary>
