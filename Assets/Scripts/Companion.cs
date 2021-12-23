@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.IO;
 using UnityEngine;
 using static Diary;
@@ -18,7 +19,7 @@ public class Companion : MonoBehaviour
     [SerializeField]
     private NavigationController NavigationController;
     [SerializeField]
-    private DataCustomization DataCustomization;
+    private DataCustomization DataCustomization = new DataCustomization() { Color = Color.red };
 
     private string CUSTOMIZATIONPATH => $"{Application.persistentDataPath}{Path.DirectorySeparatorChar}Customization.json";
 
@@ -45,7 +46,7 @@ public class Companion : MonoBehaviour
             {
                 return SaveCustomization();
             }
-            JsonUtility.FromJsonOverwrite(File.ReadAllText(CUSTOMIZATIONPATH), DataCustomization);
+            DataCustomization = JsonConvert.DeserializeObject<DataCustomization>(File.ReadAllText(CUSTOMIZATIONPATH));
             return true;
         }
         catch (System.Exception exception)
@@ -64,7 +65,7 @@ public class Companion : MonoBehaviour
     {
         try
         {
-            File.WriteAllText(CUSTOMIZATIONPATH, JsonUtility.ToJson(DataCustomization));
+            File.WriteAllText(CUSTOMIZATIONPATH, JsonConvert.SerializeObject(DataCustomization, new ColorConverter()));
             return true;
         }
         catch (System.Exception exception)

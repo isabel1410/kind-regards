@@ -15,8 +15,11 @@ public class ColorConverter : JsonConverter<Color>
 {
     public override Color ReadJson(JsonReader reader, Type objectType, Color existingValue, bool hasExistingValue, JsonSerializer serializer)
     {
-        dynamic color = reader.Value;
-        return new Color(color.r, color.g, color.b, color.a);
+        if (reader.Value == null)
+            return existingValue;
+
+        var color = (Color)reader.Value;
+        return color;
     }
 
     public override void WriteJson(JsonWriter writer, Color value, JsonSerializer serializer)

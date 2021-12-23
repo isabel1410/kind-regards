@@ -233,7 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MailGameObjectPrefab: {fileID: 1890749599571930668, guid: 2e0205e37bd7849498c5b1d9fef54f10, type: 3}
   Mailbox: {fileID: 26033570}
-  Mail: {fileID: 0}
   MailContainerTransform: {fileID: 580962199}
 --- !u!1 &31097288
 GameObject:
@@ -12156,7 +12155,7 @@ MonoBehaviour:
   NavigationController: {fileID: 280535379}
   Request: {fileID: 1488048857}
   Reply: {fileID: 1243980603}
-  Companion: {fileID: 0}
+  Companion: {fileID: 1528519403}
 --- !u!114 &2056996717
 MonoBehaviour:
   m_ObjectHideFlags: 0
