@@ -7748,8 +7748,7 @@ MonoBehaviour:
   UIMail: {fileID: 1258501796}
   UIError: {fileID: 0}
   NavigationController: {fileID: 280535379}
-  DataReply:
-    Gift: {fileID: 0}
+  DataReply: {}
 --- !u!114 &1258501796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9312,7 +9311,6 @@ GameObject:
   - component: {fileID: 1479657580}
   - component: {fileID: 1479657584}
   - component: {fileID: 1479657583}
-  - component: {fileID: 1479657585}
   m_Layer: 5
   m_Name: Canvas Gift
   m_TagString: Untagged
@@ -9436,20 +9434,6 @@ MonoBehaviour:
   NavigationController: {fileID: 280535379}
   UIGift: {fileID: 1479657583}
   UIError: {fileID: 0}
-  DataGift: {fileID: 1479657585}
---- !u!114 &1479657585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479657578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d39f2049df4a447af4e3af2c42d8e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1484331071
 GameObject:
   m_ObjectHideFlags: 0
@@ -9673,21 +9657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f17655b9b6194b4d902fdfa4145e67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnScroll:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.UI.ScrollRect, UnityEngine.UI
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Scrollbar, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1488048853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9700,9 +9669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e576f1e8558143a45a100f4c8911514b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnScroll:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1488048855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9715,9 +9681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58390e849e29cc04ebcdd733fb5db980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnScroll:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1488048856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9889,7 +9852,6 @@ GameObject:
   - component: {fileID: 1528519402}
   - component: {fileID: 1528519407}
   - component: {fileID: 1528519403}
-  - component: {fileID: 1528519404}
   m_Layer: 0
   m_Name: Companion
   m_TagString: Untagged
@@ -9929,20 +9891,6 @@ MonoBehaviour:
   UIError: {fileID: 1313747868}
   Diary: {fileID: 1907334665}
   NavigationController: {fileID: 280535379}
-  DataCustomization: {fileID: 1528519404}
---- !u!114 &1528519404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528519401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1dad869e71e4134c994bc28f98af3fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Color: {r: 1, g: 0, b: 0, a: 0}
 --- !u!95 &1528519407
 Animator:
   serializedVersion: 3
@@ -10205,7 +10153,6 @@ GameObject:
   - component: {fileID: 1678409303}
   - component: {fileID: 1678409302}
   - component: {fileID: 1678409301}
-  - component: {fileID: 1678409304}
   m_Layer: 5
   m_Name: TEMP
   m_TagString: Untagged
@@ -10244,9 +10191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b9b60d4636b8543b3189a4a9992c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DataReply:
-    Gift: {fileID: 0}
-  DataGift: {fileID: 1678409304}
+  DataReply: {}
 --- !u!114 &1678409302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10282,19 +10227,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678409299}
   m_CullTransparentMesh: 1
---- !u!114 &1678409304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678409299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d39f2049df4a447af4e3af2c42d8e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1754904631
 GameObject:
   m_ObjectHideFlags: 0
