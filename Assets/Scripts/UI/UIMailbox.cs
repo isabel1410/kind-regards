@@ -11,7 +11,6 @@ public class UIMailbox : MonoBehaviour
     private GameObject MailGameObjectPrefab;
     [SerializeField]
     private Mailbox Mailbox;
-    [SerializeField]
     private Mail Mail;
     [SerializeField]
     private Transform MailContainerTransform;
