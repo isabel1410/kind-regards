@@ -11,13 +11,22 @@ public class UISticker : MonoBehaviour
     private Button UIPrevious;
     [SerializeField]
     private Button UINext;
+    [SerializeField]
+    private GameObject UIPagePrefab;
+    [SerializeField]
+    private GameObject UIPageHolder;
+
+    public StickerBookPage CreatePage()
+    {
+        return Instantiate(UIPagePrefab, UIPageHolder.transform).GetComponent<StickerBookPage>();
+    }
 
     /// <summary>
     /// Enables / disables buttons based on the shown page.
     /// </summary>
     /// <param name="pages">Pages of the stickerbook.</param>
     /// <param name="currentPage">Index of the page which is shown.</param>
-    public void ToggleButtons(List<GameObject> pages, int currentPage)
+    public void ToggleButtons(List<StickerBookPage> pages, int currentPage)
     {
         if (currentPage == 0 && pages.Count - 1 == 0)
         {
@@ -46,7 +55,7 @@ public class UISticker : MonoBehaviour
     /// </summary>
     /// <param name="pages">Pages of the stickerbook.</param>
     /// <param name="currentPage">Index of the page to show.</param>
-    public void ShowPage(List<GameObject> pages, int currentPage)
+    public void ShowPage(List<StickerBookPage> pages, int currentPage)
     {
         for (int i = 0; i < pages.Count; i++)
         {

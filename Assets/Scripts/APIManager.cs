@@ -14,6 +14,7 @@ public class APIManager : MonoBehaviour
     [SerializeField] private WebRequest getTextsRequest;
     [SerializeField] private WebRequest getGiftRequestsRequest;
     [SerializeField] private WebRequest getGiftMessagesRequest;
+    [SerializeField] private WebRequest getStickersRequest;
     [SerializeField] private WebRequest postGiftRequest;
     [SerializeField] private WebRequest postRegisterUserRequest;
     [SerializeField] private WebRequest postMessageThankRequest;
@@ -25,6 +26,7 @@ public class APIManager : MonoBehaviour
     public DataUser DataUser;
     public List<DataRequest> DataRequests;
     public List<DataMessage> DataMessages;
+    public List<DataSticker> DataStickers;
 
     public void Awake()
     {
@@ -46,6 +48,15 @@ public class APIManager : MonoBehaviour
 
         getGiftMessagesRequest.OnRequestFinished.AddListener(OnMessagesReceived);
         getGiftMessagesRequest.Execute();
+
+        getStickersRequest.OnRequestFinished.AddListener(OnStickersReceived);
+        getStickersRequest.Execute();
+    }
+
+    private void OnStickersReceived(UnityWebRequest request)
+    {
+        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Stickers could not be retrieved.");
+        DataStickers = JsonConvert.DeserializeObject<List<DataSticker>>(request.downloadHandler.text);
     }
 
     private void OnMessagesReceived(UnityWebRequest request)
