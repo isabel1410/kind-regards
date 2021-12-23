@@ -33,7 +33,7 @@ public class UIMail : MonoBehaviour
         UIMessage.text = mail.Request.DataText.Text;
         UIReply.text = mail.DataText.Text;
         UIThank.interactable = !mail.Thanked;
-        if (mail.Gift != null) ChangeGiftColor(mail.Gift.DataCustomization.Color);
+        if (mail.HasGift) ChangeGiftColor(mail.Gift.DataCustomization.Color);
     }
 
     /// <summary>

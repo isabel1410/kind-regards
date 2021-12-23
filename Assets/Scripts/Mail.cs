@@ -13,6 +13,8 @@ public class Mail : MonoBehaviour
     private NavigationController NavigationController;
     [SerializeField]
     private DataMessage DataReply;
+    [SerializeField]
+    private StickerBook stickerBook;
 
     /// <summary>
     /// Thanks the sender of the reply.
@@ -45,6 +47,12 @@ public class Mail : MonoBehaviour
         {
             print(DataReply.DataText.Text + ": Opened gift");
             if (!DataReply.Seen) DataReply.MarkSeen();
+            bool isNew = stickerBook.UnlockSticker(DataReply.Gift.DataSticker);
+            Exit();
+            if (isNew)
+            {
+                stickerBook.Show();
+            }
         }
         catch (System.Exception exception)
         {
@@ -61,9 +69,9 @@ public class Mail : MonoBehaviour
     public void Show(DataMessage reply)
     {
         DataReply = reply;
-        if(!DataReply.Seen && reply.Gift == null) DataReply.MarkSeen();
+        if(!DataReply.Seen && !reply.HasGift) DataReply.MarkSeen();
         UIMail.ShowMail(DataReply);
-        NavigationController.MailboxToMail(reply.Gift != null);
+        NavigationController.MailboxToMail(reply.HasGift);
     }
 
     /// <summary>
@@ -71,7 +79,7 @@ public class Mail : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        NavigationController.MailToMailbox(DataReply.Gift != null);
+        NavigationController.MailToMailbox(DataReply.HasGift);
     }
 
     #endregion

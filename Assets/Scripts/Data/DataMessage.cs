@@ -17,7 +17,8 @@ public class DataMessage : IComparable<DataMessage>
         }
     }
 
-    [JsonProperty("gift_id")] public int GiftId { get; set; }
+    [JsonProperty("gift_id")] public int? GiftId { get; set; }
+    public bool HasGift => GiftId != null;
     public DataGift Gift;
     
     [JsonProperty("text_id")] public int TextId { get; set; }
