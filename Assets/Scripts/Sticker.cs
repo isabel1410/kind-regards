@@ -71,6 +71,5 @@ public class Sticker : MonoBehaviour
         UISticker.ToggleButtons(pages, index);
         UISticker.ShowPage(pages, index);
     }
-
     #endregion
 }
