@@ -172,6 +172,28 @@ public class NavigationController : MonoBehaviour
     }
 
     /// <summary>
+    /// Transitions from the home screen to the settings screen.
+    /// </summary>
+    public void HomeToSettings()
+    {
+        string animationStateName = "Navigation - Home to Settings";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
+    /// Transitions from the settings screen to the home screen.
+    /// </summary>
+    public void SettingsToHome()
+    {
+        string animationStateName = "Navigation - Settings to Home";
+
+        UIAnimator.Play(animationStateName);
+        CompanionAnimator.Play(animationStateName);
+    }
+
+    /// <summary>
     /// Transitions from the mail screen to the mailbox screen.
     /// </summary>
     /// <param name="giftIncluded">True to play gift animation.</param>
