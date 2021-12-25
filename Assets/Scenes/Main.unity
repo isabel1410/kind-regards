@@ -1224,7 +1224,7 @@ MonoBehaviour:
   - {fileID: 816396591}
   - {fileID: 1819005690}
   - {fileID: 1587116631}
-  CurrentSongIndex: 0
+  CurrentSongIndex: -1
   Settings: {fileID: 222843597}
   shuffling: 0
   volume: 0
