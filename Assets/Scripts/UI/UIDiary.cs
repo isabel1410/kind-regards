@@ -7,19 +7,19 @@ using UnityEngine.UI;
 public class UIDiary : MonoBehaviour
 {
     [SerializeField]
-    private Text UIDate;
+    private Text uiDate;
     [SerializeField]
-    private InputField UIEntry;
+    private InputField uiEntry;
     [SerializeField]
-    private Button UIMoodNegative;
+    private Button uiMoodNegative;
     [SerializeField]
-    private Button UIMoodNeutral;
+    private Button uiMoodNeutral;
     [SerializeField]
-    private Button UIMoodPositive;
+    private Button uiMoodPositive;
     [SerializeField]
-    private Button UIPrevious;
+    private Button uiPrevious;
     [SerializeField]
-    private Button UINext;
+    private Button uiNext;
 
     /// <summary>
     /// Update the UI to show a <see cref="Diary.DiaryEntry"/>.
@@ -30,26 +30,26 @@ public class UIDiary : MonoBehaviour
     public void SetEntry(Diary.DiaryEntry entry, bool first, bool last)
     {
         //Load info
-        UIDate.text = entry.Date.ToShortDateString();
-        UIEntry.text = entry.Entry;
+        uiDate.text = entry.Date.ToShortDateString();
+        uiEntry.text = entry.Entry;
         SetMood(entry.Mood);
 
         //Previous / next button disabling
         if (first)
         {
-            UIPrevious.gameObject.SetActive(false);
+            uiPrevious.gameObject.SetActive(false);
         }
         else
         {
-            UIPrevious.gameObject.SetActive(true);
+            uiPrevious.gameObject.SetActive(true);
         }
         if (last)
         {
-            UINext.gameObject.SetActive(false);
+            uiNext.gameObject.SetActive(false);
         }
         else
         {
-            UINext.gameObject.SetActive(true);
+            uiNext.gameObject.SetActive(true);
         }
     }
 
@@ -60,21 +60,21 @@ public class UIDiary : MonoBehaviour
     public void SetMood(Diary.DiaryEntry.DiaryMood mood)
     {
         //Reset all colors
-        UIMoodNegative.GetComponent<Image>().color = Color.gray;
-        UIMoodNeutral.GetComponent<Image>().color = Color.gray;
-        UIMoodPositive.GetComponent<Image>().color = Color.gray;
+        uiMoodNegative.GetComponent<Image>().color = Color.gray;
+        uiMoodNeutral.GetComponent<Image>().color = Color.gray;
+        uiMoodPositive.GetComponent<Image>().color = Color.gray;
 
         //Give color if necessary (not in case of Diary.DiaryEntry.DiaryMood.Empty)
         switch (mood)
         {
             case Diary.DiaryEntry.DiaryMood.Negative:
-                UIMoodNegative.GetComponent<Image>().color = Color.red;
+                uiMoodNegative.GetComponent<Image>().color = Color.red;
                 break;
             case Diary.DiaryEntry.DiaryMood.Neutral:
-                UIMoodNeutral.GetComponent<Image>().color = Color.yellow;
+                uiMoodNeutral.GetComponent<Image>().color = Color.yellow;
                 break;
             case Diary.DiaryEntry.DiaryMood.Positive:
-                UIMoodPositive.GetComponent<Image>().color = Color.green;
+                uiMoodPositive.GetComponent<Image>().color = Color.green;
                 break;
         }
     }
@@ -85,7 +85,7 @@ public class UIDiary : MonoBehaviour
     /// <returns>Text of the entry.</returns>
     public string GetEntry()
     {
-        return UIEntry.text;
+        return uiEntry.text;
     }
 
     /// <summary>
@@ -94,15 +94,15 @@ public class UIDiary : MonoBehaviour
     /// <returns>Mood of the entry.</returns>
     public Diary.DiaryEntry.DiaryMood GetMood()
     {
-        if (UIMoodNegative.GetComponent<Image>().color != Color.gray)
+        if (uiMoodNegative.GetComponent<Image>().color != Color.gray)
         {
             return Diary.DiaryEntry.DiaryMood.Negative;
         }
-        if (UIMoodNeutral.GetComponent<Image>().color != Color.gray)
+        if (uiMoodNeutral.GetComponent<Image>().color != Color.gray)
         {
             return Diary.DiaryEntry.DiaryMood.Neutral;
         }
-        if (UIMoodPositive.GetComponent<Image>().color != Color.gray)
+        if (uiMoodPositive.GetComponent<Image>().color != Color.gray)
         {
             return Diary.DiaryEntry.DiaryMood.Positive;
         }

@@ -6,32 +6,30 @@ using UnityEngine;
 public class Gift : MonoBehaviour
 {
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private UIGift UIGift;
+    private UIGift uiGift;
     [SerializeField]
-    private UIError UIError;
-    private DataRequest DataRequest;
-    private DataText DataText;
-    private DataCustomization DataGiftCustomization = new DataCustomization();
+    private UIError uiError;
+    private DataRequest dataRequest;
+    private DataText dataText;
+    private DataCustomization dataGiftCustomization = new DataCustomization();
     //public DataSticker DataSticker;
+
+    private void Start()
+    {
+        dataGiftCustomization.Color = uiGift.GiftStartColor;
+    }
 
     /// <summary>
     /// Changes the color of the gift box.
     /// </summary>
     /// <param name="sender">Button which invoked the event.</param>
-    /// 
-
-    private void Start()
-    {
-        DataGiftCustomization.Color = UIGift.GiftStartColor;
-    }
-
     public void ChangeColor(GameObject sender)
     {
         Color color = sender.GetComponent<UnityEngine.UI.Image>().color;
-        DataGiftCustomization.Color = color;
-        UIGift.ChangeColor(color);
+        dataGiftCustomization.Color = color;
+        uiGift.ChangeColor(color);
     }
 
     /// <summary>
@@ -47,7 +45,7 @@ public class Gift : MonoBehaviour
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
         }
     }
 
@@ -58,13 +56,13 @@ public class Gift : MonoBehaviour
     {
         try
         {
-            APIManager.Instance.SendMessage(DataRequest, DataText, DataGiftCustomization);
-            NavigationController.GiftToReply();
+            APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization);
+            navigationController.GiftToReply();
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
         }
     }
 
@@ -75,10 +73,10 @@ public class Gift : MonoBehaviour
     /// </summary>
     public void Show(DataRequest request, DataText text)
     {
-        DataRequest = request;
-        DataText = text;
-        UIGift.ShowMessage(text);
-        NavigationController.ReplyToGift();
+        dataRequest = request;
+        dataText = text;
+        uiGift.ShowMessage(text);
+        navigationController.ReplyToGift();
     }
 
     /// <summary>
@@ -86,7 +84,7 @@ public class Gift : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        NavigationController.GiftToReply();
+        navigationController.GiftToReply();
     }
 
     #endregion

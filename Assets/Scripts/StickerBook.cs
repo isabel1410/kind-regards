@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -14,12 +13,13 @@ public class StickerBook : MonoBehaviour
     private const int stickerAmountPerPage = 2;
     private List<StickerBookPage> stickerBookPages = new List<StickerBookPage>();
 
-    public NavigationController NavigationController;
+    [SerializeField]
+    public NavigationController navigationController;
 
     private int currentPage;
 
     [SerializeField]
-    private UISticker UISticker;
+    private UISticker uiSticker;
 
     /// <summary>
     /// Sticker book opens the first page by default.
@@ -70,8 +70,10 @@ public class StickerBook : MonoBehaviour
         {
             return null;
         }
-        List<List<GameObject>> pages = new List<List<GameObject>>();
-        pages.Add(new List<GameObject>());
+        List<List<GameObject>> pages = new List<List<GameObject>>
+        {
+            new List<GameObject>()
+        };
         List<GameObject> curPage = pages[0];
         for (int i = 0; i < unlockedStickerIDs.Count; i++)
         {
@@ -102,7 +104,7 @@ public class StickerBook : MonoBehaviour
         List<List<GameObject>> pages = GeneratePages();
         foreach (List<GameObject> page in pages)
         {
-            StickerBookPage p = UISticker.CreatePage();
+            StickerBookPage p = uiSticker.CreatePage();
             foreach (GameObject sticker in page)
             {
                 p.SetSticker(sticker);
@@ -110,7 +112,7 @@ public class StickerBook : MonoBehaviour
             stickerBookPages.Add(p);
         }
         LoadPage(currentPage);
-        NavigationController.HomeToSticker();
+        navigationController.HomeToSticker();
     }
 
     /// <summary>
@@ -118,7 +120,7 @@ public class StickerBook : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        NavigationController.StickerToHome();
+        navigationController.StickerToHome();
     }
 
     /// <summary>
@@ -147,8 +149,9 @@ public class StickerBook : MonoBehaviour
     /// <param name="index">Index of the page to load.</param>
     public void LoadPage(int index)
     {
-        UISticker.ToggleButtons(stickerBookPages, index);
-        UISticker.ShowPage(stickerBookPages, index);
+        uiSticker.ToggleButtons(stickerBookPages, index);
+        uiSticker.ShowPage(stickerBookPages, index);
     }
+
     #endregion
 }

@@ -6,15 +6,15 @@ using UnityEngine;
 public class Reply : MonoBehaviour
 {
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private UIReply UIReply;
+    private UIReply uiReply;
     [SerializeField]
-    private UIGift UIGift;
+    private UIGift uiGift;
     [SerializeField]
-    private UIError UIError;
+    private UIError uiError;
     [SerializeField]
-    private Gift Gift;
+    private Gift gift;
 
     private DataRequest message;
     private DataText[] replies;
@@ -42,7 +42,7 @@ public class Reply : MonoBehaviour
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
             return false;
         }
     }
@@ -54,7 +54,7 @@ public class Reply : MonoBehaviour
     /// <param name="reply">Message to send.</param>
     public void SendReply(DataText reply)
     {
-        Gift.Show(message, reply);
+        gift.Show(message, reply);
     }
 
     #region Visuals
@@ -66,9 +66,9 @@ public class Reply : MonoBehaviour
     {
         if (LoadMessage())
         {
-            UIReply.ShowMessage(message);
-            UIReply.ShowReplies(replies);
-            NavigationController.HomeToReply();
+            uiReply.ShowMessage(message);
+            uiReply.ShowReplies(replies);
+            navigationController.HomeToReply();
         }
     }
 
@@ -77,8 +77,8 @@ public class Reply : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        UIGift.ResetColor();
-        NavigationController.ReplyToHome();
+        uiGift.ResetColor();
+        navigationController.ReplyToHome();
     }
 
     #endregion

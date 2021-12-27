@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class UIMail : MonoBehaviour
 {
     [SerializeField]
-    private Text UIMessage;
+    private Text uiMessage;
     [SerializeField]
-    private Text UIReply;
+    private Text uiReply;
     [SerializeField]
-    private Button UIThank;
+    private Button uiThank;
     [SerializeField]
-    private GameObject GiftGameObject;
+    private GameObject giftGameObject;
 
     /// <summary>
     /// Change the received gift's color
@@ -21,7 +21,7 @@ public class UIMail : MonoBehaviour
     /// <param name="color">The color you want the gift to be</param>
     public void ChangeGiftColor(Color color)
     {
-        GiftGameObject.GetComponent<Renderer>().material.color = color;
+        giftGameObject.GetComponent<Renderer>().material.color = color;
     }
 
     /// <summary>
@@ -30,9 +30,9 @@ public class UIMail : MonoBehaviour
     /// <param name="mail"><see cref="DataMessage"/> to show.</param>
     public void ShowMail(DataMessage mail)
     {
-        UIMessage.text = mail.Request.DataText.Text;
-        UIReply.text = mail.DataText.Text;
-        UIThank.interactable = !mail.Thanked;
+        uiMessage.text = mail.Request.DataText.Text;
+        uiReply.text = mail.DataText.Text;
+        uiThank.interactable = !mail.Thanked;
         if (mail.HasGift) ChangeGiftColor(mail.Gift.DataCustomization.Color);
     }
 
@@ -41,6 +41,6 @@ public class UIMail : MonoBehaviour
     /// </summary>
     public void DisableThank()
     {
-        UIThank.interactable = false;
+        uiThank.interactable = false;
     }
 }

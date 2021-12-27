@@ -6,13 +6,13 @@ using UnityEngine;
 public class NavigationAnimationHelper : MonoBehaviour
 {
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private UIRequest UIRequest;
+    private UIRequest uiRequest;
     [SerializeField]
-    private UIReply UIReply;
+    private UIReply uiReply;
     [SerializeField]
-    private UIMailbox UIMailbox;
+    private UIMailbox uiMailbox;
 
     /// <summary>
     /// Sets the rendermode of the UI.
@@ -20,7 +20,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     /// <param name="renderMode">The render mode to use.</param>
     public void SetRenderMode(RenderMode renderMode)
     {
-        NavigationController.SetRenderMode(renderMode);
+        navigationController.SetRenderMode(renderMode);
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     /// </summary>
     public void HomeToRequests()
     {
-        NavigationController.HomeToRequests();
+        navigationController.HomeToRequests();
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     /// </summary>
     public void HomeToReply()
     {
-        NavigationController.HomeToReply();
+        navigationController.HomeToReply();
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     /// </summary>
     public void HomeToCustomization()
     {
-        NavigationController.HomeToCustomization();
+        navigationController.HomeToCustomization();
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     /// </summary>
     public void DestroyRequestButtons()
     {
-        UIRequest.DestroyRequestButtons();
+        uiRequest.DestroyRequestButtons();
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class NavigationAnimationHelper : MonoBehaviour
     /// </summary>
     public void DestroyReplyButtons()
     {
-        UIReply.DestroyReplyButtons();
+        uiReply.DestroyReplyButtons();
     }
 
     /// <summary>
@@ -68,6 +68,6 @@ public class NavigationAnimationHelper : MonoBehaviour
     /// </summary>
     public void DestroyMailboxGameObjects()
     {
-        UIMailbox.DestroyMailboxGameObjects();
+        uiMailbox.DestroyMailboxGameObjects();
     }
 }

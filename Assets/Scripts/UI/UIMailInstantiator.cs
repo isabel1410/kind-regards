@@ -6,15 +6,13 @@ using UnityEngine.UI;
 /// </summary>
 public class UIMailInstantiator : MonoBehaviour
 {
-    [SerializeField]
-    private Mailbox Mailbox;
-    [SerializeField]
-    private UIMailbox UIMailbox;
+    private Mailbox mailbox;
+    private UIMailbox uiMailbox;
 
     [SerializeField]
-    private Button DeleteButton;
+    private Button deleteButton;
     [SerializeField]
-    private Button OpenButton;
+    private Button openButton;
 
     /// <summary>
     /// Instantiates the <paramref name="replyInput"/> by adding the event listeners and setting the <see cref="DataMessage"/>, after which this script is destroyed.
@@ -22,19 +20,19 @@ public class UIMailInstantiator : MonoBehaviour
     /// <param name="replyInput"><see cref="DataMessage"/> to instantiate.</param>
     public void Instantiate(DataMessage replyInput)
     {
-        Mailbox = GetComponentInParent<Transform>().GetComponentInParent<Transform>().GetComponentInParent<Mailbox>();
-        UIMailbox = GetComponentInParent<Transform>().GetComponentInParent<Transform>().GetComponentInParent<UIMailbox>();
+        mailbox = GetComponentInParent<Transform>().GetComponentInParent<Transform>().GetComponentInParent<Mailbox>();
+        uiMailbox = GetComponentInParent<Transform>().GetComponentInParent<Transform>().GetComponentInParent<UIMailbox>();
         GameObject mailboxGameObject = GetComponentInParent<Transform>().gameObject;
         //DataHolder dataContainer = gameObject.AddComponent<DataHolder>();
         //dataContainer.Data = replyInput;
 
         //Set the reply date in the UI
-        OpenButton.GetComponentInChildren<Text>().text = replyInput.ReceivedAt.ToString("yyyy-MM-dd HH:mm");
+        openButton.GetComponentInChildren<Text>().text = replyInput.ReceivedAt.ToString("yyyy-MM-dd HH:mm");
 
         //Event listeners
-        OpenButton.onClick.AddListener(delegate { Mailbox.OpenMail(replyInput); });
-        OpenButton.onClick.AddListener(delegate { UIMailbox.MarkAsRead(mailboxGameObject); });
-        DeleteButton.onClick.AddListener(delegate { Mailbox.DeleteMail(replyInput, mailboxGameObject); });
+        openButton.onClick.AddListener(delegate { mailbox.OpenMail(replyInput); });
+        openButton.onClick.AddListener(delegate { uiMailbox.MarkAsRead(mailboxGameObject); });
+        deleteButton.onClick.AddListener(delegate { mailbox.DeleteMail(replyInput, mailboxGameObject); });
         
         Destroy(this);
     }

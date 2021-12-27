@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class UIRequest : MonoBehaviour
 {
     [SerializeField]
-    private Button RequestMessageButtonPrefab;
+    private Button requestMessageButtonPrefab;
     [SerializeField]
-    private Request Request;
+    private Request request;
     [SerializeField]
-    private Transform RequestsContainerTransform;
+    private Transform requestsContainerTransform;
 
     private float height;
 
@@ -20,7 +20,7 @@ public class UIRequest : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        height = RequestsContainerTransform.GetComponentInParent<RectTransform>().rect.height;
+        height = requestsContainerTransform.GetComponentInParent<RectTransform>().rect.height;
     }
 
     /// <summary>
@@ -33,20 +33,20 @@ public class UIRequest : MonoBehaviour
         float positionY = 0;
         foreach (DataText requestMessage in requestMessages)
         {
-            Button requestMessageButton = Instantiate(RequestMessageButtonPrefab);
+            Button requestMessageButton = Instantiate(requestMessageButtonPrefab);
             RectTransform rectTransform = requestMessageButton.gameObject.GetComponent<RectTransform>();
 
-            requestMessageButton.transform.SetParent(RequestsContainerTransform, false);
+            requestMessageButton.transform.SetParent(requestsContainerTransform, false);
             rectTransform.anchoredPosition = new Vector2(0, positionY);
 
-            requestMessageButton.onClick.AddListener(() => Request.SendRequestMessage(requestMessage));
+            requestMessageButton.onClick.AddListener(() => request.SendRequestMessage(requestMessage));
             requestMessageButton.GetComponentInChildren<Text>().text = requestMessage.Text;
 
             positionY -= rectTransform.rect.height;
         }
 
         //Set the height of the container based on the amount of messages and the height of the prefab
-        RectTransform containerRectTransform = RequestsContainerTransform.GetComponent<RectTransform>();
+        RectTransform containerRectTransform = requestsContainerTransform.GetComponent<RectTransform>();
         containerRectTransform.sizeDelta = new Vector2(
             containerRectTransform.sizeDelta.x,
             Mathf.Abs(positionY) - height);
@@ -57,7 +57,7 @@ public class UIRequest : MonoBehaviour
     /// </summary>
     public void DestroyRequestButtons()
     {
-        foreach (Transform buttonTransform in RequestsContainerTransform)
+        foreach (Transform buttonTransform in requestsContainerTransform)
         {
             Destroy(buttonTransform.gameObject);
         }

@@ -181,10 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25c012241079114b9772acba01f94f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mailbox: {fileID: 0}
-  UIMailbox: {fileID: 0}
-  DeleteButton: {fileID: 578941435113170970}
-  OpenButton: {fileID: 5028427503425689267}
+  mailbox: {fileID: 0}
+  uiMailbox: {fileID: 0}
+  deleteButton: {fileID: 578941435113170970}
+  openButton: {fileID: 5028427503425689267}
 --- !u!114 &2654222350457738366
 MonoBehaviour:
   m_ObjectHideFlags: 0

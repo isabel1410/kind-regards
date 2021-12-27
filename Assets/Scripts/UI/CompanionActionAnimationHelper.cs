@@ -6,13 +6,11 @@ using UnityEngine;
 public class CompanionActionAnimationHelper : MonoBehaviour
 {
     [SerializeField]
-    private NavigationController NavigationController;
+    private Request request;
     [SerializeField]
-    private Request Request;
+    private Reply reply;
     [SerializeField]
-    private Reply Reply;
-    [SerializeField]
-    private Companion Companion;
+    private Companion companion;
 
     /// <summary>
     /// Sets the canvas inactive once the companion action dialogue choices are hidden.
@@ -27,7 +25,7 @@ public class CompanionActionAnimationHelper : MonoBehaviour
     /// </summary>
     public void CompanionActionsToRequests()
     {
-        Request.Show();
+        request.Show();
         DeactivateCompanionActions();
     }
 
@@ -36,7 +34,7 @@ public class CompanionActionAnimationHelper : MonoBehaviour
     /// </summary>
     public void CompanionActionsToReply()
     {
-        Reply.Show();
+        reply.Show();
         DeactivateCompanionActions();
     }
 
@@ -45,7 +43,7 @@ public class CompanionActionAnimationHelper : MonoBehaviour
     /// </summary>
     public void CompanionActionsToCustomization()
     {
-        Companion.ShowCustomization();
+        companion.ShowCustomization();
         DeactivateCompanionActions();
     }
 }

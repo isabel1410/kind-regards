@@ -9,14 +9,14 @@ public class Request : MonoBehaviour
     private DataText[] requestMessages;
 
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private UIRequest UIRequest;
+    private UIRequest uiRequest;
     [SerializeField]
-    private UIError UIError;
+    private UIError uiError;
 
     /// <summary>
-    /// Load all diaries and shows the <see cref="DiaryEntry"/> of today.
+    /// Load all diaries and shows the <see cref="Diary.DiaryEntry"/> of today.
     /// </summary>
     /// <returns>True if loading was succesful.</returns>
     /// <exception cref="NotImplementedException">Api call not implemented.</exception>
@@ -41,7 +41,7 @@ public class Request : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
             return false;
         }
     }
@@ -59,7 +59,7 @@ public class Request : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
         }
     }
 
@@ -72,8 +72,8 @@ public class Request : MonoBehaviour
     {
         if (LoadMessages())
         {
-            UIRequest.ShowRequestMessages(requestMessages);
-            NavigationController.HomeToRequests();
+            uiRequest.ShowRequestMessages(requestMessages);
+            navigationController.HomeToRequests();
         }
     }
 
@@ -82,7 +82,7 @@ public class Request : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        NavigationController.RequestsToHome();
+        navigationController.RequestsToHome();
     }
 
     #endregion

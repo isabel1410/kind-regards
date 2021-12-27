@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +6,6 @@ using UnityEngine;
 /// </summary>
 public class TEMP : MonoBehaviour
 {
-    public DataMessage DataReply;
-    public DataGift DataGift;
-    public DataRequest DataMail;
-
     /// <summary>
     /// Called before the first frame update.
     /// </summary>

@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 public class StickerBookPage : MonoBehaviour
 {
-    public Transform[] stickerSpawns;
+    [SerializeField]
+    private Transform[] stickerSpawns;
     
     public void SetSticker(GameObject sticker)
     {

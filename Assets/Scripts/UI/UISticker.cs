@@ -8,17 +8,17 @@ using UnityEngine.UI;
 public class UISticker : MonoBehaviour
 {
     [SerializeField]
-    private Button UIPrevious;
+    private Button uiPrevious;
     [SerializeField]
-    private Button UINext;
+    private Button uiNext;
     [SerializeField]
-    private GameObject UIPagePrefab;
+    private GameObject uiPagePrefab;
     [SerializeField]
-    private GameObject UIPageHolder;
+    private GameObject uiPageHolder;
 
     public StickerBookPage CreatePage()
     {
-        return Instantiate(UIPagePrefab, UIPageHolder.transform).GetComponent<StickerBookPage>();
+        return Instantiate(uiPagePrefab, uiPageHolder.transform).GetComponent<StickerBookPage>();
     }
 
     /// <summary>
@@ -30,23 +30,23 @@ public class UISticker : MonoBehaviour
     {
         if (currentPage == 0 && pages.Count - 1 == 0)
         {
-            UIPrevious.gameObject.SetActive(false);
-            UINext.gameObject.SetActive(false);
+            uiPrevious.gameObject.SetActive(false);
+            uiNext.gameObject.SetActive(false);
         }
         else if (currentPage == 0)
         {
-            UIPrevious.gameObject.SetActive(false);
-            UINext.gameObject.SetActive(true);
+            uiPrevious.gameObject.SetActive(false);
+            uiNext.gameObject.SetActive(true);
         }
         else if (currentPage == pages.Count - 1)
         {
-            UIPrevious.gameObject.SetActive(true);
-            UINext.gameObject.SetActive(false);
+            uiPrevious.gameObject.SetActive(true);
+            uiNext.gameObject.SetActive(false);
         }
         else
         {
-            UIPrevious.gameObject.SetActive(true);
-            UINext.gameObject.SetActive(true);
+            uiPrevious.gameObject.SetActive(true);
+            uiNext.gameObject.SetActive(true);
         }
     }
 

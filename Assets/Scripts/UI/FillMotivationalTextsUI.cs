@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -12,7 +11,7 @@ public class FillMotivationalTextsUI : MonoBehaviour
     public GameObject TargetToFill;
     public UnityEvent<DataText> OnMotivationalTextSelected;
 
-    void Start()
+    private void Start()
     {
         GetMotivationalMessagesRequest.Execute();
     }
@@ -25,13 +24,13 @@ public class FillMotivationalTextsUI : MonoBehaviour
         foreach(DataText text in texts)
         {
             GameObject obj = Instantiate(MotivationalMessagesUIPrefab, TargetToFill.transform);
-            var ui = obj.GetComponent<MotivationalTextUI>();
+            MotivationalTextUI ui = obj.GetComponent<MotivationalTextUI>();
             ui.SetText(text.Text);
             ui.OnMotivationalTextSelect.AddListener(OnMotivationalTextSelect);
             obj.GetComponent<DataHolder>().Data = text;
         }
 
-        var rect = TargetToFill.GetComponent<RectTransform>();
+        RectTransform rect = TargetToFill.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(rect.sizeDelta.x, texts.Count * MotivationalMessagesUIPrefab.GetComponent<RectTransform>().sizeDelta.y);
     }
 
