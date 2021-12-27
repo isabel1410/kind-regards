@@ -6,13 +6,13 @@ using UnityEngine;
 public class Mail : MonoBehaviour
 {
     [SerializeField]
-    private UIMail UIMail;
+    private UIMail uiMail;
     [SerializeField]
-    private UIError UIError;
+    private UIError uiError;
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private DataMessage DataReply;
+    private DataMessage dataReply;
     [SerializeField]
     private StickerBook stickerBook;
 
@@ -24,16 +24,16 @@ public class Mail : MonoBehaviour
     {
         try
         {
-            print(DataReply.DataText.Text + ": Thanked sender");
+            print(dataReply.DataText.Text + ": Thanked sender");
             //api call
-            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(DataReply);
+            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(dataReply);
 
-            UIMail.DisableThank();
+            uiMail.DisableThank();
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
         }
     }
 
@@ -45,9 +45,9 @@ public class Mail : MonoBehaviour
     {
         try
         {
-            print(DataReply.DataText.Text + ": Opened gift");
-            if (!DataReply.Seen) DataReply.MarkSeen();
-            bool isNew = stickerBook.UnlockSticker(DataReply.Gift.DataSticker);
+            print(dataReply.DataText.Text + ": Opened gift");
+            if (!dataReply.Seen) dataReply.MarkSeen();
+            bool isNew = stickerBook.UnlockSticker(dataReply.Gift.DataSticker);
             Exit();
             if (isNew)
             {
@@ -57,7 +57,7 @@ public class Mail : MonoBehaviour
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
         }
     }
 
@@ -68,10 +68,10 @@ public class Mail : MonoBehaviour
     /// </summary>
     public void Show(DataMessage reply)
     {
-        DataReply = reply;
-        if(!DataReply.Seen && !reply.HasGift) DataReply.MarkSeen();
-        UIMail.ShowMail(DataReply);
-        NavigationController.MailboxToMail(reply.HasGift);
+        dataReply = reply;
+        if(!dataReply.Seen && !reply.HasGift) dataReply.MarkSeen();
+        uiMail.ShowMail(dataReply);
+        navigationController.MailboxToMail(reply.HasGift);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class Mail : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        NavigationController.MailToMailbox(DataReply.HasGift);
+        navigationController.MailToMailbox(dataReply.HasGift);
     }
 
     #endregion

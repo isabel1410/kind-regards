@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UICompanion : MonoBehaviour
 {
     [SerializeField]
-    private Text UISpeechBubble;
+    private Text uiSpeechBubble;
 
     private IEnumerator dialogueRunner;
     private string owlActionsQuestion;
@@ -18,7 +18,7 @@ public class UICompanion : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        owlActionsQuestion = UISpeechBubble.text;
+        owlActionsQuestion = uiSpeechBubble.text;
         gameObject.SetActive(false);
     }
 
@@ -44,23 +44,16 @@ public class UICompanion : MonoBehaviour
     /// <returns></returns>
     private IEnumerator RunDialogue(string message)
     {
-        UISpeechBubble.text = string.Empty;
+        uiSpeechBubble.text = string.Empty;
         foreach (char character in message)
         {
-            WaitForSecondsRealtime time;
-            UISpeechBubble.text += character;
-            switch (character)
+            uiSpeechBubble.text += character;
+            WaitForSecondsRealtime time = character switch
             {
-                default:
-                    time = new WaitForSecondsRealtime(0.05f);
-                    break;
-                case '.':
-                    time = new WaitForSecondsRealtime(.1f);
-                    break;
-                case char c when c == ',' || c == ':' || c == ';':
-                    time = new WaitForSecondsRealtime(.075f);
-                    break;
-            }
+                '.' => new WaitForSecondsRealtime(.1f),
+                char c when c == ',' || c == ':' || c == ';' => new WaitForSecondsRealtime(.075f),
+                _ => new WaitForSecondsRealtime(0.05f),
+            };
             yield return time;
         }
         dialogueRunner = null;
@@ -71,6 +64,6 @@ public class UICompanion : MonoBehaviour
     /// </summary>
     public void ResetText()
     {
-        UISpeechBubble.text = owlActionsQuestion;
+        uiSpeechBubble.text = owlActionsQuestion;
     }
 }

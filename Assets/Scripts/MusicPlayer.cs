@@ -8,13 +8,13 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     [SerializeField]
-    private UIMusicPlayer UIMusicPlayer;
+    private UIMusicPlayer uiMusicPlayer;
     [SerializeField]
-    private DataSong[] Songs;
+    private DataSong[] songs;
     [SerializeField]
-    private int CurrentSongIndex;
+    private int currentSongIndex;
     [SerializeField]
-    private Settings Settings;
+    private Settings settings;
     [SerializeField]
     private bool shuffling;
     [SerializeField]
@@ -29,12 +29,12 @@ public class MusicPlayer : MonoBehaviour
     {
         audioSource.volume = volume = dataSettings.MusicVolume;
         shuffling = dataSettings.MusicShuffle;
-        for (sbyte index = 0; index < Songs.Length; index++)
+        for (sbyte index = 0; index < songs.Length; index++)
         {
-            Songs[index].Included = dataSettings.MusicEnabled[index];
+            songs[index].Included = dataSettings.MusicEnabled[index];
         }
 
-        UIMusicPlayer.FillUI(Songs);
+        uiMusicPlayer.FillUI(songs);
     }
 
     /// <summary>
@@ -45,8 +45,8 @@ public class MusicPlayer : MonoBehaviour
     {
         dataSettings.MusicVolume = .1f;
         dataSettings.MusicShuffle = false;
-        dataSettings.MusicEnabled = new bool[Songs.Length];
-        for (sbyte songIndex = 0; songIndex < Songs.Length; songIndex++)
+        dataSettings.MusicEnabled = new bool[songs.Length];
+        for (sbyte songIndex = 0; songIndex < songs.Length; songIndex++)
         {
             dataSettings.MusicEnabled[songIndex] = true;
         }
@@ -57,9 +57,9 @@ public class MusicPlayer : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        Songs = GetComponentsInChildren<DataSong>();
+        songs = GetComponentsInChildren<DataSong>();
         audioSource = GetComponent<AudioSource>();
-        Settings.Load();
+        settings.Load();
         StartCoroutine(Play());
     }
 
@@ -69,9 +69,9 @@ public class MusicPlayer : MonoBehaviour
     public void ToggleShuffle()
     {
         bool shuffling = !this.shuffling;
-        Settings.SetShuffle(shuffling);
+        settings.SetShuffle(shuffling);
         this.shuffling = shuffling;
-        UIMusicPlayer.ToggleShuffle(shuffling);
+        uiMusicPlayer.ToggleShuffle(shuffling);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class MusicPlayer : MonoBehaviour
     private AudioClip GetPreviousSong()
     {
         List<AudioClip> songs = new List<AudioClip>();
-        foreach (DataSong dataSong in Songs)
+        foreach (DataSong dataSong in this.songs)
         {
             if (dataSong.Included)
             {
@@ -121,23 +121,23 @@ public class MusicPlayer : MonoBehaviour
         if (shuffling && songs.Count != 1)
         {
             //Get random index (but not the same)
-            int currentIndex = CurrentSongIndex;
+            int currentIndex = currentSongIndex;
             do
             {
-                CurrentSongIndex = Random.Range(0, songs.Count);
+                currentSongIndex = Random.Range(0, songs.Count);
             }
-            while (CurrentSongIndex == currentIndex);
+            while (currentSongIndex == currentIndex);
         }
         else
         {
             //Get next index
-            CurrentSongIndex--;
-            if (CurrentSongIndex == -1)
+            currentSongIndex--;
+            if (currentSongIndex == -1)
             {
-                CurrentSongIndex = songs.Count - 1;
+                currentSongIndex = songs.Count - 1;
             }
         }
-        return songs[CurrentSongIndex];
+        return songs[currentSongIndex];
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public class MusicPlayer : MonoBehaviour
     private AudioClip GetNextSong()
     {
         List<AudioClip> songs = new List<AudioClip>();
-        foreach (DataSong dataSong in Songs)
+        foreach (DataSong dataSong in this.songs)
         {
             if (dataSong.Included)
             {
@@ -161,23 +161,23 @@ public class MusicPlayer : MonoBehaviour
         if (shuffling && songs.Count != 1)
         {
             //Get random index (but not the same)
-            int currentIndex = CurrentSongIndex;
+            int currentIndex = currentSongIndex;
             do
             {
-                CurrentSongIndex = Random.Range(0, songs.Count);
+                currentSongIndex = Random.Range(0, songs.Count);
             }
-            while (CurrentSongIndex == currentIndex);
+            while (currentSongIndex == currentIndex);
         }
         else
         {
             //Get next index
-            CurrentSongIndex++;
-            if (CurrentSongIndex == songs.Count)
+            currentSongIndex++;
+            if (currentSongIndex == songs.Count)
             {
-                CurrentSongIndex = 0;
+                currentSongIndex = 0;
             }
         }
-        return songs[CurrentSongIndex];
+        return songs[currentSongIndex];
     }
 
     /// <summary>
@@ -202,7 +202,7 @@ public class MusicPlayer : MonoBehaviour
     /// <param name="included">Whether or not this song should be included.</param>
     public void SetInclusion(DataSong song, bool included)
     {
-        Settings.SetInclusion(Songs.ToList().IndexOf(song), included);
+        settings.SetInclusion(songs.ToList().IndexOf(song), included);
     }
 
     /// <summary>
@@ -211,7 +211,7 @@ public class MusicPlayer : MonoBehaviour
     /// <param name="volume"></param>
     public void SetVolume(float volume)
     {
-        Settings.SetVolume(volume);
+        settings.SetVolume(volume);
         audioSource.volume = volume;
     }
 
@@ -223,7 +223,7 @@ public class MusicPlayer : MonoBehaviour
         AudioSource audioSource = GetComponent<AudioSource>();
         bool paused = audioSource.pitch == 1;//Already toggled
         audioSource.pitch = paused ? 0 : 1;
-        UIMusicPlayer.TogglePause(paused);
+        uiMusicPlayer.TogglePause(paused);
     }
 
     /// <summary>
@@ -231,7 +231,7 @@ public class MusicPlayer : MonoBehaviour
     /// </summary>
     public void Show()
     {
-        UIMusicPlayer.ToggleShuffle(shuffling);
-        UIMusicPlayer.SetVolume(volume);
+        uiMusicPlayer.ToggleShuffle(shuffling);
+        uiMusicPlayer.SetVolume(volume);
     }
 }

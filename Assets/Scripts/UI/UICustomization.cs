@@ -3,7 +3,7 @@ using UnityEngine;
 public class UICustomization : MonoBehaviour
 {
     [SerializeField]
-    private GameObject CompanionGameObject;
+    private GameObject companionGameObject;
 
     /// <summary>
     /// Changes the color of the entire body of the companion.
@@ -11,7 +11,7 @@ public class UICustomization : MonoBehaviour
     /// <param name="color">Color to apply.</param>
     public void ChangeColor(Color color)
     {
-        CompanionGameObject.GetComponent<Renderer>().material.color = color;
+        companionGameObject.GetComponent<Renderer>().material.color = color;
     }
 
     /// <summary>

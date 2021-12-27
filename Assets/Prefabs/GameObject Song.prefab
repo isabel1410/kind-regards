@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataSong: {fileID: 0}
   MusicPlayer: {fileID: 0}
+  Loading: 0
 --- !u!114 &6128796804018222153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,10 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40cdc8960df0fab49aed9f910fda1599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Song: {fileID: 6128796804018222154}
-  UIIncluded: {fileID: 6128796804114581244}
-  UIName: {fileID: 6128796804903821630}
-  UIDuration: {fileID: 6128796803757404928}
+  song: {fileID: 6128796804018222154}
+  uiIncluded: {fileID: 6128796804114581244}
+  uiName: {fileID: 6128796804903821630}
+  uiDuration: {fileID: 6128796803757404928}
 --- !u!1 &6128796804114581246
 GameObject:
   m_ObjectHideFlags: 0

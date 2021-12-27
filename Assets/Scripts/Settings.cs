@@ -10,21 +10,21 @@ public class Settings : MonoBehaviour
     private string SETTINGSPATH => $"{Application.persistentDataPath}{Path.DirectorySeparatorChar}Settings.json";
 
     [SerializeField]
-    private DataSettings DataSettings;
+    private DataSettings dataSettings;
 
     [SerializeField]
-    private UISettings UISettings;
+    private UISettings uiSettings;
     [SerializeField]
-    private UIError UIError;
+    private UIError uiError;
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private MusicPlayer MusicPlayer;
+    private MusicPlayer musicPlayer;
 
     #region File Management
 
     /// <summary>
-    /// Loads <see cref="DataSettings"/> from the local file and applies it to <see cref="MusicPlayer"/>. If the settings do not exist, it will create them.
+    /// Loads <see cref="DataSettings"/> from the local file and applies it to <see cref="musicPlayer"/>. If the settings do not exist, it will create them.
     /// </summary>
     /// <returns>True if loading succeeded.</returns>
     public bool Load()
@@ -33,19 +33,19 @@ public class Settings : MonoBehaviour
         {
             if (!File.Exists(SETTINGSPATH))
             {
-                MusicPlayer.ApplyDefaultSettings(ref DataSettings);
+                musicPlayer.ApplyDefaultSettings(ref dataSettings);
             }
             else
             {
-                JsonUtility.FromJsonOverwrite(File.ReadAllText(SETTINGSPATH), DataSettings);
+                JsonUtility.FromJsonOverwrite(File.ReadAllText(SETTINGSPATH), dataSettings);
             }
-            MusicPlayer.ApplySettings(DataSettings);
+            musicPlayer.ApplySettings(dataSettings);
             return true;
         }
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Settings could not be loaded");
+            uiError.Show("Settings could not be loaded");
             return false;
         }
     }
@@ -58,13 +58,13 @@ public class Settings : MonoBehaviour
     {
         try
         {
-            File.WriteAllText(SETTINGSPATH, JsonUtility.ToJson(DataSettings));
+            File.WriteAllText(SETTINGSPATH, JsonUtility.ToJson(dataSettings));
             return true;
         }
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Settings could not be saved");
+            uiError.Show("Settings could not be saved");
             return false;
         }
     }
@@ -78,19 +78,19 @@ public class Settings : MonoBehaviour
     /// </summary>
     public void Show()
     {
-        UISettings.Show(DataSettings);
-        MusicPlayer.Show();
-        NavigationController.HomeToSettings();
+        uiSettings.Show(dataSettings);
+        musicPlayer.Show();
+        navigationController.HomeToSettings();
     }
 
     /// <summary>
-    /// Saves <see cref="DataSettings"/> and transitions to the home screen.
+    /// Saves <see cref="dataSettings"/> and transitions to the home screen.
     /// </summary>
     public void Exit()
     {
         if (Save())
         {
-            NavigationController.SettingsToHome();
+            navigationController.SettingsToHome();
         }
     }
 
@@ -99,31 +99,31 @@ public class Settings : MonoBehaviour
     #region MusicPlayer
 
     /// <summary>
-    /// Sets the shuffle option from <see cref="MusicPlayer"/>.
+    /// Sets the shuffle option from <see cref="musicPlayer"/>.
     /// </summary>
     /// <param name="shuffled">If the music is shuffled.</param>
     public void SetShuffle(bool shuffled)
     {
-        DataSettings.MusicShuffle = shuffled;
+        dataSettings.MusicShuffle = shuffled;
     }
 
     /// <summary>
-    /// Sets the volume option from <see cref="MusicPlayer"/>.
+    /// Sets the volume option from <see cref="musicPlayer"/>.
     /// </summary>
     /// <param name="volume">Volume of the music.</param>
     public void SetVolume(float volume)
     {
-        DataSettings.MusicVolume = volume;
+        dataSettings.MusicVolume = volume;
     }
 
     /// <summary>
-    /// Sets the inclusion value of a song from <see cref="MusicPlayer"/>.
+    /// Sets the inclusion value of a song from <see cref="musicPlayer"/>.
     /// </summary>
     /// <param name="index">Index of the song in <see cref="DataSettings.MusicEnabled"/>.</param>
     /// <param name="included">If the song should be included.</param>
     public void SetInclusion(int index, bool included)
     {
-        DataSettings.MusicEnabled[index] = included;
+        dataSettings.MusicEnabled[index] = included;
     }
 
     #endregion

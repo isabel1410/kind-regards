@@ -6,22 +6,22 @@ using UnityEngine;
 public class NavigationController : MonoBehaviour
 {
     [SerializeField]
-    private Animator UIAnimator;
+    private Animator uiAnimator;
     [SerializeField]
-    private Animator UICompanionActionsAnimator;
+    private Animator uiCompanionActionsAnimator;
     [SerializeField]
-    private Animator DiaryAnimator;
+    private Animator diaryAnimator;
     [SerializeField]
-    private Animator CompanionAnimator;
+    private Animator companionAnimator;
     [SerializeField]
-    private Animator StickerBookAnimator;
+    private Animator stickerBookAnimator;
     [SerializeField]
-    private Animator GiftAnimator;
+    private Animator giftAnimator;
 
     [SerializeField]
-    private GameObject CanvasCompanionActions;
+    private GameObject canvasCompanionActions;
     [SerializeField]
-    private Canvas Canvas;
+    private Canvas canvas;
 
     #region Screen Navigation
 
@@ -32,10 +32,10 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Home to Diary";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
-        DiaryAnimator.Play(animationStateName);
-        StickerBookAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
+        diaryAnimator.Play(animationStateName);
+        stickerBookAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -45,10 +45,10 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Diary to Home";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
-        DiaryAnimator.Play(animationStateName);
-        StickerBookAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
+        diaryAnimator.Play(animationStateName);
+        stickerBookAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -58,8 +58,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Home to Requests";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -68,17 +68,17 @@ public class NavigationController : MonoBehaviour
     public void HomeToSticker()
     {
         string animationStateName = "Navigation - Home to Sticker";
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
-        StickerBookAnimator.Play("Sticker Book - Show Stickers");
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
+        stickerBookAnimator.Play("Sticker Book - Show Stickers");
     }
 
     public void StickerToHome()
     {
         string animationStateName = "Navigation - Sticker to Home";
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
-        StickerBookAnimator.Play("Sticker Book - Hide Stickers");
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
+        stickerBookAnimator.Play("Sticker Book - Hide Stickers");
     }
 
     /// <summary>
@@ -88,8 +88,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Requests to Home";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -99,8 +99,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Home to Mailbox";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -110,8 +110,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Mailbox to Home";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -121,8 +121,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Reply to Home";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -132,8 +132,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Home to Reply";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -144,10 +144,10 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Mailbox to Mail";
 
-        UIAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
         if (giftIncluded)
         {
-            GiftAnimator.Play(animationStateName);
+            giftAnimator.Play(animationStateName);
         }
     }
 
@@ -158,7 +158,7 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Home to Customization";
 
-        UIAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -168,7 +168,7 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Customization to Home";
 
-        UIAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -178,8 +178,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Home to Settings";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -189,8 +189,8 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Settings to Home";
 
-        UIAnimator.Play(animationStateName);
-        CompanionAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        companionAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -201,10 +201,10 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Mail to Mailbox";
 
-        UIAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
         if (giftIncluded)
         {
-            GiftAnimator.Play(animationStateName);
+            giftAnimator.Play(animationStateName);
         }
     }
 
@@ -215,9 +215,9 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Reply to Gift";
 
-        UIAnimator.Play(animationStateName);
-        GiftAnimator.Play(animationStateName);
-        StickerBookAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        giftAnimator.Play(animationStateName);
+        stickerBookAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -227,9 +227,9 @@ public class NavigationController : MonoBehaviour
     {
         string animationStateName = "Navigation - Gift to Reply";
 
-        UIAnimator.Play(animationStateName);
-        GiftAnimator.Play(animationStateName);
-        StickerBookAnimator.Play(animationStateName);
+        uiAnimator.Play(animationStateName);
+        giftAnimator.Play(animationStateName);
+        stickerBookAnimator.Play(animationStateName);
     }
 
     /// <summary>
@@ -237,7 +237,7 @@ public class NavigationController : MonoBehaviour
     /// </summary>
     public void CompanionActionsToRequests()
     {
-        UICompanionActionsAnimator.Play("Fade Out Companion Actions To Requests");
+        uiCompanionActionsAnimator.Play("Fade Out Companion Actions To Requests");
     }
 
     /// <summary>
@@ -245,7 +245,7 @@ public class NavigationController : MonoBehaviour
     /// </summary>
     public void CompanionActionsToReply()
     {
-        UICompanionActionsAnimator.Play("Fade Out Companion Actions To Reply");
+        uiCompanionActionsAnimator.Play("Fade Out Companion Actions To Reply");
     }
 
     /// <summary>
@@ -253,7 +253,7 @@ public class NavigationController : MonoBehaviour
     /// </summary>
     public void CompanionActionsToCustomization()
     {
-        UICompanionActionsAnimator.Play("Fade Out Companion Actions To Customization");
+        uiCompanionActionsAnimator.Play("Fade Out Companion Actions To Customization");
     }
 
     #endregion
@@ -261,15 +261,15 @@ public class NavigationController : MonoBehaviour
     /// <summary>
     /// Shows or hides companion action dialogue choices.
     /// </summary>
-    /// <remarks>Setting the canvas inactive is done in <see cref="CompanionActionDialogueDeactivator.DeactivateCompanionActions"/></remarks>
+    /// <remarks>Setting the canvas inactive is done in <see cref="CompanionActionAnimationHelper.DeactivateCompanionActions"/></remarks>
     public void ToggleCompanionActions()
     {
-        bool showing = !CanvasCompanionActions.activeSelf;
+        bool showing = !canvasCompanionActions.activeSelf;
         if (showing)
         {
-            CanvasCompanionActions.SetActive(true);
+            canvasCompanionActions.SetActive(true);
         }
-        UICompanionActionsAnimator.Play("Fade " + (showing ? "In" : "Out") + " Companion Actions");
+        uiCompanionActionsAnimator.Play("Fade " + (showing ? "In" : "Out") + " Companion Actions");
     }
 
     /// <summary>
@@ -278,7 +278,7 @@ public class NavigationController : MonoBehaviour
     /// <param name="renderMode">The render mode to use.</param>
     public void SetRenderMode(RenderMode renderMode)
     {
-        Canvas.renderMode = renderMode;
+        canvas.renderMode = renderMode;
     }
 
     /// <summary>

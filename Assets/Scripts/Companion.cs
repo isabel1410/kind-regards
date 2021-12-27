@@ -9,17 +9,17 @@ using static Diary;
 public class Companion : MonoBehaviour
 {
     [SerializeField]
-    private UICustomization UICustomization;
+    private UICustomization uiCustomization;
     [SerializeField]
-    private UICompanion UICompanion;
+    private UICompanion uiCompanion;
     [SerializeField]
-    private UIError UIError;
+    private UIError uiError;
     [SerializeField]
-    private Diary Diary;
+    private Diary diary;
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private DataCustomization DataCustomization = new DataCustomization() { Color = Color.red };
+    private DataCustomization dataCustomization = new DataCustomization() { Color = Color.red };
 
     private string CUSTOMIZATIONPATH => $"{Application.persistentDataPath}{Path.DirectorySeparatorChar}Customization.json";
 
@@ -29,7 +29,7 @@ public class Companion : MonoBehaviour
     private void Start()
     {
         LoadCustomization();
-        UICustomization.ApplyCustomization(DataCustomization);
+        uiCustomization.ApplyCustomization(dataCustomization);
     }
 
     #region File Management
@@ -46,13 +46,13 @@ public class Companion : MonoBehaviour
             {
                 return SaveCustomization();
             }
-            DataCustomization = JsonConvert.DeserializeObject<DataCustomization>(File.ReadAllText(CUSTOMIZATIONPATH));
+            dataCustomization = JsonConvert.DeserializeObject<DataCustomization>(File.ReadAllText(CUSTOMIZATIONPATH));
             return true;
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Loading customization failed");
+            uiError.Show("Loading customization failed");
             return false;
         }
     }
@@ -65,13 +65,13 @@ public class Companion : MonoBehaviour
     {
         try
         {
-            File.WriteAllText(CUSTOMIZATIONPATH, JsonConvert.SerializeObject(DataCustomization, new ColorConverter()));
+            File.WriteAllText(CUSTOMIZATIONPATH, JsonConvert.SerializeObject(dataCustomization, new ColorConverter()));
             return true;
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Saving customization failed");
+            uiError.Show("Saving customization failed");
             return false;
         }
     }
@@ -87,8 +87,8 @@ public class Companion : MonoBehaviour
     public void ChangeColor(GameObject sender)
     {
         Color color = sender.GetComponent<UnityEngine.UI.Image>().color;
-        DataCustomization.Color = color;
-        UICustomization.ChangeColor(color);
+        dataCustomization.Color = color;
+        uiCustomization.ChangeColor(color);
     }
 
     /// <summary>
@@ -107,12 +107,12 @@ public class Companion : MonoBehaviour
 
             //Mood
             case float _ when randomValue < .5:
-                DiaryEntry[] entries = Diary.GetDiaryEntries();
+                DiaryEntry[] entries = diary.GetDiaryEntries();
                 reply = GetMoodMessage(entries);
                 break;
         }
 
-        UICompanion.Speak(reply);
+        uiCompanion.Speak(reply);
     }
 
     /// <summary>
@@ -120,8 +120,8 @@ public class Companion : MonoBehaviour
     /// </summary>
     public void ToggleCompanionActions()
     {
-        UICompanion.ResetText();
-        NavigationController.ToggleCompanionActions();
+        uiCompanion.ResetText();
+        navigationController.ToggleCompanionActions();
     }
 
     #endregion
@@ -166,7 +166,7 @@ public class Companion : MonoBehaviour
     /// </summary>
     public void ShowCustomization()
     {
-        NavigationController.HomeToCustomization();
+        navigationController.HomeToCustomization();
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ public class Companion : MonoBehaviour
     {
         if (SaveCustomization())
         {
-            NavigationController.CustomizationToHome();
+            navigationController.CustomizationToHome();
         }
     }
 

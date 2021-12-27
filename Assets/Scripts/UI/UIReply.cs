@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class UIReply : MonoBehaviour
 {
     [SerializeField]
-    private Text UIMessage;
+    private Text uiMessage;
     [SerializeField]
-    private Button ReplyButtonPrefab;
+    private Button replyButtonPrefab;
     [SerializeField]
-    private Reply Reply;
+    private Reply reply;
     [SerializeField]
-    private Transform RepliesContainerTransform;
+    private Transform repliesContainerTransform;
 
     private float height;
 
@@ -22,7 +22,7 @@ public class UIReply : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        height = RepliesContainerTransform.GetComponentInParent<RectTransform>().rect.height;
+        height = repliesContainerTransform.GetComponentInParent<RectTransform>().rect.height;
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class UIReply : MonoBehaviour
     public void ShowMessage(DataRequest message)
     {
         if (message == null) return;
-        UIMessage.text = message.DataText.Text;
+        uiMessage.text = message.DataText.Text;
     }
 
     /// <summary>
@@ -46,20 +46,20 @@ public class UIReply : MonoBehaviour
         float positionY = 0;
         foreach (DataText reply in replies)
         {
-            Button requestMessageButton = Instantiate(ReplyButtonPrefab);
+            Button requestMessageButton = Instantiate(replyButtonPrefab);
             RectTransform rectTransform = requestMessageButton.gameObject.GetComponent<RectTransform>();
 
-            requestMessageButton.transform.SetParent(RepliesContainerTransform, false);
+            requestMessageButton.transform.SetParent(repliesContainerTransform, false);
             rectTransform.anchoredPosition = new Vector2(0, positionY);
 
-            requestMessageButton.onClick.AddListener(delegate { Reply.SendReply(reply); });
+            requestMessageButton.onClick.AddListener(delegate { this.reply.SendReply(reply); });
             requestMessageButton.GetComponentInChildren<Text>().text = reply.Text;
 
             positionY -= rectTransform.rect.height;
         }
 
         //Set the height of the container based on the amount of replies and the height of the prefab
-        RectTransform containerRectTransform = RepliesContainerTransform.GetComponent<RectTransform>();
+        RectTransform containerRectTransform = repliesContainerTransform.GetComponent<RectTransform>();
         containerRectTransform.sizeDelta = new Vector2(
             containerRectTransform.sizeDelta.x,
             Mathf.Abs(positionY) - height);
@@ -70,7 +70,7 @@ public class UIReply : MonoBehaviour
     /// </summary>
     public void DestroyReplyButtons()
     {
-        foreach (Transform buttonTransform in RepliesContainerTransform)
+        foreach (Transform buttonTransform in repliesContainerTransform)
         {
             Destroy(buttonTransform.gameObject);
         }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -8,13 +7,13 @@ using UnityEngine;
 public class Mailbox : MonoBehaviour
 {
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
     [SerializeField]
-    private UIMailbox UIMailbox;
+    private UIMailbox uiMailbox;
     [SerializeField]
-    private UIError UIError;
+    private UIError uiError;
     [SerializeField]
-    private Mail Mail;
+    private Mail mail;
 
     private List<DataMessage> dataReplies;
 
@@ -36,7 +35,7 @@ public class Mailbox : MonoBehaviour
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
             return false;
         }
     }
@@ -47,7 +46,7 @@ public class Mailbox : MonoBehaviour
     /// <param name="reply">The <see cref="DataMessage"/> to show.</param>
     public void OpenMail(DataMessage reply)
     {
-        Mail.Show(reply);
+        mail.Show(reply);
     }
 
     /// <summary>
@@ -67,15 +66,15 @@ public class Mailbox : MonoBehaviour
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Make sure you have an internet connection");
+            uiError.Show("Make sure you have an internet connection");
             return false;
         }
-        UIMailbox.DestroyMailGameObject(sender);
+        uiMailbox.DestroyMailGameObject(sender);
         dataReplies.Remove(reply);
         return true;
     }
 
-#region Visuals
+    #region Visuals
 
     /// <summary>
     /// Loads the replies and transitions from the home screen to the requests screen.
@@ -84,8 +83,8 @@ public class Mailbox : MonoBehaviour
     {
         if (LoadReplies())
         {
-            UIMailbox.ShowReplies(dataReplies.ToArray());
-            NavigationController.HomeToMailbox();
+            uiMailbox.ShowReplies(dataReplies.ToArray());
+            navigationController.HomeToMailbox();
         }
     }
 
@@ -94,8 +93,8 @@ public class Mailbox : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        NavigationController.MailboxToHome();
+        navigationController.MailboxToHome();
     }
 
-#endregion
+    #endregion
 }

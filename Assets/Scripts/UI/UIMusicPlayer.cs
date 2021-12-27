@@ -7,28 +7,28 @@ using UnityEngine.UI;
 public class UIMusicPlayer : MonoBehaviour
 {
     [SerializeField]
-    private GameObject SongGameObjectPrefab;
+    private GameObject songGameObjectPrefab;
     [SerializeField]
-    private Transform SongContainerTransform;
+    private Transform songContainerTransform;
     [SerializeField]
-    private Button UIPlayPause;
+    private Button uiPlayPause;
     [SerializeField]
-    private Button UIShuffle;
+    private Button uiShuffle;
     [SerializeField]
-    private Slider UIVolume;
+    private Slider uiVolume;
     [SerializeField]
-    private MusicPlayer MusicPlayer;
+    private MusicPlayer musicPlayer;
     [SerializeField]
-    private Sprite ImagePlay;
+    private Sprite imagePlay;
     [SerializeField]
-    private Sprite ImagePause;
+    private Sprite imagePause;
     [SerializeField]
-    private Sprite ImageUnShuffle;
+    private Sprite imageUnShuffle;
     [SerializeField]
-    private Sprite ImageShuffle;
+    private Sprite imageShuffle;
 
     /// <summary>
-    /// Fills the <see cref="SongContainerTransform"/> <see cref="GameObject"/> with songs from <see cref="SongGameObjectPrefab"/>.
+    /// Fills the <see cref="songContainerTransform"/> <see cref="GameObject"/> with songs from <see cref="songGameObjectPrefab"/>.
     /// </summary>
     /// <param name="songs">Songs to add to the container.</param>
     public void FillUI(DataSong[] songs)
@@ -36,19 +36,19 @@ public class UIMusicPlayer : MonoBehaviour
         float positionY = 0;
         foreach (DataSong song in songs)
         {
-            GameObject songGameObject = Instantiate(SongGameObjectPrefab);
+            GameObject songGameObject = Instantiate(songGameObjectPrefab);
             RectTransform rectTransform = songGameObject.GetComponent<RectTransform>();
 
-            songGameObject.transform.SetParent(SongContainerTransform, false);
+            songGameObject.transform.SetParent(songContainerTransform, false);
             rectTransform.anchoredPosition = new Vector2(0, positionY);
 
-            songGameObject.GetComponent<UISongInstantiator>().Instantiate(song, MusicPlayer);
+            songGameObject.GetComponent<UISongInstantiator>().Instantiate(song, musicPlayer);
 
             positionY -= rectTransform.rect.height;
         }
 
         //Set the height of the container based on the amount of songs and the height of the prefab
-        RectTransform containerRectTransform = SongContainerTransform.GetComponent<RectTransform>();
+        RectTransform containerRectTransform = songContainerTransform.GetComponent<RectTransform>();
         containerRectTransform.sizeDelta = new Vector2(
             containerRectTransform.sizeDelta.x,
             Mathf.Abs(positionY) - containerRectTransform.rect.height);
@@ -60,7 +60,7 @@ public class UIMusicPlayer : MonoBehaviour
     /// <param name="paused">True if the music is paused.</param>
     public void TogglePause(bool paused)
     {
-        UIPlayPause.GetComponent<Image>().sprite = paused ? ImagePlay : ImagePause;
+        uiPlayPause.GetComponent<Image>().sprite = paused ? imagePlay : imagePause;
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public class UIMusicPlayer : MonoBehaviour
     /// <param name="shuffled">True if the music is shuffled.</param>
     public void ToggleShuffle(bool shuffled)
     {
-        UIShuffle.GetComponent<Image>().sprite = shuffled ? ImageUnShuffle : ImageShuffle;
+        uiShuffle.GetComponent<Image>().sprite = shuffled ? imageUnShuffle : imageShuffle;
     }
 
     /// <summary>
@@ -79,6 +79,6 @@ public class UIMusicPlayer : MonoBehaviour
     /// <remarks>Only used when loading.</remarks>
     public void SetVolume(float volume)
     {
-        UIVolume.value = volume;
+        uiVolume.value = volume;
     }
 }

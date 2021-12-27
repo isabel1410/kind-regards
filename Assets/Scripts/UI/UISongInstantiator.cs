@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class UISongInstantiator : MonoBehaviour
 {
     [SerializeField]
-    private Song Song;
+    private Song song;
     [SerializeField]
-    private Toggle UIIncluded;
+    private Toggle uiIncluded;
     [SerializeField]
-    private Text UIName;
+    private Text uiName;
     [SerializeField]
-    private Text UIDuration;
+    private Text uiDuration;
 
     /// <summary>
     /// Assigns variables and updates the UI.
@@ -22,13 +22,13 @@ public class UISongInstantiator : MonoBehaviour
     /// <param name="musicPlayer">Music player the song belongs to.</param>
     public void Instantiate(DataSong dataSong, MusicPlayer musicPlayer)
     {
-        Song.Loading = true;
-        Song.MusicPlayer = musicPlayer;
-        Song.DataSong = dataSong;
-        UIIncluded.isOn = dataSong.Included;
-        UIName.text = dataSong.Name;
-        UIDuration.text = dataSong.AudioClip.length.ToString("#0:00");//"##:##"
-        Song.Loading = false;
+        song.Loading = true;
+        song.MusicPlayer = musicPlayer;
+        song.DataSong = dataSong;
+        uiIncluded.isOn = dataSong.Included;
+        uiName.text = dataSong.Name;
+        uiDuration.text = dataSong.AudioClip.length.ToString("#0:00");//"##:##"
+        song.Loading = false;
 
         Destroy(this);
     }

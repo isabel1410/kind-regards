@@ -329,5 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1420b57c410444aa47ef2b750c22e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textElement: {fileID: 3521296178677191241}
-  _dataHolder: {fileID: 3655981863492186750}
+  textElement: {fileID: 3521296178677191241}
+  dataHolder: {fileID: 3655981863492186750}
+  OnMotivationalTextSelect:
+    m_PersistentCalls:
+      m_Calls: []

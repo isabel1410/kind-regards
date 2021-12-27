@@ -15,11 +15,11 @@ public class Diary : MonoBehaviour
     private DiaryEntry currentEntry;
 
     [SerializeField]
-    private UIDiary UIDiary;
+    private UIDiary uiDiary;
     [SerializeField]
-    private UIError UIError;
+    private UIError uiError;
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
 
     #region File Management
 
@@ -55,7 +55,7 @@ public class Diary : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Loading diary entries failed");
+            uiError.Show("Loading diary entries failed");
             diaryEntries = null;
             return false;
         }
@@ -85,7 +85,7 @@ public class Diary : MonoBehaviour
         try
         {
             string entryPath = $"{DIARYDIRECTORYPATH}{Path.DirectorySeparatorChar}{currentEntry.Date.ToShortDateString()}.json";
-            SetEntry(UIDiary.GetEntry());
+            SetEntry(uiDiary.GetEntry());
 
             //Empty diary, delete if existing
             if (currentEntry.Mood == DiaryEntry.DiaryMood.Empty && string.IsNullOrWhiteSpace(currentEntry.Entry))
@@ -110,7 +110,7 @@ public class Diary : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Saving diary entry failed");
+            uiError.Show("Saving diary entry failed");
             return false;
         }
     }
@@ -140,7 +140,7 @@ public class Diary : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            UIError.Show("Deleting diary entry failed");
+            uiError.Show("Deleting diary entry failed");
             return false;
         }
     }
@@ -154,9 +154,7 @@ public class Diary : MonoBehaviour
     /// </summary>
     private void CreateNew()
     {
-#pragma warning disable IDE0090 // Use 'new(...)'
         DiaryEntry entry = new DiaryEntry()
-#pragma warning restore IDE0090 // Use 'new(...)'
         {
             Date = DateTime.Today
         };
@@ -181,14 +179,14 @@ public class Diary : MonoBehaviour
     {
         //Get mood (empty if the mood is unselected)
         DiaryEntry.DiaryMood mood = (DiaryEntry.DiaryMood)moodIndex;
-        DiaryEntry.DiaryMood UIMood = UIDiary.GetMood();
+        DiaryEntry.DiaryMood UIMood = uiDiary.GetMood();
         if (mood == UIMood)
         {
             mood = DiaryEntry.DiaryMood.Empty;
         }
 
         currentEntry.Mood = mood;
-        UIDiary.SetMood(mood);
+        uiDiary.SetMood(mood);
     }
 
     /// <summary>
@@ -239,7 +237,7 @@ public class Diary : MonoBehaviour
     {
         currentEntry = entry;
 
-        UIDiary.SetEntry(entry, entries.IndexOf(entry) == 0, entry.Date == DateTime.Today);
+        uiDiary.SetEntry(entry, entries.IndexOf(entry) == 0, entry.Date == DateTime.Today);
     }
 
     /// <summary>
@@ -249,7 +247,7 @@ public class Diary : MonoBehaviour
     {
         if (Load(out _))
         {
-            NavigationController.HomeToDiary();
+            navigationController.HomeToDiary();
         }
     }
 
@@ -260,7 +258,7 @@ public class Diary : MonoBehaviour
     {
         if (SaveCurrentEntry())
         {
-            NavigationController.DiaryToHome();
+           navigationController.DiaryToHome();
         }
     }
 

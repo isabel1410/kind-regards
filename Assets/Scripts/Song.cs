@@ -5,8 +5,11 @@ using UnityEngine;
 /// </summary>
 public class Song : MonoBehaviour
 {
+    [HideInInspector]
     public DataSong DataSong;
+    [HideInInspector]
     public MusicPlayer MusicPlayer;
+    [HideInInspector]
     public bool Loading;
 
     /// <summary>

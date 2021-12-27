@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class UIGift : MonoBehaviour
 {
     [SerializeField]
-    private Text UIMessage;
+    private Text uiMessage;
     [SerializeField]
-    private GameObject GiftGameObject;
+    private GameObject giftGameObject;
 
     public Color GiftStartColor { get; private set; }
 
@@ -18,7 +18,7 @@ public class UIGift : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        GiftStartColor = GiftGameObject.GetComponent<Renderer>().material.color;
+        GiftStartColor = giftGameObject.GetComponent<Renderer>().material.color;
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ public class UIGift : MonoBehaviour
     /// <param name="message">Message to show.</param>
     public void ShowMessage(DataText message)
     {
-        UIMessage.text = message.Text;
+        uiMessage.text = message.Text;
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class UIGift : MonoBehaviour
     /// <param name="color">The new color.</param>
     public void ChangeColor(Color color)
     {
-        GiftGameObject.GetComponent<Renderer>().material.color = color;
+        giftGameObject.GetComponent<Renderer>().material.color = color;
     }
 
     /// <summary>
@@ -44,6 +44,6 @@ public class UIGift : MonoBehaviour
     /// </summary>
     public void ResetColor()
     {
-        GiftGameObject.GetComponent<Renderer>().material.color = GiftStartColor;
+        giftGameObject.GetComponent<Renderer>().material.color = GiftStartColor;
     }
 }

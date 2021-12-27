@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+
 /// <summary>
 /// Reply to a sent request with an optional gift.
 /// </summary>

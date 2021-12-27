@@ -215,10 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8812fb7ff1042d43a28aa1cbe323e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationController: {fileID: 280535379}
-  UIMailbox: {fileID: 26033571}
-  UIError: {fileID: 0}
-  Mail: {fileID: 1258501795}
+  navigationController: {fileID: 280535379}
+  uiMailbox: {fileID: 26033571}
+  uiError: {fileID: 1313747868}
+  mail: {fileID: 1258501795}
 --- !u!114 &26033571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,9 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c31fe9ae65a4644b7924ac52e0620f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MailGameObjectPrefab: {fileID: 1890749599571930668, guid: 2e0205e37bd7849498c5b1d9fef54f10, type: 3}
-  Mailbox: {fileID: 26033570}
-  MailContainerTransform: {fileID: 580962199}
+  mailGameObjectPrefab: {fileID: 1890749599571930668, guid: 2e0205e37bd7849498c5b1d9fef54f10, type: 3}
+  mailContainerTransform: {fileID: 580962199}
 --- !u!1 &31097288
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a397b00d0fc824447be227e787cd831a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CompanionGameObject: {fileID: 2124687245}
+  companionGameObject: {fileID: 2124687245}
 --- !u!1 &106242618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,13 +1218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000981b20c5400041ac670d9bad3c8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIMusicPlayer: {fileID: 1448946063}
-  Songs:
-  - {fileID: 816396591}
-  - {fileID: 1819005690}
-  - {fileID: 1587116631}
-  CurrentSongIndex: -1
-  Settings: {fileID: 222843597}
+  uiMusicPlayer: {fileID: 1448946063}
+  songs: []
+  currentSongIndex: -1
+  settings: {fileID: 222843597}
   shuffling: 0
   volume: 0
 --- !u!4 &130348867
@@ -1919,11 +1915,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9485d4c38ca4f34ea6bd259aa9746a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DataSettings: {fileID: 222843595}
-  UISettings: {fileID: 222843596}
-  UIError: {fileID: 1313747868}
-  NavigationController: {fileID: 280535379}
-  MusicPlayer: {fileID: 130348866}
+  dataSettings: {fileID: 222843595}
+  uiSettings: {fileID: 222843596}
+  uiError: {fileID: 1313747868}
+  navigationController: {fileID: 280535379}
+  musicPlayer: {fileID: 130348866}
 --- !u!1 &232634236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,14 +2161,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f926e0bf2754748bacb23a23bde135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIAnimator: {fileID: 1166415251}
-  UICompanionActionsAnimator: {fileID: 2056996715}
-  DiaryAnimator: {fileID: 1907334668}
-  CompanionAnimator: {fileID: 1528519407}
-  StickerBookAnimator: {fileID: 1222826208}
-  GiftAnimator: {fileID: 1764428516}
-  CanvasCompanionActions: {fileID: 2056996710}
-  Canvas: {fileID: 1166415248}
+  uiAnimator: {fileID: 1166415251}
+  uiCompanionActionsAnimator: {fileID: 2056996715}
+  diaryAnimator: {fileID: 1907334668}
+  companionAnimator: {fileID: 1528519407}
+  stickerBookAnimator: {fileID: 1222826208}
+  giftAnimator: {fileID: 1764428516}
+  canvasCompanionActions: {fileID: 2056996710}
+  canvas: {fileID: 1166415248}
 --- !u!4 &280535380
 Transform:
   m_ObjectHideFlags: 0
@@ -5352,7 +5348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9515565fd54990e488aced00418854b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Intro
+  Name: Song 1
   Included: 1
   AudioClip: {fileID: 8300000, guid: 7014dc457bc813b41bbf74faa9204278, type: 3}
 --- !u!4 &816396592
@@ -7216,10 +7212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941a7786507e9154fbc08e523b88a8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationController: {fileID: 280535379}
-  UIRequest: {fileID: 1488048856}
-  UIReply: {fileID: 1243980604}
-  UIMailbox: {fileID: 26033571}
+  navigationController: {fileID: 0}
+  uiRequest: {fileID: 0}
+  uiReply: {fileID: 0}
+  uiMailbox: {fileID: 0}
 --- !u!95 &1166415251
 Animator:
   serializedVersion: 3
@@ -7683,13 +7679,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bec39b998a57524e8e9703699b99e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIDate: {fileID: 564280407}
-  UIEntry: {fileID: 727629568}
-  UIMoodNegative: {fileID: 1292529158}
-  UIMoodNeutral: {fileID: 1860346495}
-  UIMoodPositive: {fileID: 1432815948}
-  UIPrevious: {fileID: 284589853}
-  UINext: {fileID: 1317392312}
+  uiDate: {fileID: 564280407}
+  uiEntry: {fileID: 727629568}
+  uiMoodNegative: {fileID: 1292529158}
+  uiMoodNeutral: {fileID: 1860346495}
+  uiMoodPositive: {fileID: 1432815948}
+  uiPrevious: {fileID: 284589853}
+  uiNext: {fileID: 1317392312}
 --- !u!1 &1213473609
 GameObject:
   m_ObjectHideFlags: 0
@@ -7912,8 +7908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f447aa1ca143743bc6ee78e660d4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationController: {fileID: 280535379}
-  UISticker: {fileID: 1338953870}
+  navigationController: {fileID: 280535379}
+  uiSticker: {fileID: 1338953870}
 --- !u!1 &1243980598
 GameObject:
   m_ObjectHideFlags: 0
@@ -8030,11 +8026,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe8eb463b302084b88be883162ebba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationController: {fileID: 280535379}
-  UIReply: {fileID: 1243980604}
-  UIGift: {fileID: 1479657583}
-  UIError: {fileID: 0}
-  Gift: {fileID: 1479657584}
+  navigationController: {fileID: 280535379}
+  uiReply: {fileID: 1243980604}
+  uiGift: {fileID: 1479657583}
+  uiError: {fileID: 1313747868}
+  gift: {fileID: 1479657584}
 --- !u!114 &1243980604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8047,10 +8043,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9188cdfcdf8b0b4380fabd44d056bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIMessage: {fileID: 823113893}
-  ReplyButtonPrefab: {fileID: 4554396944051954290, guid: d764a8251ae7f694aaeda89893c70342, type: 3}
-  Reply: {fileID: 1243980603}
-  RepliesContainerTransform: {fileID: 821125975}
+  uiMessage: {fileID: 823113893}
+  replyButtonPrefab: {fileID: 4554396944051954290, guid: d764a8251ae7f694aaeda89893c70342, type: 3}
+  reply: {fileID: 1243980603}
+  repliesContainerTransform: {fileID: 821125975}
 --- !u!1 &1245665927
 GameObject:
   m_ObjectHideFlags: 0
@@ -8514,10 +8510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe4e0d1b8fcf964bb6c67f3b082fccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIMail: {fileID: 1258501796}
-  UIError: {fileID: 0}
-  NavigationController: {fileID: 280535379}
-  DataReply: {}
+  uiMail: {fileID: 1258501796}
+  uiError: {fileID: 1313747868}
+  navigationController: {fileID: 280535379}
+  dataReply: {}
   stickerBook: {fileID: 1222826209}
 --- !u!114 &1258501796
 MonoBehaviour:
@@ -8531,10 +8527,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a08e5c83fab447f458ae06f21b5c39c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIMessage: {fileID: 1464300517}
-  UIReply: {fileID: 993844275}
-  UIThank: {fileID: 1988019902}
-  GiftGameObject: {fileID: 543146728}
+  uiMessage: {fileID: 1464300517}
+  uiReply: {fileID: 993844275}
+  uiThank: {fileID: 1988019902}
+  giftGameObject: {fileID: 543146728}
 --- !u!1 &1263154984
 GameObject:
   m_ObjectHideFlags: 0
@@ -9090,8 +9086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc56802049265c4e95016b8439cc5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIException: {fileID: 1025525502}
-  NavigationController: {fileID: 280535379}
+  uiException: {fileID: 1025525502}
+  navigationController: {fileID: 280535379}
 --- !u!1 &1317392310
 GameObject:
   m_ObjectHideFlags: 0
@@ -9279,10 +9275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a567717c786994cac61a992397da32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIPrevious: {fileID: 944874446}
-  UINext: {fileID: 1484331073}
-  UIPagePrefab: {fileID: 7328973534704726230, guid: fb23c3bf86e6bca42a1f200157695394, type: 3}
-  UIPageHolder: {fileID: 2033871457}
+  uiPrevious: {fileID: 944874446}
+  uiNext: {fileID: 1484331073}
+  uiPagePrefab: {fileID: 7328973534704726230, guid: fb23c3bf86e6bca42a1f200157695394, type: 3}
+  uiPageHolder: {fileID: 2033871457}
 --- !u!114 &1338953874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9787,16 +9783,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee0e9ee80545b4ca27c3ee5e147208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SongGameObjectPrefab: {fileID: 6128796804018222196, guid: 434a496cfb4188e449c78e39422c6611, type: 3}
-  SongContainerTransform: {fileID: 1599885915}
-  UIPlayPause: {fileID: 1555994838}
-  UIShuffle: {fileID: 1687958775}
-  UIVolume: {fileID: 357191669}
-  MusicPlayer: {fileID: 130348866}
-  ImagePlay: {fileID: 21300000, guid: f9bf2612b4b43f545948c91211b8d758, type: 3}
-  ImagePause: {fileID: 21300000, guid: 686d0c6cc3cea814b915152c0aa09cf5, type: 3}
-  ImageUnShuffle: {fileID: 21300000, guid: 42f74c80e626dee45bccb745ada30824, type: 3}
-  ImageShuffle: {fileID: 21300000, guid: d97f798cd6d5bd643ab65d2ff3f2f821, type: 3}
+  songGameObjectPrefab: {fileID: 6128796804018222196, guid: 434a496cfb4188e449c78e39422c6611, type: 3}
+  songContainerTransform: {fileID: 1599885915}
+  uiPlayPause: {fileID: 1555994838}
+  uiShuffle: {fileID: 1687958775}
+  uiVolume: {fileID: 357191669}
+  musicPlayer: {fileID: 130348866}
+  imagePlay: {fileID: 21300000, guid: f9bf2612b4b43f545948c91211b8d758, type: 3}
+  imagePause: {fileID: 21300000, guid: 686d0c6cc3cea814b915152c0aa09cf5, type: 3}
+  imageUnShuffle: {fileID: 21300000, guid: 42f74c80e626dee45bccb745ada30824, type: 3}
+  imageShuffle: {fileID: 21300000, guid: d97f798cd6d5bd643ab65d2ff3f2f821, type: 3}
 --- !u!1 &1454272055
 GameObject:
   m_ObjectHideFlags: 0
@@ -10176,8 +10172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2ed6f625bdefd4fa19f9ac70fdece2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIMessage: {fileID: 1524633798}
-  GiftGameObject: {fileID: 543146728}
+  uiMessage: {fileID: 1524633798}
+  giftGameObject: {fileID: 543146728}
 --- !u!114 &1479657584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10190,9 +10186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41bcadbedc56aa40aa26c48a064bd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationController: {fileID: 280535379}
-  UIGift: {fileID: 1479657583}
-  UIError: {fileID: 0}
+  navigationController: {fileID: 280535379}
+  uiGift: {fileID: 1479657583}
+  uiError: {fileID: 1313747868}
 --- !u!1 &1484331071
 GameObject:
   m_ObjectHideFlags: 0
@@ -10452,9 +10448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2f2c7d6ce19854fafe05201a348246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RequestMessageButtonPrefab: {fileID: 4554396944051954290, guid: 17aa01ae3d097d948b40cc466f156e6f, type: 3}
-  Request: {fileID: 1488048857}
-  RequestsContainerTransform: {fileID: 1464051214}
+  requestMessageButtonPrefab: {fileID: 4554396944051954290, guid: 17aa01ae3d097d948b40cc466f156e6f, type: 3}
+  request: {fileID: 1488048857}
+  requestsContainerTransform: {fileID: 1464051214}
 --- !u!114 &1488048857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10467,9 +10463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5f93aa68ea2304082907b96f854f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationController: {fileID: 280535379}
-  UIRequest: {fileID: 1488048856}
-  UIError: {fileID: 0}
+  navigationController: {fileID: 280535379}
+  uiRequest: {fileID: 1488048856}
+  uiError: {fileID: 1313747868}
 --- !u!1 &1490517346
 GameObject:
   m_ObjectHideFlags: 0
@@ -10673,11 +10669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e552b14df9d68f841adda7b8fc98c485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICustomization: {fileID: 98977760}
-  UICompanion: {fileID: 2056996717}
-  UIError: {fileID: 1313747868}
-  Diary: {fileID: 1907334665}
-  NavigationController: {fileID: 280535379}
+  uiCustomization: {fileID: 98977760}
+  uiCompanion: {fileID: 2056996717}
+  uiError: {fileID: 1313747868}
+  diary: {fileID: 1907334665}
+  navigationController: {fileID: 280535379}
 --- !u!95 &1528519407
 Animator:
   serializedVersion: 3
@@ -11053,7 +11049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9515565fd54990e488aced00418854b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: The Way
+  Name: Song 3
   Included: 1
   AudioClip: {fileID: 8300000, guid: 934ee7e1fc944d94b9af86242b9e699a, type: 3}
 --- !u!4 &1587116632
@@ -11349,7 +11345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b9b60d4636b8543b3189a4a9992c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DataReply: {}
 --- !u!114 &1678409302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12183,7 +12178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9515565fd54990e488aced00418854b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Installation
+  Name: Song 2
   Included: 1
   AudioClip: {fileID: 8300000, guid: 4951058399b9abb439248fb8e421e122, type: 3}
 --- !u!4 &1819005691
@@ -12652,9 +12647,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entries: []
-  UIDiary: {fileID: 1199672914}
-  UIError: {fileID: 1313747868}
-  NavigationController: {fileID: 280535379}
+  uiDiary: {fileID: 1199672914}
+  uiError: {fileID: 1313747868}
+  navigationController: {fileID: 280535379}
 --- !u!95 &1907334668
 Animator:
   serializedVersion: 3
@@ -13772,10 +13767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1bdd46a0d31584cbfbf324798b1056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationController: {fileID: 280535379}
-  Request: {fileID: 1488048857}
-  Reply: {fileID: 1243980603}
-  Companion: {fileID: 1528519403}
+  request: {fileID: 1488048857}
+  reply: {fileID: 1243980603}
+  companion: {fileID: 1528519403}
 --- !u!114 &2056996717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13788,7 +13782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac25c0e9330cb8d4f863ce1147104b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpeechBubble: {fileID: 852604120}
+  uiSpeechBubble: {fileID: 852604120}
 --- !u!1 &2073652074
 GameObject:
   m_ObjectHideFlags: 0

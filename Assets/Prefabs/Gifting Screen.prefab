@@ -254,6 +254,8 @@ MonoBehaviour:
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 
 --- !u!114 &2927882998139325905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,9 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43ca24fb226ed7449c30c9bf94a4f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectMotivationalMessageUI: {fileID: 2927882999243346523}
-  _selectIncludeGiftUI: {fileID: 5837108431181741922}
-  _sendMessageRequest: {fileID: 2927882998139325904}
+  selectMotivationalMessageUI: {fileID: 2927882999243346523}
+  selectIncludeGiftUI: {fileID: 5837108431181741922}
+  sendMessageRequest: {fileID: 2927882999107876859}
 --- !u!1 &2927882998490042455
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +889,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 
 --- !u!114 &2927882999107876856
 MonoBehaviour:
   m_ObjectHideFlags: 0

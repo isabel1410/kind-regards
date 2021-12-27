@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class UIError : MonoBehaviour
 {
     [SerializeField]
-    private Text UIException;
+    private Text uiException;
     [SerializeField]
-    private NavigationController NavigationController;
+    private NavigationController navigationController;
 
-    private Animator animator;
     private Canvas canvas;
 
     /// <summary>
@@ -19,7 +18,6 @@ public class UIError : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        animator = GetComponent<Animator>();
         canvas = GetComponent<Canvas>();
     }
 
@@ -29,10 +27,10 @@ public class UIError : MonoBehaviour
     /// <param name="error">Exception message to show.</param>
     public void Show(string error)
     {
-        UIException.text = error;
+        uiException.text = error;
         canvas.sortingOrder = 1;
-        NavigationController.ShowError(GetComponent<Animator>());
-        NavigationController.SetRenderMode(RenderMode.ScreenSpaceOverlay);
+        navigationController.ShowError(GetComponent<Animator>());
+        navigationController.SetRenderMode(RenderMode.ScreenSpaceOverlay);
     }
 
     /// <summary>
@@ -40,7 +38,7 @@ public class UIError : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        NavigationController.ExitError(GetComponent<Animator>());
+        navigationController.ExitError(GetComponent<Animator>());
     }
 
     /// <summary>
@@ -49,6 +47,6 @@ public class UIError : MonoBehaviour
     public void SendToBack()
     {
         canvas.sortingOrder = -1;
-        NavigationController.SetRenderMode(RenderMode.ScreenSpaceCamera);
+        navigationController.SetRenderMode(RenderMode.ScreenSpaceCamera);
     }
 }
