@@ -40,15 +40,15 @@ public class UIMail : MonoBehaviour
         }
     }
 
-    public void ShowThankMessage(DataMessage thankMessage)
+    public void ShowThankMessage(DataMessage mail)
     {
-        uiMessage.text = thankMessage.Request.DataText.Text;
-        uiReply.text = thankMessage.DataText.Text;
-        uiThank.interactable = false;
+        uiMessage.text = mail.Request.DataText.Text;
+        uiReply.text = mail.DataText.Text;
+        DisableThank();
         uiThank.GetComponentInChildren<Text>().text = "The player thanks you!";
-        if (thankMessage.HasGift)
+        if (mail.HasGift)
         {
-            ChangeGiftColor(thankMessage.Gift.DataCustomization.Color);
+            ChangeGiftColor(mail.Gift.DataCustomization.Color);
         }
     }
 
