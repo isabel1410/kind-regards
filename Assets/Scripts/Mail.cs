@@ -12,7 +12,7 @@ public class Mail : MonoBehaviour
     [SerializeField]
     private NavigationController navigationController;
     [SerializeField]
-    private DataMessage dataReply;
+    private DataMessage dataMail;
     [SerializeField]
     private DataUser dataUser;
     [SerializeField]
@@ -26,9 +26,9 @@ public class Mail : MonoBehaviour
     {
         try
         {
-            print(dataReply.DataText.Text + ": Thanked sender");
+            print(dataMail.DataText.Text + ": Thanked sender");
             //api call
-            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(dataReply);
+            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(dataMail);
 
             uiMail.DisableThank();
         }
@@ -67,7 +67,7 @@ public class Mail : MonoBehaviour
     /// <summary>
     /// Transitions from the mailbox screen to the mail screen.
     /// </summary>
-    public void Show(DataMessage reply)
+    public void Show(DataMessage mail)
     {
         dataReply = reply;
         dataReply.MarkSeen();
@@ -87,7 +87,7 @@ public class Mail : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        navigationController.MailToMailbox(dataReply.HasGift);
+        navigationController.MailToMailbox(dataMail.HasGift);
     }
 
     #endregion

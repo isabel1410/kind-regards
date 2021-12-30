@@ -268,6 +268,7 @@ public class NavigationController : MonoBehaviour
         if (showing)
         {
             canvasCompanionActions.SetActive(true);
+            SetRenderMode(RenderMode.ScreenSpaceCamera);
         }
         uiCompanionActionsAnimator.Play("Fade " + (showing ? "In" : "Out") + " Companion Actions");
     }

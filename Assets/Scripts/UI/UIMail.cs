@@ -58,5 +58,6 @@ public class UIMail : MonoBehaviour
     public void DisableThank()
     {
         uiThank.interactable = false;
+        uiThank.GetComponentInChildren<Text>().text = "You thanked the sender";
     }
 }
