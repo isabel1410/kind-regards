@@ -77,7 +77,7 @@ public class Mail : MonoBehaviour
         }
         else
         {
-            uiMail.ShowHeart(reply);
+            uiMail.ShowThankMessage(reply);
         }
         navigationController.MailboxToMail(reply.HasGift);
     }
