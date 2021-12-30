@@ -47,8 +47,8 @@ public class Mail : MonoBehaviour
     {
         try
         {
-            print(dataReply.DataText.Text + ": Opened gift");
-            bool isNew = stickerBook.UnlockSticker(dataReply.Gift.DataSticker);
+            print(dataMail.DataText.Text + ": Opened gift");
+            bool isNew = stickerBook.UnlockSticker(dataMail.Gift.DataSticker);
             Exit();
             if (isNew)
             {
@@ -69,17 +69,17 @@ public class Mail : MonoBehaviour
     /// </summary>
     public void Show(DataMessage mail)
     {
-        dataReply = reply;
-        dataReply.MarkSeen();
-        if (reply.Request.RequesterId == dataUser.Id)
+        dataMail = mail;
+        dataMail.MarkSeen();
+        if (dataMail.Request.RequesterId == dataUser.Id)
         {
-            uiMail.ShowReply(reply);
+            uiMail.ShowReply(dataMail);
         }
         else
         {
-            uiMail.ShowThankMessage(reply);
+            uiMail.ShowThankMessage(dataMail);
         }
-        navigationController.MailboxToMail(reply.HasGift);
+        navigationController.MailboxToMail(dataMail.HasGift);
     }
 
     /// <summary>
