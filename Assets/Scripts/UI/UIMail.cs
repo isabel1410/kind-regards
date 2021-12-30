@@ -28,12 +28,26 @@ public class UIMail : MonoBehaviour
     /// Shows <paramref name="mail"/> and disables the "Thank the sender" button if necessary.
     /// </summary>
     /// <param name="mail"><see cref="DataMessage"/> to show.</param>
-    public void ShowMail(DataMessage mail)
+    public void ShowReply(DataMessage mail)
     {
         uiMessage.text = mail.Request.DataText.Text;
         uiReply.text = mail.DataText.Text;
         uiThank.interactable = !mail.Thanked;
-        if (mail.HasGift) ChangeGiftColor(mail.Gift.DataCustomization.Color);
+        if (mail.HasGift)
+        {
+            ChangeGiftColor(mail.Gift.DataCustomization.Color);
+        }
+    }
+
+    public void ShowHeart(DataMessage mail)
+    {
+        uiMessage.text = mail.Request.DataText.Text;
+        uiReply.text = mail.DataText.Text;
+        DisableThank();
+        if (mail.HasGift)
+        {
+            ChangeGiftColor(mail.Gift.DataCustomization.Color);
+        }
     }
 
     /// <summary>

@@ -14,6 +14,8 @@ public class Mail : MonoBehaviour
     [SerializeField]
     private DataMessage dataReply;
     [SerializeField]
+    private DataUser dataUser;
+    [SerializeField]
     private StickerBook stickerBook;
 
     /// <summary>
@@ -46,7 +48,6 @@ public class Mail : MonoBehaviour
         try
         {
             print(dataReply.DataText.Text + ": Opened gift");
-            if (!dataReply.Seen) dataReply.MarkSeen();
             bool isNew = stickerBook.UnlockSticker(dataReply.Gift.DataSticker);
             Exit();
             if (isNew)
@@ -69,8 +70,15 @@ public class Mail : MonoBehaviour
     public void Show(DataMessage reply)
     {
         dataReply = reply;
-        if(!dataReply.Seen && !reply.HasGift) dataReply.MarkSeen();
-        uiMail.ShowMail(dataReply);
+        dataReply.MarkSeen();
+        if (reply.Request.RequesterId == dataUser.Id)
+        {
+            uiMail.ShowReply(reply);
+        }
+        else
+        {
+            uiMail.ShowHeart(reply);
+        }
         navigationController.MailboxToMail(reply.HasGift);
     }
 
