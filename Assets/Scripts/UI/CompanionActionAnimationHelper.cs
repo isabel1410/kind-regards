@@ -11,12 +11,15 @@ public class CompanionActionAnimationHelper : MonoBehaviour
     private Reply reply;
     [SerializeField]
     private Companion companion;
+    [SerializeField]
+    private NavigationController navigationController;
 
     /// <summary>
     /// Sets the canvas inactive once the companion action dialogue choices are hidden.
     /// </summary>
     public void DeactivateCompanionActions()
     {
+        navigationController.SetRenderMode(RenderMode.ScreenSpaceOverlay);
         gameObject.SetActive(false);
     }
 

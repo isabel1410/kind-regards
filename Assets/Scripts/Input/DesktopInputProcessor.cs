@@ -13,7 +13,7 @@ public class DesktopInputProcessor : InputProcessor
         float scrollY = Input.mouseScrollDelta.y;
         if (scrollY!= 0)
         {
-            OnScroll.Invoke(scrollY > 0 ? ScrollDirection.Up : ScrollDirection.Down);
+            OnScroll?.Invoke(scrollY > 0 ? ScrollDirection.Up : ScrollDirection.Down);
         }
     }
 }

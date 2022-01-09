@@ -12,7 +12,9 @@ public class Mail : MonoBehaviour
     [SerializeField]
     private NavigationController navigationController;
     [SerializeField]
-    private DataMessage dataReply;
+    private DataMessage dataMail;
+    [SerializeField]
+    private DataUser dataUser;
     [SerializeField]
     private StickerBook stickerBook;
 
@@ -24,9 +26,9 @@ public class Mail : MonoBehaviour
     {
         try
         {
-            print(dataReply.DataText.Text + ": Thanked sender");
+            print(dataMail.DataText.Text + ": Thanked sender");
             //api call
-            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(dataReply);
+            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(dataMail);
 
             uiMail.DisableThank();
         }
@@ -45,9 +47,8 @@ public class Mail : MonoBehaviour
     {
         try
         {
-            print(dataReply.DataText.Text + ": Opened gift");
-            if (!dataReply.Seen) dataReply.MarkSeen();
-            bool isNew = stickerBook.UnlockSticker(dataReply.Gift.DataSticker);
+            print(dataMail.DataText.Text + ": Opened gift");
+            bool isNew = stickerBook.UnlockSticker(dataMail.Gift.DataSticker);
             Exit();
             if (isNew)
             {
@@ -66,12 +67,19 @@ public class Mail : MonoBehaviour
     /// <summary>
     /// Transitions from the mailbox screen to the mail screen.
     /// </summary>
-    public void Show(DataMessage reply)
+    public void Show(DataMessage mail)
     {
-        dataReply = reply;
-        if(!dataReply.Seen && !reply.HasGift) dataReply.MarkSeen();
-        uiMail.ShowMail(dataReply);
-        navigationController.MailboxToMail(reply.HasGift);
+        dataMail = mail;
+        dataMail.MarkSeen();
+        if (dataMail.Request.RequesterId == dataUser.Id)
+        {
+            uiMail.ShowReply(dataMail);
+        }
+        else
+        {
+            uiMail.ShowThankMessage(dataMail);
+        }
+        navigationController.MailboxToMail(dataMail.HasGift);
     }
 
     /// <summary>
@@ -79,7 +87,7 @@ public class Mail : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        navigationController.MailToMailbox(dataReply.HasGift);
+        navigationController.MailToMailbox(dataMail.HasGift);
     }
 
     #endregion
