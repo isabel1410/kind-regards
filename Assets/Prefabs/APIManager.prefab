@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/categories
+  Uri: http://84.26.114.127:8000/categories
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/categories/:id/texts
+  Uri: http://84.26.114.127:8000/categories/:id/texts
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -121,12 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 1
-  Uri: http://84.26.114.127:3001/request
+  Uri: http://84.26.114.127:8000/request
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
-  IncludeDeviceUniqueIDAsAuthToken: 0
-  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+  IncludeDeviceUniqueIDAsAuthToken: 1
+  AuthToken: 
 --- !u!114 &1169853634990929887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,12 +140,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/users/authenticate
+  Uri: http://84.26.114.127:8000/users/authenticate
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
-  IncludeDeviceUniqueIDAsAuthToken: 0
-  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+  IncludeDeviceUniqueIDAsAuthToken: 1
+  AuthToken: 
 --- !u!114 &-2530967928278862884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 1
-  Uri: http://84.26.114.127:3001/users/register
+  Uri: http://84.26.114.127:8000/users/register
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -178,12 +178,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/users/messages/:id/thank
+  Uri: http://84.26.114.127:8000/users/messages/:id/thank
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
-  IncludeDeviceUniqueIDAsAuthToken: 0
-  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+  IncludeDeviceUniqueIDAsAuthToken: 1
+  AuthToken: 
 --- !u!114 &737793754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/request
+  Uri: http://84.26.114.127:8000/request
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -216,12 +216,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/users/messages
+  Uri: http://84.26.114.127:8000/users/messages
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
-  IncludeDeviceUniqueIDAsAuthToken: 0
-  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+  IncludeDeviceUniqueIDAsAuthToken: 1
+  AuthToken: 
 --- !u!114 &8394511132527421016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,12 +235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/users/messages/:id/seen
+  Uri: http://84.26.114.127:8000/users/messages/:id/seen
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
-  IncludeDeviceUniqueIDAsAuthToken: 0
-  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+  IncludeDeviceUniqueIDAsAuthToken: 1
+  AuthToken: 
 --- !u!114 &991784198849333310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,12 +254,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 1
-  Uri: http://84.26.114.127:3001/request/:id
+  Uri: http://84.26.114.127:8000/request/:id
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
-  IncludeDeviceUniqueIDAsAuthToken: 0
-  AuthToken: 15ca4991ae9e5cc2f2b2bfccc396e4ba
+  IncludeDeviceUniqueIDAsAuthToken: 1
+  AuthToken: 
 --- !u!114 &23334163023832896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://84.26.114.127:3001/stickers
+  Uri: http://84.26.114.127:8000/stickers
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
