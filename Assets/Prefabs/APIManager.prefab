@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/categories
+  Uri: http://84.26.114.127:3001/categories
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/categories/:id/texts
+  Uri: http://84.26.114.127:3001/categories/:id/texts
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 1
-  Uri: http://localhost:3000/request
+  Uri: http://84.26.114.127:3001/request
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/users/authenticate
+  Uri: http://84.26.114.127:3001/users/authenticate
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 1
-  Uri: http://localhost:3000/users/register
+  Uri: http://84.26.114.127:3001/users/register
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/users/messages/:id/thank
+  Uri: http://84.26.114.127:3001/users/messages/:id/thank
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/request
+  Uri: http://84.26.114.127:3001/request
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/users/messages
+  Uri: http://84.26.114.127:3001/users/messages
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/users/messages/:id/seen
+  Uri: http://84.26.114.127:3001/users/messages/:id/seen
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 1
-  Uri: http://localhost:3000/request/:id
+  Uri: http://84.26.114.127:3001/request/:id
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Method: 0
-  Uri: http://localhost:3000/stickers
+  Uri: http://84.26.114.127:3001/stickers
   OnRequestFinished:
     m_PersistentCalls:
       m_Calls: []
