@@ -28,12 +28,28 @@ public class UIMail : MonoBehaviour
     /// Shows <paramref name="mail"/> and disables the "Thank the sender" button if necessary.
     /// </summary>
     /// <param name="mail"><see cref="DataMessage"/> to show.</param>
-    public void ShowMail(DataMessage mail)
+    public void ShowReply(DataMessage mail)
     {
         uiMessage.text = mail.Request.DataText.Text;
         uiReply.text = mail.DataText.Text;
         uiThank.interactable = !mail.Thanked;
-        if (mail.HasGift) ChangeGiftColor(mail.Gift.DataCustomization.Color);
+        uiThank.GetComponentInChildren<Text>().text = mail.Thanked ? "You thanked the sender" : "Thank the sender";
+        if (mail.HasGift)
+        {
+            ChangeGiftColor(mail.Gift.DataCustomization.Color);
+        }
+    }
+
+    public void ShowThankMessage(DataMessage mail)
+    {
+        uiMessage.text = mail.Request.DataText.Text;
+        uiReply.text = mail.DataText.Text;
+        DisableThank();
+        uiThank.GetComponentInChildren<Text>().text = "The player thanks you!";
+        if (mail.HasGift)
+        {
+            ChangeGiftColor(mail.Gift.DataCustomization.Color);
+        }
     }
 
     /// <summary>
@@ -42,5 +58,6 @@ public class UIMail : MonoBehaviour
     public void DisableThank()
     {
         uiThank.interactable = false;
+        uiThank.GetComponentInChildren<Text>().text = "You thanked the sender";
     }
 }

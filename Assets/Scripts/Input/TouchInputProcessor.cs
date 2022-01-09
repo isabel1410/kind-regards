@@ -39,7 +39,7 @@ public class TouchInputProcessor : InputProcessor
                 case TouchPhase.Ended:
                     lastPosition = touch.position;
                     GetDragDistance4(firstPosition, lastPosition, out ScrollDirection dragDirection);
-                    OnScroll.Invoke(dragDirection);
+                    OnScroll?.Invoke(dragDirection);
                     break;
             }
         }
