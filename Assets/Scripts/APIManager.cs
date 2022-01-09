@@ -45,9 +45,6 @@ public class APIManager : MonoBehaviour
         getGiftRequestsRequest.OnRequestFinished.AddListener(OnRequestsReceived);
         getGiftRequestsRequest.Execute();
 
-        getGiftMessagesRequest.OnRequestFinished.AddListener(OnMessagesReceived);
-        getGiftMessagesRequest.Execute();
-
         getStickersRequest.OnRequestFinished.AddListener(OnStickersReceived);
         getStickersRequest.Execute();
     }
@@ -104,11 +101,15 @@ public class APIManager : MonoBehaviour
                 WWWForm data = new WWWForm();
                 data.AddField("device_id", SystemInfo.deviceUniqueIdentifier);
                 postRegisterUserRequest.Execute(data: data);
+                return;
             }
             else throw new Exception("[API Exception] User could not be retrieved.");
         }
 
         DataUser = JsonConvert.DeserializeObject<DataUser>(request.downloadHandler.text);
+
+        getGiftMessagesRequest.OnRequestFinished.AddListener(OnMessagesReceived);
+        getGiftMessagesRequest.Execute();
     }
 
     private void OnCategoriesReceived(UnityWebRequest request)
