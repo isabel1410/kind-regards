@@ -1,0 +1,462 @@
+fileFormatVersion: 2
+guid: cdab4b96be82db84ea47dfcd2d56bde9
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -1779458952936665273
+    second: Empty|Empty.001Action
+  - first:
+      74: 8491758357018045425
+    second: Empty|Empty.001Action.001
+  - first:
+      74: 1201201484885243428
+    second: Empty|Empty.001Action.002
+  - first:
+      74: -2662208865924906605
+    second: Empty|Empty.002Action
+  - first:
+      74: -8029009300209659036
+    second: Empty|Empty.002Action.001
+  - first:
+      74: 6192736214123296005
+    second: Empty|Empty.002Action.002
+  - first:
+      74: -3375533802322541551
+    second: Empty|Empty.002Action.003
+  - first:
+      74: -6291237253219431393
+    second: Empty|Empty.003Action
+  - first:
+      74: 5677774711903907629
+    second: Empty|Empty.003Action.001
+  - first:
+      74: -6509888178935146727
+    second: Empty|Empty.003Action.002
+  - first:
+      74: -6494867991506343104
+    second: Empty|Empty.003Action.003
+  - first:
+      74: 523742727469920145
+    second: Empty|EmptyAction.001
+  - first:
+      74: 6564253511010156824
+    second: Empty|EmptyAction.002
+  - first:
+      74: 407023425329862312
+    second: Empty|EmptyAction.003
+  - first:
+      74: -2449959373376998037
+    second: Empty|Letter Base.002Action
+  - first:
+      74: 3462857285011375554
+    second: Empty|Letter Base.002Action.001
+  - first:
+      74: 8657768428467113865
+    second: Empty|Letter Base.002Action.002
+  - first:
+      74: 8593123543656642717
+    second: Empty|LetterFlap.002Action
+  - first:
+      74: 6660900215946971766
+    second: Empty|LetterFlap.002Action.001
+  - first:
+      74: -3907214648660655390
+    second: Empty|LetterFlap.002Action.002
+  - first:
+      74: -1081425404658010964
+    second: Flap Rotation|Empty.001Action
+  - first:
+      74: 967011186352746360
+    second: Flap Rotation|Empty.001Action.001
+  - first:
+      74: 826230170842833676
+    second: Flap Rotation|Empty.001Action.002
+  - first:
+      74: -7481324589458554571
+    second: Flap Rotation|Empty.002Action
+  - first:
+      74: 7688528621208648797
+    second: Flap Rotation|Empty.002Action.001
+  - first:
+      74: 6450576546565018064
+    second: Flap Rotation|Empty.002Action.002
+  - first:
+      74: 636101829780176157
+    second: Flap Rotation|Empty.002Action.003
+  - first:
+      74: -3825113551672992359
+    second: Flap Rotation|Empty.003Action
+  - first:
+      74: -8866194285815256592
+    second: Flap Rotation|Empty.003Action.001
+  - first:
+      74: -5371929247820827857
+    second: Flap Rotation|Empty.003Action.002
+  - first:
+      74: -5460780347868480163
+    second: Flap Rotation|Empty.003Action.003
+  - first:
+      74: 1730563114455596880
+    second: Flap Rotation|EmptyAction.001
+  - first:
+      74: 4234815609354499743
+    second: Flap Rotation|EmptyAction.002
+  - first:
+      74: -255149581569370037
+    second: Flap Rotation|EmptyAction.003
+  - first:
+      74: 1190713077908319869
+    second: Flap Rotation|Letter Base.002Action
+  - first:
+      74: 1856597664507931770
+    second: Flap Rotation|Letter Base.002Action.001
+  - first:
+      74: -4534831415580919129
+    second: Flap Rotation|Letter Base.002Action.002
+  - first:
+      74: -7785168428265932548
+    second: Flap Rotation|LetterFlap.002Action
+  - first:
+      74: 3304845707267301146
+    second: Flap Rotation|LetterFlap.002Action.001
+  - first:
+      74: 7134919322761534236
+    second: Flap Rotation|LetterFlap.002Action.002
+  - first:
+      74: 6086683794662357848
+    second: Letter Base.002|Empty.001Action
+  - first:
+      74: -8177605565326675875
+    second: Letter Base.002|Empty.001Action.001
+  - first:
+      74: -2061400500498475307
+    second: Letter Base.002|Empty.001Action.002
+  - first:
+      74: -3728107927668516814
+    second: Letter Base.002|Empty.002Action
+  - first:
+      74: 226324658607826830
+    second: Letter Base.002|Empty.002Action.001
+  - first:
+      74: -6264487179957968444
+    second: Letter Base.002|Empty.002Action.002
+  - first:
+      74: -8263203701555852584
+    second: Letter Base.002|Empty.002Action.003
+  - first:
+      74: -5647969110508223592
+    second: Letter Base.002|Empty.003Action
+  - first:
+      74: 7415637309610840703
+    second: Letter Base.002|Empty.003Action.001
+  - first:
+      74: -5558408950273106173
+    second: Letter Base.002|Empty.003Action.002
+  - first:
+      74: -6037674639854765888
+    second: Letter Base.002|Empty.003Action.003
+  - first:
+      74: 3031400431352581000
+    second: Letter Base.002|EmptyAction.001
+  - first:
+      74: 6829366311419641548
+    second: Letter Base.002|EmptyAction.002
+  - first:
+      74: -3448736411252168022
+    second: Letter Base.002|EmptyAction.003
+  - first:
+      74: -3126472015309501471
+    second: Letter Base.002|Letter Base.002Action
+  - first:
+      74: 2491861985442174344
+    second: Letter Base.002|Letter Base.002Action.001
+  - first:
+      74: -5657929688485830631
+    second: Letter Base.002|Letter Base.002Action.002
+  - first:
+      74: 5885207970276710948
+    second: Letter Base.002|LetterFlap.002Action
+  - first:
+      74: -5167171756683228106
+    second: Letter Base.002|LetterFlap.002Action.001
+  - first:
+      74: -2526803524858692104
+    second: Letter Base.002|LetterFlap.002Action.002
+  - first:
+      74: 112444381836304427
+    second: Flap Rotation.003|Empty.001Action
+  - first:
+      74: 7142541225212519601
+    second: Flap Rotation.003|Empty.001Action.001
+  - first:
+      74: 4601977143113120055
+    second: Flap Rotation.003|Empty.001Action.002
+  - first:
+      74: 7726296140700347267
+    second: Flap Rotation.003|Empty.002Action
+  - first:
+      74: 1674070099065610722
+    second: Flap Rotation.003|Empty.002Action.001
+  - first:
+      74: 9017218536030340257
+    second: Flap Rotation.003|Empty.002Action.002
+  - first:
+      74: -8051165819928535488
+    second: Flap Rotation.003|Empty.002Action.003
+  - first:
+      74: -5218133848991805029
+    second: Flap Rotation.003|Empty.003Action
+  - first:
+      74: 7379139105162615500
+    second: Flap Rotation.003|Empty.003Action.001
+  - first:
+      74: 7758634917698028087
+    second: Flap Rotation.003|Empty.003Action.002
+  - first:
+      74: 6983016089142984918
+    second: Flap Rotation.003|Empty.003Action.003
+  - first:
+      74: 8463762601838257335
+    second: Flap Rotation.003|EmptyAction.001
+  - first:
+      74: 4852859243936824217
+    second: Flap Rotation.003|EmptyAction.002
+  - first:
+      74: -3334115285030184647
+    second: Flap Rotation.003|EmptyAction.003
+  - first:
+      74: -4772131560572655728
+    second: Flap Rotation.003|Letter Base.002Action
+  - first:
+      74: 8074805242047678696
+    second: Flap Rotation.003|Letter Base.002Action.001
+  - first:
+      74: -6823061618687039288
+    second: Flap Rotation.003|Letter Base.002Action.002
+  - first:
+      74: -8562336111795200944
+    second: Flap Rotation.003|LetterFlap.002Action
+  - first:
+      74: 3191756936048756559
+    second: Flap Rotation.003|LetterFlap.002Action.001
+  - first:
+      74: -5179801113492083922
+    second: Flap Rotation.003|LetterFlap.002Action.002
+  - first:
+      74: -6592438479637812246
+    second: Empty.002|Empty.001Action
+  - first:
+      74: 2494925223358172095
+    second: Empty.002|Empty.001Action.001
+  - first:
+      74: -2511732279425267542
+    second: Empty.002|Empty.001Action.002
+  - first:
+      74: -7042117135717691717
+    second: Empty.002|Empty.002Action
+  - first:
+      74: -5162952700380595419
+    second: Empty.002|Empty.002Action.001
+  - first:
+      74: 3746722547473844755
+    second: Empty.002|Empty.002Action.002
+  - first:
+      74: -8233231502563226178
+    second: Empty.002|Empty.002Action.003
+  - first:
+      74: 1052055304093582020
+    second: Empty.002|Empty.003Action
+  - first:
+      74: -4626189539846271394
+    second: Empty.002|Empty.003Action.001
+  - first:
+      74: 677201671438715277
+    second: Empty.002|Empty.003Action.002
+  - first:
+      74: -8697353485625384699
+    second: Empty.002|Empty.003Action.003
+  - first:
+      74: -1289338485806067594
+    second: Empty.002|EmptyAction.001
+  - first:
+      74: 1008848099342798872
+    second: Empty.002|EmptyAction.002
+  - first:
+      74: 6789697113050832081
+    second: Empty.002|EmptyAction.003
+  - first:
+      74: 5035697134734895646
+    second: Empty.002|Letter Base.002Action
+  - first:
+      74: -6016490670589858614
+    second: Empty.002|Letter Base.002Action.001
+  - first:
+      74: -1068234702276860902
+    second: Empty.002|Letter Base.002Action.002
+  - first:
+      74: -285419785662422500
+    second: Empty.002|LetterFlap.002Action
+  - first:
+      74: -1932138844693725074
+    second: Empty.002|LetterFlap.002Action.001
+  - first:
+      74: -3971925641841092470
+    second: Empty.002|LetterFlap.002Action.002
+  - first:
+      74: 8929739156065290203
+    second: LetterFlap.002|Empty.001Action
+  - first:
+      74: 979177745299166883
+    second: LetterFlap.002|Empty.001Action.001
+  - first:
+      74: 9219709296865199904
+    second: LetterFlap.002|Empty.001Action.002
+  - first:
+      74: 3786449047784739207
+    second: LetterFlap.002|Empty.002Action
+  - first:
+      74: -2469577930965773666
+    second: LetterFlap.002|Empty.002Action.001
+  - first:
+      74: 7117624079860633013
+    second: LetterFlap.002|Empty.002Action.002
+  - first:
+      74: 3881790375668005297
+    second: LetterFlap.002|Empty.002Action.003
+  - first:
+      74: -4457338602843308542
+    second: LetterFlap.002|Empty.003Action
+  - first:
+      74: -2219186040311551443
+    second: LetterFlap.002|Empty.003Action.001
+  - first:
+      74: 8552323202839831947
+    second: LetterFlap.002|Empty.003Action.002
+  - first:
+      74: -6373576094423701619
+    second: LetterFlap.002|Empty.003Action.003
+  - first:
+      74: 2600134090623135465
+    second: LetterFlap.002|EmptyAction.001
+  - first:
+      74: 4317895352807072075
+    second: LetterFlap.002|EmptyAction.002
+  - first:
+      74: -2605703296938630262
+    second: LetterFlap.002|EmptyAction.003
+  - first:
+      74: 4590264528581874227
+    second: LetterFlap.002|Letter Base.002Action
+  - first:
+      74: -8737272281673633972
+    second: LetterFlap.002|Letter Base.002Action.001
+  - first:
+      74: 2935606019613060041
+    second: LetterFlap.002|Letter Base.002Action.002
+  - first:
+      74: 8541254757588826889
+    second: LetterFlap.002|LetterFlap.002Action
+  - first:
+      74: 6645475236488629142
+    second: LetterFlap.002|LetterFlap.002Action.001
+  - first:
+      74: 3783964785861536725
+    second: LetterFlap.002|LetterFlap.002Action.002
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
