@@ -20,6 +20,7 @@ public class Companion : MonoBehaviour
     private NavigationController navigationController;
     [SerializeField]
     private DataCustomization dataCustomization = new DataCustomization() { Color = Color.red };
+    public bool HasReturned;
 
     private string CUSTOMIZATIONPATH => $"{Application.persistentDataPath}{Path.DirectorySeparatorChar}Customization.json";
 
@@ -178,6 +179,22 @@ public class Companion : MonoBehaviour
         {
             navigationController.CustomizationToHome();
         }
+    }
+
+    public void FlyAway()
+    {
+        HasReturned = false;
+        GetComponent<Animator>().Play("FlyingTo");
+    }
+
+    public void FlyBack()
+    {
+        GetComponent<Animator>().Play("FlyingBack");
+    }
+
+    public void OnArrivedBack()
+    {
+        HasReturned = true;
     }
 
     #endregion
