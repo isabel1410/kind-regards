@@ -16,7 +16,7 @@ public class UIError : MonoBehaviour
     /// <summary>
     /// Called before the first frame update.
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         canvas = GetComponent<Canvas>();
     }
