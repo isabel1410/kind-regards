@@ -9,7 +9,7 @@ public class UIGift : MonoBehaviour
     [SerializeField]
     private Text uiMessage;
     [SerializeField]
-    private GameObject giftGameObject;
+    private GameObject[] giftGameObjects;
 
     public Color GiftStartColor { get; private set; }
 
@@ -18,7 +18,7 @@ public class UIGift : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        GiftStartColor = giftGameObject.GetComponent<Renderer>().material.color;
+        GiftStartColor = giftGameObjects[0].GetComponent<Renderer>().material.color;
     }
 
     /// <summary>
@@ -36,7 +36,10 @@ public class UIGift : MonoBehaviour
     /// <param name="color">The new color.</param>
     public void ChangeColor(Color color)
     {
-        giftGameObject.GetComponent<Renderer>().material.color = color;
+        foreach (GameObject giftGameObject in giftGameObjects)
+        {
+            giftGameObject.GetComponent<Renderer>().material.color = color;
+        }
     }
 
     /// <summary>
@@ -44,6 +47,9 @@ public class UIGift : MonoBehaviour
     /// </summary>
     public void ResetColor()
     {
-        giftGameObject.GetComponent<Renderer>().material.color = GiftStartColor;
+        foreach (GameObject giftGameObject in giftGameObjects)
+        {
+            giftGameObject.GetComponent<Renderer>().material.color = GiftStartColor;
+        }
     }
 }

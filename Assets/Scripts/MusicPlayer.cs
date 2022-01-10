@@ -9,7 +9,6 @@ public class MusicPlayer : MonoBehaviour
 {
     [SerializeField]
     private UIMusicPlayer uiMusicPlayer;
-    [SerializeField]
     private DataSong[] songs;
     [SerializeField]
     private int currentSongIndex;
@@ -59,8 +58,10 @@ public class MusicPlayer : MonoBehaviour
     {
         songs = GetComponentsInChildren<DataSong>();
         audioSource = GetComponent<AudioSource>();
-        settings.Load();
-        StartCoroutine(Play());
+        if (settings.Load())
+        {
+            StartCoroutine(Play());
+        }
     }
 
     /// <summary>

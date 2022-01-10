@@ -70,7 +70,7 @@ public class NavigationController : MonoBehaviour
         string animationStateName = "Navigation - Home to Sticker";
         uiAnimator.Play(animationStateName);
         companionAnimator.Play(animationStateName);
-        stickerBookAnimator.Play("Sticker Book - Show Stickers");
+        stickerBookAnimator.Play(animationStateName);
     }
 
     public void StickerToHome()
@@ -78,7 +78,7 @@ public class NavigationController : MonoBehaviour
         string animationStateName = "Navigation - Sticker to Home";
         uiAnimator.Play(animationStateName);
         companionAnimator.Play(animationStateName);
-        stickerBookAnimator.Play("Sticker Book - Hide Stickers");
+        stickerBookAnimator.Play(animationStateName);
     }
 
     /// <summary>

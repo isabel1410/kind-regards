@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -11,6 +12,8 @@ public class Gift : MonoBehaviour
     private UIGift uiGift;
     [SerializeField]
     private UIError uiError;
+    [SerializeField]
+    private Companion Companion;
     private DataRequest dataRequest;
     private DataText dataText;
     private DataCustomization dataGiftCustomization = new DataCustomization();
@@ -57,13 +60,21 @@ public class Gift : MonoBehaviour
         try
         {
             APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization);
-            navigationController.GiftToReply();
+            //Animation, then navigate back
+            StartCoroutine(SendGiftAnimation());
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
             uiError.Show("Make sure you have an internet connection");
         }
+    }
+
+    private IEnumerator SendGiftAnimation()
+    {
+        Companion.FlyAway();
+        yield return new WaitUntil(() => Companion.HasReturned);
+        navigationController.GiftToReply();
     }
 
     #region Visuals
