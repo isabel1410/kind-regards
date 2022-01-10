@@ -43,10 +43,20 @@ public class APIManager : MonoBehaviour
         getCategoriesRequest.Execute();
 
         getGiftRequestsRequest.OnRequestFinished.AddListener(OnRequestsReceived);
-        getGiftRequestsRequest.Execute();
+        RefreshRequests();
 
         getStickersRequest.OnRequestFinished.AddListener(OnStickersReceived);
         getStickersRequest.Execute();
+    }
+
+    public void RefreshRequests()
+    {
+        getGiftRequestsRequest.Execute();
+    }
+
+    public void RefreshMessages()
+    {
+        getGiftMessagesRequest.Execute();
     }
 
     private void OnStickersReceived(UnityWebRequest request)
@@ -109,7 +119,7 @@ public class APIManager : MonoBehaviour
         DataUser = JsonConvert.DeserializeObject<DataUser>(request.downloadHandler.text);
 
         getGiftMessagesRequest.OnRequestFinished.AddListener(OnMessagesReceived);
-        getGiftMessagesRequest.Execute();
+        RefreshMessages();
     }
 
     private void OnCategoriesReceived(UnityWebRequest request)
@@ -117,6 +127,7 @@ public class APIManager : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Text categories could not be retrieved.");
         DataTextCategories = JsonConvert.DeserializeObject<List<DataTextCategory>>(request.downloadHandler.text);
 
+        DataTexts.Clear();
         getTextsRequest.OnRequestFinished.AddListener(OnTextsReceived);
         foreach(DataTextCategory category in DataTextCategories)
         {

@@ -29,6 +29,7 @@ public class Reply : MonoBehaviour
         {
             if (APIManager.Instance)
             {
+                APIManager.Instance.RefreshRequests();
                 if (APIManager.Instance.DataRequests.Count > 0) message = APIManager.Instance.DataRequests.Random();
                 else return false;
                 replies = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "RESPONSE").ToArray();
