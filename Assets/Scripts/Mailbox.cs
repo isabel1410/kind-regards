@@ -26,6 +26,7 @@ public class Mailbox : MonoBehaviour
     {
         try
         {
+            if (APIManager.Instance) APIManager.Instance.RefreshMessages();
             List<DataMessage> mail = new List<DataMessage>();
             if (APIManager.Instance) mail = APIManager.Instance.DataMessages;
             mail.Sort();
