@@ -26,7 +26,7 @@ public class Reply : MonoBehaviour
     {
         if (APIManager.Instance)
         {
-            if (APIManager.Instance.DataRequests.Count > 0) message = APIManager.Instance.DataRequests.Random();
+            if (APIManager.Instance.DataRequests.Count > 0) message = APIManager.Instance.DataRequests.FindAll(r => r.RequesterId != APIManager.Instance.DataUser.Id).Random();
             else return false;
             replies = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "RESPONSE").ToArray();
             return true;

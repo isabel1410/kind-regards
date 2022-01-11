@@ -35,8 +35,8 @@ public class UIMail : MonoBehaviour
     {
         uiMessage.text = mail.Request.DataText.Text;
         uiReply.text = mail.DataText.Text;
-        uiThank.interactable = !mail.Thanked;
-        uiThank.GetComponentInChildren<Text>().text = mail.Thanked ? "You thanked the sender" : "Thank the sender";
+        uiThank.interactable = !mail.HasThanked;
+        uiThank.GetComponentInChildren<Text>().text = mail.HasThanked ? "You thanked the sender" : "Thank the sender";
         if (mail.HasGift)
         {
             ChangeGiftColor(mail.Gift.DataCustomization.Color);

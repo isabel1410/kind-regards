@@ -28,7 +28,8 @@ public class Mailbox : MonoBehaviour
         List<DataMessage> mail = new List<DataMessage>();
         if (APIManager.Instance)
         {
-            mail = APIManager.Instance.DataMessages;
+            mail = APIManager.Instance.DataReceivedMessages;
+            mail.AddRange(APIManager.Instance.DataSentMessages);
             mail.Sort();
         }
         dataReplies = mail;
@@ -81,21 +82,27 @@ public class Mailbox : MonoBehaviour
 
     private IEnumerator ShowCoroutine()
     {
-        bool hasRefreshed = false;
+        bool hasRefreshedMails = false;
+        bool hasRefreshedRequests = false;
         bool hasError = false;
         if (!APIManager.Instance) yield break;
 
         APIManager.Instance.OnMessagesRefreshed.AddListener(() =>
         {
-            hasRefreshed = true;
+            hasRefreshedMails = true;
+        });
+        APIManager.Instance.OnRequestsRefreshed.AddListener(() =>
+        {
+            hasRefreshedRequests = true;
         });
         APIManager.Instance.OnAPIError.AddListener(ex =>
         {
             hasError = true;
         });
         APIManager.Instance.RefreshMessages();
+        APIManager.Instance.RefreshRequests();
 
-        yield return new WaitUntil(() => hasRefreshed || hasError);
+        yield return new WaitUntil(() => (hasRefreshedMails && hasRefreshedRequests) || hasError);
         if (hasError) yield break;
 
         if (LoadReplies())
