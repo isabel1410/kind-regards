@@ -30,7 +30,6 @@ public class UICompanion : MonoBehaviour
     {
         if (dialogueRunner != null)
         {
-            print("Stopped");
             StopCoroutine(dialogueRunner);
         }
         dialogueRunner = RunDialogue(message);

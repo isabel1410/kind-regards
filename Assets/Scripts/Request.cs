@@ -54,7 +54,11 @@ public class Request : MonoBehaviour
     {
         try
         {
-            if (APIManager.Instance) APIManager.Instance.SendGiftRequest(requestText);
+            if (APIManager.Instance)
+            {
+                APIManager.Instance.SendGiftRequest(requestText);
+                navigationController.RequestsToHome();
+            }
         }
         catch (Exception exception)
         {

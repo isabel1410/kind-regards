@@ -85,7 +85,7 @@ public class APIManager : MonoBehaviour
 
     private void OnMessageMarkedSeen(UnityWebRequest request)
     {
-        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Requests could not be retrieved.");
+        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Message could not be marked as read.");
         var data = JsonConvert.DeserializeObject<DataMessage>(request.downloadHandler.text);
 
         DataMessages[DataMessages.FindIndex(d => d.Id == data.Id)] = data;
