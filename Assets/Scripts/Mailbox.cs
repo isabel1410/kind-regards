@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,24 +28,12 @@ public class Mailbox : MonoBehaviour
         try
         {
             List<DataMessage> mail = new List<DataMessage>();
-            dataReplies = mail;
             if (APIManager.Instance)
             {
                 mail = APIManager.Instance.DataMessages;
                 mail.Sort();
-                dataReplies = mail;
-
-                APIManager.Instance.OnMessagesRefreshed.AddListener(() =>
-                {
-                    mail = APIManager.Instance.DataMessages;
-                    mail.Sort();
-                    dataReplies = mail;
-
-                    // Update the list on the UI with the refreshed data.
-                    uiMailbox.ShowReplies(dataReplies.ToArray());
-                });
-                APIManager.Instance.RefreshMessages();
             }
+            dataReplies = mail;
             return true;
         }
         catch (System.Exception exception)
@@ -96,6 +85,23 @@ public class Mailbox : MonoBehaviour
     /// </summary>
     public void Show()
     {
+        StartCoroutine(ShowCoroutine());
+    }
+
+    private IEnumerator ShowCoroutine()
+    {
+        bool hasRefreshed = false;
+        bool hasError = false;
+        if (!APIManager.Instance) yield break;
+
+        APIManager.Instance.OnMessagesRefreshed.AddListener(() =>
+        {
+            hasRefreshed = true;
+        });
+        APIManager.Instance.RefreshMessages();
+
+        yield return new WaitUntil(() => hasRefreshed || hasError);
+
         if (LoadReplies())
         {
             uiMailbox.ShowReplies(dataReplies.ToArray());
