@@ -61,20 +61,14 @@ public class Gift : MonoBehaviour
         {
             APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization);
             //Animation, then navigate back
-            StartCoroutine(SendGiftAnimation());
+            navigationController.GiftToHome();
+            Companion.FlyAway();
         }
         catch (System.Exception exception)
         {
             Debug.LogException(exception);
             uiError.Show("Make sure you have an internet connection");
         }
-    }
-
-    private IEnumerator SendGiftAnimation()
-    {
-        Companion.FlyAway();
-        yield return new WaitUntil(() => Companion.HasReturned);
-        navigationController.GiftToReply();
     }
 
     #region Visuals

@@ -15,6 +15,8 @@ public class Companion : MonoBehaviour
     [SerializeField]
     private UIError uiError;
     [SerializeField]
+    private GameObject waitingCanvas;
+    [SerializeField]
     private Diary diary;
     [SerializeField]
     private NavigationController navigationController;
@@ -184,6 +186,7 @@ public class Companion : MonoBehaviour
     public void FlyAway()
     {
         HasReturned = false;
+        ToggleControls();
         GetComponent<Animator>().Play("FlyingTo");
     }
 
@@ -192,9 +195,15 @@ public class Companion : MonoBehaviour
         GetComponent<Animator>().Play("FlyingBack");
     }
 
+    public void ToggleControls()
+    {
+        waitingCanvas.SetActive(!waitingCanvas.activeSelf);
+    }
+
     public void OnArrivedBack()
     {
         HasReturned = true;
+        ToggleControls();
     }
 
     #endregion

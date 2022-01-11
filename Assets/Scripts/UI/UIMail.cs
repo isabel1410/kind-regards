@@ -13,7 +13,7 @@ public class UIMail : MonoBehaviour
     [SerializeField]
     private Button uiThank;
     [SerializeField]
-    private GameObject giftGameObject;
+    private GameObject[] giftGameObjects;
 
     /// <summary>
     /// Change the received gift's color
@@ -21,7 +21,10 @@ public class UIMail : MonoBehaviour
     /// <param name="color">The color you want the gift to be</param>
     public void ChangeGiftColor(Color color)
     {
-        giftGameObject.GetComponent<Renderer>().material.color = color;
+        foreach (GameObject giftGameObject in giftGameObjects)
+        {
+            giftGameObject.GetComponent<Renderer>().material.color = color;
+        }
     }
 
     /// <summary>

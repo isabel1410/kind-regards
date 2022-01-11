@@ -68,6 +68,7 @@ public class NavigationController : MonoBehaviour
     public void HomeToSticker()
     {
         string animationStateName = "Navigation - Home to Sticker";
+        SetRenderMode(RenderMode.ScreenSpaceCamera);
         uiAnimator.Play(animationStateName);
         companionAnimator.Play(animationStateName);
         stickerBookAnimator.Play(animationStateName);
@@ -230,6 +231,16 @@ public class NavigationController : MonoBehaviour
         uiAnimator.Play(animationStateName);
         giftAnimator.Play(animationStateName);
         stickerBookAnimator.Play(animationStateName);
+    }
+
+    public void GiftToHome()
+    {
+        string animationStateName = "Navigation - Gift to Home";
+        string animationStateName2 = "Navigation - Gift to Reply";
+
+        uiAnimator.Play(animationStateName);
+        giftAnimator.Play(animationStateName2);
+        stickerBookAnimator.Play(animationStateName2);
     }
 
     /// <summary>
