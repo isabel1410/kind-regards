@@ -9,6 +9,8 @@ public class UIError : MonoBehaviour
     [SerializeField]
     private Text uiException;
     [SerializeField]
+    private Button uiButton;
+    [SerializeField]
     private NavigationController navigationController;
 
     private Canvas canvas;
@@ -27,6 +29,7 @@ public class UIError : MonoBehaviour
     /// <param name="error">Exception message to show.</param>
     public void Show(string error)
     {
+        uiButton.interactable = true;
         uiException.text = error;
         canvas.sortingOrder = 1;
         navigationController.ShowError(GetComponent<Animator>());
@@ -38,6 +41,7 @@ public class UIError : MonoBehaviour
     /// </summary>
     public void Exit()
     {
+        uiButton.interactable = false;
         navigationController.ExitError(GetComponent<Animator>());
     }
 
