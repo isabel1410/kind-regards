@@ -29,6 +29,7 @@ public class APIManager : MonoBehaviour
     public List<DataSticker> DataStickers;
 
     public UnityEvent OnMessagesRefreshed;
+    public UnityEvent OnRequestsRefreshed;
 
     public void Awake()
     {
@@ -81,8 +82,13 @@ public class APIManager : MonoBehaviour
 
     private void OnRequestsReceived(UnityWebRequest request)
     {
-        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Requests could not be retrieved.");
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            OnRequestsRefreshed?.Invoke();
+            throw new Exception("[API Exception] Requests could not be retrieved.");
+        }
         DataRequests = JsonConvert.DeserializeObject<List<DataRequest>>(request.downloadHandler.text);
+        OnRequestsRefreshed?.Invoke();
     }
 
     public void MarkMessageSeen(DataMessage dataMessage)

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -23,13 +24,12 @@ public class Reply : MonoBehaviour
     /// Loads all replies.
     /// </summary>
     /// <returns>True if loading is successful.;</returns>
-    private bool LoadMessage()
+    private  bool LoadMessage()
     {
         try
         {
             if (APIManager.Instance)
             {
-                APIManager.Instance.RefreshRequests();
                 if (APIManager.Instance.DataRequests.Count > 0) message = APIManager.Instance.DataRequests.Random();
                 else return false;
                 replies = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "RESPONSE").ToArray();
@@ -65,6 +65,40 @@ public class Reply : MonoBehaviour
     /// </summary>
     public void Show()
     {
+        StartCoroutine(ShowCoroutine());
+    }
+
+    /// <summary>
+    /// Refreshes the requests in the API. When an error occurs the error should show.
+    /// </summary>
+    /// <returns>A coroutine</returns>
+    public IEnumerator ShowCoroutine()
+    {
+        bool hasRefreshedRequests = false;
+        bool hasError = false;
+
+        if (!APIManager.Instance)
+        {
+            yield break;
+        }
+
+        try
+        {
+            APIManager.Instance.OnRequestsRefreshed.AddListener(() =>
+            {
+                hasRefreshedRequests = true;
+            });
+            APIManager.Instance.RefreshRequests();
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogException(exception);
+            uiError.Show("Make sure you have an internet connection");
+        }
+        yield return new WaitUntil(() => hasRefreshedRequests || hasError);
+
+        if (hasError) yield break;
+
         if (LoadMessage())
         {
             uiReply.ShowMessage(message);
