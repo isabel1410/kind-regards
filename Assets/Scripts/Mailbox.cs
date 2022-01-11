@@ -25,23 +25,14 @@ public class Mailbox : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Api call not implemented.</exception>
     private bool LoadReplies()
     {
-        try
+        List<DataMessage> mail = new List<DataMessage>();
+        if (APIManager.Instance)
         {
-            List<DataMessage> mail = new List<DataMessage>();
-            if (APIManager.Instance)
-            {
-                mail = APIManager.Instance.DataMessages;
-                mail.Sort();
-            }
-            dataReplies = mail;
-            return true;
+            mail = APIManager.Instance.DataMessages;
+            mail.Sort();
         }
-        catch (System.Exception exception)
-        {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
-            return false;
-        }
+        dataReplies = mail;
+        return true;
     }
 
     /// <summary>
@@ -98,9 +89,14 @@ public class Mailbox : MonoBehaviour
         {
             hasRefreshed = true;
         });
+        APIManager.Instance.OnAPIError.AddListener(ex =>
+        {
+            hasError = true;
+        });
         APIManager.Instance.RefreshMessages();
 
         yield return new WaitUntil(() => hasRefreshed || hasError);
+        if (hasError) yield break;
 
         if (LoadReplies())
         {

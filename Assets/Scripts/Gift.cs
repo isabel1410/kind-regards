@@ -57,18 +57,10 @@ public class Gift : MonoBehaviour
     /// </summary>
     public void Send()
     {
-        try
-        {
-            APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization);
-            //Animation, then navigate back
-            navigationController.GiftToHome();
-            Companion.FlyAway();
-        }
-        catch (System.Exception exception)
-        {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
-        }
+        APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization);
+        //Animation, then navigate back
+        navigationController.GiftToHome();
+        Companion.FlyAway();
     }
 
     #region Visuals

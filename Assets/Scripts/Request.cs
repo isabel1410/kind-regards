@@ -12,8 +12,6 @@ public class Request : MonoBehaviour
     private NavigationController navigationController;
     [SerializeField]
     private UIRequest uiRequest;
-    [SerializeField]
-    private UIError uiError;
 
     /// <summary>
     /// Load all diaries and shows the <see cref="Diary.DiaryEntry"/> of today.
@@ -22,28 +20,19 @@ public class Request : MonoBehaviour
     /// <exception cref="NotImplementedException">Api call not implemented.</exception>
     public bool LoadMessages()
     {
-        try
-        {
 #if UNITY_EDITOR
-            if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
-            else requestMessages = new DataText[]
-            {
-                new DataText() {Text = "Message 1"},
-                new DataText() {Text = "Message 2"},
-                new DataText() {Text = "Message 3"}
-            };
-#else
-            if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
-            else return false;
-#endif
-            return true;
-        }
-        catch (Exception exception)
+        if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
+        else requestMessages = new DataText[]
         {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
-            return false;
-        }
+            new DataText() {Text = "Message 1"},
+            new DataText() {Text = "Message 2"},
+            new DataText() {Text = "Message 3"}
+        };
+#else
+        if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
+        else return false;
+#endif
+        return true;
     }
 
     /// <summary>
@@ -52,18 +41,10 @@ public class Request : MonoBehaviour
     /// <param name="requestText">Message to send.</param>
     public void SendRequestMessage(DataText requestText)
     {
-        try
+        if (APIManager.Instance)
         {
-            if (APIManager.Instance)
-            {
-                APIManager.Instance.SendGiftRequest(requestText);
-                navigationController.RequestsToHome();
-            }
-        }
-        catch (Exception exception)
-        {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
+            APIManager.Instance.SendGiftRequest(requestText);
+            navigationController.RequestsToHome();
         }
     }
 

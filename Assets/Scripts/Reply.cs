@@ -13,8 +13,6 @@ public class Reply : MonoBehaviour
     [SerializeField]
     private UIGift uiGift;
     [SerializeField]
-    private UIError uiError;
-    [SerializeField]
     private Gift gift;
 
     private DataRequest message;
@@ -26,26 +24,17 @@ public class Reply : MonoBehaviour
     /// <returns>True if loading is successful.;</returns>
     private  bool LoadMessage()
     {
-        try
+        if (APIManager.Instance)
         {
-            if (APIManager.Instance)
-            {
-                if (APIManager.Instance.DataRequests.Count > 0) message = APIManager.Instance.DataRequests.Random();
-                else return false;
-                replies = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "RESPONSE").ToArray();
-                return true;
-            }
-            //TEMP temp = GameObject.Find("TEMP").GetComponent<TEMP>();
-            //message = temp.GetMessage();
-            //replies = temp.GetRepliesForMessage(message);
-            return false;
+            if (APIManager.Instance.DataRequests.Count > 0) message = APIManager.Instance.DataRequests.Random();
+            else return false;
+            replies = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "RESPONSE").ToArray();
+            return true;
         }
-        catch (System.Exception exception)
-        {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
-            return false;
-        }
+        //TEMP temp = GameObject.Find("TEMP").GetComponent<TEMP>();
+        //message = temp.GetMessage();
+        //replies = temp.GetRepliesForMessage(message);
+        return false;
     }
 
     /// <summary>
@@ -82,19 +71,15 @@ public class Reply : MonoBehaviour
             yield break;
         }
 
-        try
+        APIManager.Instance.OnRequestsRefreshed.AddListener(() =>
         {
-            APIManager.Instance.OnRequestsRefreshed.AddListener(() =>
-            {
-                hasRefreshedRequests = true;
-            });
-            APIManager.Instance.RefreshRequests();
-        }
-        catch (System.Exception exception)
+            hasRefreshedRequests = true;
+        });
+        APIManager.Instance.OnAPIError.AddListener(ex =>
         {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
-        }
+            hasError = true;
+        });
+        APIManager.Instance.RefreshRequests();
         yield return new WaitUntil(() => hasRefreshedRequests || hasError);
 
         if (hasError) yield break;

@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c2b39f6d3b10f46aa0f56257d85f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiError: {fileID: 0}
   getUserDataRequest: {fileID: 1169853634990929887}
   getCategoriesRequest: {fileID: 8098559901576395183}
   getTextsRequest: {fileID: 8098559901576395176}
@@ -70,6 +71,15 @@ MonoBehaviour:
   DataRequests: []
   DataMessages: []
   DataStickers: []
+  OnMessagesRefreshed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRequestsRefreshed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAPIError:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8098559901576395183
 MonoBehaviour:
   m_ObjectHideFlags: 0
