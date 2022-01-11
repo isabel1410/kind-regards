@@ -15,18 +15,21 @@ public class APIManager : MonoBehaviour
     [SerializeField] private WebRequest getTextsRequest;
     [SerializeField] private WebRequest getGiftRequestsRequest;
     [SerializeField] private WebRequest getGiftMessagesRequest;
+    [SerializeField] private WebRequest getSentMessagesRequest;
     [SerializeField] private WebRequest getStickersRequest;
     [SerializeField] private WebRequest postGiftRequest;
     [SerializeField] private WebRequest postRegisterUserRequest;
     [SerializeField] private WebRequest postMessageThankRequest;
     [SerializeField] private WebRequest postMessageSeenRequest;
+    [SerializeField] private WebRequest postThankedSeenRequest;
     [SerializeField] private WebRequest postGiftSendRequest;
 
     public List<DataTextCategory> DataTextCategories;
     public List<DataText> DataTexts;
     public DataUser DataUser;
     public List<DataRequest> DataRequests;
-    public List<DataMessage> DataMessages;
+    public List<DataMessage> DataReceivedMessages;
+    public List<DataMessage> DataSentMessages;
     public List<DataSticker> DataStickers;
 
     public UnityEvent OnMessagesRefreshed;
@@ -61,6 +64,25 @@ public class APIManager : MonoBehaviour
         getStickersRequest.Execute();
     }
 
+    public void MarkThankedSeen(DataMessage message)
+    {
+        postThankedSeenRequest.OnRequestFinished.AddListener(OnThanksMarkedSeen);
+        WWWForm form = new WWWForm();
+        form.AddField("message_id", message.Id);
+        postThankedSeenRequest.Execute(new Dictionary<string, string>() { { ":id", message.Thanks.Id.ToString() } }, form);
+    }
+
+    private void OnThanksMarkedSeen(UnityWebRequest request)
+    {
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            OnAPIError?.Invoke(new Exception("[API Exception] Message could not be marked as read."));
+            return;
+        }
+        var data = JsonConvert.DeserializeObject<DataThanked>(request.downloadHandler.text);
+        DataSentMessages[DataSentMessages.FindIndex(d => d.Thanks != null && d.Thanks.Id == data.Id)].Thanks = data;
+    }
+
     public void RefreshRequests()
     {
         getGiftRequestsRequest.Execute();
@@ -68,6 +90,7 @@ public class APIManager : MonoBehaviour
 
     public void RefreshMessages()
     {
+        getSentMessagesRequest.Execute();
         getGiftMessagesRequest.Execute();
     }
 
@@ -89,7 +112,7 @@ public class APIManager : MonoBehaviour
             OnAPIError?.Invoke(new Exception("[API Exception] Messages could not be retrieved."));
             return;
         }
-        DataMessages = JsonConvert.DeserializeObject<List<DataMessage>>(request.downloadHandler.text);
+        DataReceivedMessages = JsonConvert.DeserializeObject<List<DataMessage>>(request.downloadHandler.text);
         OnMessagesRefreshed?.Invoke();
     }
 
@@ -119,7 +142,7 @@ public class APIManager : MonoBehaviour
             return;
         }
         var data = JsonConvert.DeserializeObject<DataMessage>(request.downloadHandler.text);
-        DataMessages[DataMessages.FindIndex(d => d.Id == data.Id)] = data;
+        DataReceivedMessages[DataReceivedMessages.FindIndex(d => d.Id == data.Id)] = data;
     }
 
     public void SendMessage(DataRequest request, DataText text, DataCustomization customization)
@@ -154,7 +177,19 @@ public class APIManager : MonoBehaviour
         DataUser = JsonConvert.DeserializeObject<DataUser>(request.downloadHandler.text);
 
         getGiftMessagesRequest.OnRequestFinished.AddListener(OnMessagesReceived);
+        getSentMessagesRequest.OnRequestFinished.AddListener(OnSentMessagesReceived);
         RefreshMessages();
+    }
+
+    private void OnSentMessagesReceived(UnityWebRequest request)
+    {
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            OnAPIError?.Invoke(new Exception("[API Exception] Text categories could not be retrieved."));
+            return;
+        }
+
+        DataSentMessages = JsonConvert.DeserializeObject<List<DataMessage>>(request.downloadHandler.text);
     }
 
     private void OnCategoriesReceived(UnityWebRequest request)
@@ -193,11 +228,31 @@ public class APIManager : MonoBehaviour
     {
         WWWForm data = new WWWForm();
         data.AddField("text_id", requestText.Id);
+        postGiftRequest.OnRequestFinished.AddListener(request =>
+        {
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                OnAPIError?.Invoke(new Exception("[API Exception] Request could not be created."));
+                return;
+            }
+
+            DataRequests.Add(JsonConvert.DeserializeObject<DataRequest>(request.downloadHandler.text));
+        });
         postGiftRequest.Execute(data: data);
     }
 
     public void SendMessageThanks(DataMessage dataMessage)
     {
+        postMessageThankRequest.OnRequestFinished.AddListener(request =>
+        {
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                OnAPIError?.Invoke(new Exception("[API Exception] Message thanks could not be created."));
+                return;
+            }
+
+            DataReceivedMessages[DataReceivedMessages.FindIndex(m => m.Id == dataMessage.Id)] = JsonConvert.DeserializeObject<DataMessage>(request.downloadHandler.text);
+        });
         postMessageThankRequest.Execute(new Dictionary<string, string>() { { ":id", dataMessage.Id.ToString() } });
     }
 }

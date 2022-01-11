@@ -12,8 +12,6 @@ public class Mail : MonoBehaviour
     [SerializeField]
     private DataMessage dataMail;
     [SerializeField]
-    private DataUser dataUser;
-    [SerializeField]
     private StickerBook stickerBook;
 
     /// <summary>
@@ -51,8 +49,12 @@ public class Mail : MonoBehaviour
     /// </summary>
     public void Show(DataMessage mail)
     {
+        DataUser dataUser = null;
+        if (APIManager.Instance) dataUser = APIManager.Instance.DataUser;
+        else return;
+
         dataMail = mail;
-        dataMail.MarkSeen();
+        if (!dataMail.Seen) dataMail.MarkSeen();
         if (dataMail.Request.RequesterId == dataUser.Id)
         {
             uiMail.ShowReply(dataMail);
@@ -61,7 +63,8 @@ public class Mail : MonoBehaviour
         {
             uiMail.ShowThankMessage(dataMail);
         }
-        navigationController.MailboxToMail(dataMail.HasGift);
+        // Dont include a gift if you are being thanked.
+        navigationController.MailboxToMail(dataMail.HasGift && dataMail.Request.RequesterId == dataUser.Id);
     }
 
     /// <summary>

@@ -31,14 +31,9 @@ public class DataMessage : IComparable<DataMessage>
         }
     }
 
-    [JsonProperty("thanked_at")] public DateTime? ThankedAt { get; set; }
-    public bool Thanked
-    {
-        get
-        {
-            return ThankedAt != null;
-        }
-    }
+    [JsonProperty("thanks_id")] public int? ThanksId { get; set; }
+    public bool HasThanked => ThanksId != null;
+    public DataThanked Thanks;
 
     [JsonProperty("opened_at")] public DateTime? OpenedAt { get; set; }
     public bool Seen
@@ -63,6 +58,7 @@ public class DataMessage : IComparable<DataMessage>
 
     public void MarkSeen()
     {
-        APIManager.Instance.MarkMessageSeen(this);
+        if (this.Request.RequesterId == APIManager.Instance.DataUser.Id) APIManager.Instance.MarkMessageSeen(this);
+        else APIManager.Instance.MarkThankedSeen(this);
     }
 }

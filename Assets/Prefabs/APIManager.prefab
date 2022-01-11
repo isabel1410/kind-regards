@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 8394511132527421016}
   - component: {fileID: 991784198849333310}
   - component: {fileID: 23334163023832896}
+  - component: {fileID: 3912635984960162251}
+  - component: {fileID: 4242534568036503309}
   m_Layer: 0
   m_Name: APIManager
   m_TagString: Untagged
@@ -60,16 +62,19 @@ MonoBehaviour:
   getTextsRequest: {fileID: 8098559901576395176}
   getGiftRequestsRequest: {fileID: 737793754}
   getGiftMessagesRequest: {fileID: 5501933780569951084}
+  getSentMessagesRequest: {fileID: 3912635984960162251}
   getStickersRequest: {fileID: 23334163023832896}
   postGiftRequest: {fileID: 8098559901576395179}
   postRegisterUserRequest: {fileID: -2530967928278862884}
   postMessageThankRequest: {fileID: 1740364271426477802}
   postMessageSeenRequest: {fileID: 8394511132527421016}
+  postThankedSeenRequest: {fileID: 4242534568036503309}
   postGiftSendRequest: {fileID: 991784198849333310}
   DataTextCategories: []
   DataTexts: []
   DataRequests: []
-  DataMessages: []
+  DataReceivedMessages: []
+  DataSentMessages: []
   DataStickers: []
   OnMessagesRefreshed:
     m_PersistentCalls:
@@ -288,4 +293,42 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   IncludeDeviceUniqueIDAsAuthToken: 0
+  AuthToken: 
+--- !u!114 &3912635984960162251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://84.26.114.127:8000/users/messages/sent
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 1
+  AuthToken: 
+--- !u!114 &4242534568036503309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098559901576395180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f552eaddb823d4ebf6233319ecfddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Method: 0
+  Uri: http://84.26.114.127:8000/users/messages/sent/thank/seen
+  OnRequestFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  IncludeDeviceUniqueIDAsAuthToken: 1
   AuthToken: 
