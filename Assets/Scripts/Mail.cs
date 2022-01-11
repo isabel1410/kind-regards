@@ -8,8 +8,6 @@ public class Mail : MonoBehaviour
     [SerializeField]
     private UIMail uiMail;
     [SerializeField]
-    private UIError uiError;
-    [SerializeField]
     private NavigationController navigationController;
     [SerializeField]
     private DataMessage dataMail;
@@ -24,19 +22,11 @@ public class Mail : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Api call not implemented.</exception>
     public void ThankSender()
     {
-        try
-        {
-            print(dataMail.DataText.Text + ": Thanked sender");
-            //api call
-            if (APIManager.Instance) APIManager.Instance.SendMessageThanks(dataMail);
+        print(dataMail.DataText.Text + ": Thanked sender");
+        //api call
+        if (APIManager.Instance) APIManager.Instance.SendMessageThanks(dataMail);
 
-            uiMail.DisableThank();
-        }
-        catch (System.Exception exception)
-        {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
-        }
+        uiMail.DisableThank();
     }
 
     /// <summary>
@@ -45,20 +35,12 @@ public class Mail : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Animation not included</exception>
     public void OpenGift()
     {
-        try
+        print(dataMail.DataText.Text + ": Opened gift");
+        bool isNew = stickerBook.UnlockSticker(dataMail.Gift.DataSticker);
+        Exit();
+        if (isNew)
         {
-            print(dataMail.DataText.Text + ": Opened gift");
-            bool isNew = stickerBook.UnlockSticker(dataMail.Gift.DataSticker);
-            Exit();
-            if (isNew)
-            {
-                stickerBook.Show();
-            }
-        }
-        catch (System.Exception exception)
-        {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
+            stickerBook.Show();
         }
     }
 

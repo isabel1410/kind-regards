@@ -9,6 +9,7 @@ public class APIManager : MonoBehaviour
 {
     public static APIManager Instance;
 
+    [SerializeField] private UIError uiError;
     [SerializeField] private WebRequest getUserDataRequest;
     [SerializeField] private WebRequest getCategoriesRequest;
     [SerializeField] private WebRequest getTextsRequest;
@@ -30,6 +31,7 @@ public class APIManager : MonoBehaviour
 
     public UnityEvent OnMessagesRefreshed;
     public UnityEvent OnRequestsRefreshed;
+    public UnityEvent<Exception> OnAPIError;
 
     public void Awake()
     {
@@ -40,6 +42,12 @@ public class APIManager : MonoBehaviour
 
     private void Start()
     {
+        OnAPIError.AddListener(ex =>
+        {
+            Debug.LogException(ex);
+            uiError.Show("Make sure you have an internet connection");
+        });
+
         getUserDataRequest.OnRequestFinished.AddListener(OnUserDataReceived);
         getUserDataRequest.Execute();
 
@@ -65,7 +73,11 @@ public class APIManager : MonoBehaviour
 
     private void OnStickersReceived(UnityWebRequest request)
     {
-        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Stickers could not be retrieved.");
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            OnAPIError?.Invoke(new Exception("[API Exception] Stickers could not be retrieved."));
+            return;
+        }
         DataStickers = JsonConvert.DeserializeObject<List<DataSticker>>(request.downloadHandler.text);
     }
 
@@ -74,7 +86,8 @@ public class APIManager : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success)
         {
             OnMessagesRefreshed?.Invoke();
-            throw new Exception("[API Exception] Messages could not be retrieved.");
+            OnAPIError?.Invoke(new Exception("[API Exception] Messages could not be retrieved."));
+            return;
         }
         DataMessages = JsonConvert.DeserializeObject<List<DataMessage>>(request.downloadHandler.text);
         OnMessagesRefreshed?.Invoke();
@@ -85,7 +98,8 @@ public class APIManager : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success)
         {
             OnRequestsRefreshed?.Invoke();
-            throw new Exception("[API Exception] Requests could not be retrieved.");
+            OnAPIError?.Invoke(new Exception("[API Exception] Requests could not be retrieved."));
+            return;
         }
         DataRequests = JsonConvert.DeserializeObject<List<DataRequest>>(request.downloadHandler.text);
         OnRequestsRefreshed?.Invoke();
@@ -99,9 +113,12 @@ public class APIManager : MonoBehaviour
 
     private void OnMessageMarkedSeen(UnityWebRequest request)
     {
-        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Message could not be marked as read.");
+        if (request.result != UnityWebRequest.Result.Success) 
+        {
+            OnAPIError?.Invoke(new Exception("[API Exception] Message could not be marked as read."));
+            return;
+        }
         var data = JsonConvert.DeserializeObject<DataMessage>(request.downloadHandler.text);
-
         DataMessages[DataMessages.FindIndex(d => d.Id == data.Id)] = data;
     }
 
@@ -127,7 +144,11 @@ public class APIManager : MonoBehaviour
                 postRegisterUserRequest.Execute(data: data);
                 return;
             }
-            else throw new Exception("[API Exception] User could not be retrieved.");
+            else
+            {
+                OnAPIError?.Invoke(new Exception("[API Exception] User could not be retrieved."));
+                return;
+            }
         }
 
         DataUser = JsonConvert.DeserializeObject<DataUser>(request.downloadHandler.text);
@@ -138,7 +159,11 @@ public class APIManager : MonoBehaviour
 
     private void OnCategoriesReceived(UnityWebRequest request)
     {
-        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Text categories could not be retrieved.");
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            OnAPIError?.Invoke(new Exception("[API Exception] Text categories could not be retrieved."));
+            return;
+        }
         DataTextCategories = JsonConvert.DeserializeObject<List<DataTextCategory>>(request.downloadHandler.text);
 
         DataTexts.Clear();
@@ -154,7 +179,11 @@ public class APIManager : MonoBehaviour
 
     private void OnTextsReceived(UnityWebRequest request)
     {
-        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Texts could not be retrieved.");
+        if (request.result != UnityWebRequest.Result.Success) 
+        {
+            OnAPIError?.Invoke(new Exception("[API Exception] Texts could not be retrieved."));
+            return;
+        }
         List<DataText> newTexts = JsonConvert.DeserializeObject<List<DataText>>(request.downloadHandler.text);
 
         DataTexts.AddRange(newTexts);
