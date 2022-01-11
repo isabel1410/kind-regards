@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class APIManager : MonoBehaviour
@@ -26,6 +27,8 @@ public class APIManager : MonoBehaviour
     public List<DataRequest> DataRequests;
     public List<DataMessage> DataMessages;
     public List<DataSticker> DataStickers;
+
+    public UnityEvent OnMessagesRefreshed;
 
     public void Awake()
     {
@@ -67,8 +70,13 @@ public class APIManager : MonoBehaviour
 
     private void OnMessagesReceived(UnityWebRequest request)
     {
-        if (request.result != UnityWebRequest.Result.Success) throw new Exception("[API Exception] Messages could not be retrieved.");
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            OnMessagesRefreshed?.Invoke();
+            throw new Exception("[API Exception] Messages could not be retrieved.");
+        }
         DataMessages = JsonConvert.DeserializeObject<List<DataMessage>>(request.downloadHandler.text);
+        OnMessagesRefreshed?.Invoke();
     }
 
     private void OnRequestsReceived(UnityWebRequest request)

@@ -26,11 +26,25 @@ public class Mailbox : MonoBehaviour
     {
         try
         {
-            if (APIManager.Instance) APIManager.Instance.RefreshMessages();
             List<DataMessage> mail = new List<DataMessage>();
-            if (APIManager.Instance) mail = APIManager.Instance.DataMessages;
-            mail.Sort();
             dataReplies = mail;
+            if (APIManager.Instance)
+            {
+                mail = APIManager.Instance.DataMessages;
+                mail.Sort();
+                dataReplies = mail;
+
+                APIManager.Instance.OnMessagesRefreshed.AddListener(() =>
+                {
+                    mail = APIManager.Instance.DataMessages;
+                    mail.Sort();
+                    dataReplies = mail;
+
+                    // Update the list on the UI with the refreshed data.
+                    uiMailbox.ShowReplies(dataReplies.ToArray());
+                });
+                APIManager.Instance.RefreshMessages();
+            }
             return true;
         }
         catch (System.Exception exception)
