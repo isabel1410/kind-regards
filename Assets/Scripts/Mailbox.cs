@@ -25,13 +25,18 @@ public class Mailbox : MonoBehaviour
     /// <exception cref="System.NotImplementedException">Api call not implemented.</exception>
     private bool LoadReplies()
     {
+        // Create an empty mails list to default to.
         List<DataMessage> mail = new List<DataMessage>();
+
+        // If the API exists it gets all the received and sent messages and then sort them by date.
         if (APIManager.Instance)
         {
             mail = APIManager.Instance.DataReceivedMessages;
             mail.AddRange(APIManager.Instance.DataSentMessages);
             mail.Sort();
         }
+        
+        // Set the mails to mail.
         dataReplies = mail;
         return true;
     }
@@ -77,16 +82,24 @@ public class Mailbox : MonoBehaviour
     /// </summary>
     public void Show()
     {
+        // Start the show coroutine.
         StartCoroutine(ShowCoroutine());
     }
 
+    /// <summary>
+    /// Refreshes the messages and requests and then shows them in the messages.
+    /// </summary>
+    /// <returns>A coroutine</returns>
     private IEnumerator ShowCoroutine()
     {
         bool hasRefreshedMails = false;
         bool hasRefreshedRequests = false;
         bool hasError = false;
+        
+        // If the API doesn't exist break out of the coroutine.
         if (!APIManager.Instance) yield break;
 
+        // Listen to the API events.
         APIManager.Instance.OnMessagesRefreshed.AddListener(() =>
         {
             hasRefreshedMails = true;
@@ -99,12 +112,18 @@ public class Mailbox : MonoBehaviour
         {
             hasError = true;
         });
+
+        // Refresh the messages and requests.
         APIManager.Instance.RefreshMessages();
         APIManager.Instance.RefreshRequests();
 
+        // Wait until either the mails and requests are refreshed or the API had an error.
         yield return new WaitUntil(() => (hasRefreshedMails && hasRefreshedRequests) || hasError);
+
+        // If the API had an error then break out of the coroutine.
         if (hasError) yield break;
 
+        // Load the messages and show them on the UI.
         if (LoadReplies())
         {
             uiMailbox.ShowReplies(dataReplies.ToArray());

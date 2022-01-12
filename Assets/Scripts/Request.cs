@@ -20,7 +20,9 @@ public class Request : MonoBehaviour
     /// <exception cref="NotImplementedException">Api call not implemented.</exception>
     public bool LoadMessages()
     {
+        // Checks if you run the application in the editor.
 #if UNITY_EDITOR
+        // If the API is set it should get all the request texts. Otherwise it will show some random requests.
         if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
         else requestMessages = new DataText[]
         {
@@ -29,9 +31,11 @@ public class Request : MonoBehaviour
             new DataText() {Text = "Message 3"}
         };
 #else
+        // When in production we rely on the API to get the requests. If there is no API (shouldn't happen) it returns false.
         if (APIManager.Instance) requestMessages = APIManager.Instance.DataTexts.FindAll(t => t.Category.Name == "REQUEST").ToArray();
         else return false;
 #endif
+        // Always return true.
         return true;
     }
 
@@ -41,6 +45,7 @@ public class Request : MonoBehaviour
     /// <param name="requestText">Message to send.</param>
     public void SendRequestMessage(DataText requestText)
     {
+        // If the API is setup it will send the request out and return to the home navigation.
         if (APIManager.Instance)
         {
             APIManager.Instance.SendGiftRequest(requestText);

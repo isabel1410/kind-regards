@@ -57,8 +57,10 @@ public class Gift : MonoBehaviour
     /// </summary>
     public void Send()
     {
+        // Send the API request to send a gift/message.
         APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization);
-        //Animation, then navigate back
+
+        //Animations, Navigate back to home
         navigationController.GiftToHome();
         Companion.FlyAway();
     }
