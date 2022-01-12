@@ -30,8 +30,12 @@ public class StickerBook : MonoBehaviour
         currentPage = 0;
     }
 
+    /// <summary>
+    /// Load the unlocked sticker ids from storage.
+    /// </summary>
     private void LoadStickers()
     {
+        // If the file doesn't exist create it.
         if(!File.Exists(STICKERSTORAGEPATH))
         {
             SaveStickerFile();
@@ -40,44 +44,63 @@ public class StickerBook : MonoBehaviour
         unlockedStickerIDs = JsonConvert.DeserializeObject<List<int>>(File.ReadAllText(STICKERSTORAGEPATH));
     }
 
+    /// <summary>
+    /// Save the unlocked sticker ids to storage.
+    /// </summary>
     private void SaveStickerFile()
     {
         File.WriteAllText(STICKERSTORAGEPATH, JsonConvert.SerializeObject(unlockedStickerIDs));
     }    
 
+    /// <summary>
+    /// Unlock a sticker if it hasn't been unlocked yet.
+    /// </summary>
+    /// <param name="sticker">The sticker you want to unlock</param>
+    /// <returns>If you unlocked the sticker aka if the sticker is not new</returns>
     public bool UnlockSticker(DataSticker sticker)
     {
+        // Check if the sticker is unlocked.
         if (unlockedStickerIDs.Contains(sticker.Id))
         {
             return false;
         }
+
+        // Unlock the sticker.
         unlockedStickerIDs.Add(sticker.Id);
+
+        // Update the unlocked stickers file.
         SaveStickerFile();
         return true;
     }
 
     /// <summary>
-    /// Makes the pages based on the amount of stickers in the player's inventory.
+    /// Makes the pages based on the stickers in the player's inventory.
     /// </summary>
+    /// <returns>All the generated pages</returns>
     public List<List<GameObject>> GeneratePages()
     {
-        // Not implemented yet.
-        // First get all stickers from the player's inventory
-        // Go through stickers and get prefab of that sticker
-        // Generate one page per x amount of stickers for the player to go through
-
+        // First we check if the API exists.
         if(!APIManager.Instance)
         {
             return null;
         }
+
+        // Then we create a list of pages where there is 1 page by default.
         List<List<GameObject>> pages = new List<List<GameObject>>
         {
             new List<GameObject>()
         };
+
+        // Set the current page for the loop below.
         List<GameObject> curPage = pages[0];
+
+        // Go through the unlocked sticker ids.
         for (int i = 0; i < unlockedStickerIDs.Count; i++)
         {
+            // For each sticker it adds the sticker to the page.
             curPage.Add(APIManager.Instance.DataStickers.Find(s => s.Id == unlockedStickerIDs[i]).GetStickerObject());
+
+            // If the amount of stickers on the page is bigger then what is allowed on the page generate a new page and set that one to the current page.
             if ((i + 1) % stickerAmountPerPage == 0 && i + 1 != unlockedStickerIDs.Count)
             {
                 // Make page
@@ -85,6 +108,8 @@ public class StickerBook : MonoBehaviour
                 curPage = pages[pages.Count - 1];
             }
         }
+
+        // Return the generated pages.
         return pages;
     }
 
@@ -95,23 +120,34 @@ public class StickerBook : MonoBehaviour
     /// </summary>
     public void Show()
     {
+        // On show clear all the pages that exist.
         foreach (StickerBookPage page in stickerBookPages)
         {
             DestroyImmediate(page.gameObject);
         }
         stickerBookPages.Clear();
 
+        // Regenerate the pages.
         List<List<GameObject>> pages = GeneratePages();
+        
+        // Go through all the stickers.
         foreach (List<GameObject> page in pages)
         {
+            // Create the sticker page in the game world.
             StickerBookPage p = uiSticker.CreatePage();
             foreach (GameObject sticker in page)
             {
+                // Add the sticker object to the page.
                 p.SetSticker(sticker);
             }
+            // Add the sticker page to the cache (used for deleting the pages).
             stickerBookPages.Add(p);
         }
+
+        // Load the current page.
         LoadPage(currentPage);
+
+        // Navigate to stickers.
         navigationController.HomeToSticker();
     }
 

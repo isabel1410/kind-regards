@@ -36,6 +36,9 @@ public class APIManager : MonoBehaviour
     public UnityEvent OnRequestsRefreshed;
     public UnityEvent<Exception> OnAPIError;
 
+    /// <summary>
+    /// Make the API manager a singleton.
+    /// </summary>
     public void Awake()
     {
         if (Instance && Instance != this) DestroyImmediate(gameObject);
@@ -43,6 +46,9 @@ public class APIManager : MonoBehaviour
         DontDestroyOnLoad(Instance);
     }
 
+    /// <summary>
+    /// Listen to API events and execute the default requests that don't need a user.
+    /// </summary>
     private void Start()
     {
         OnAPIError.AddListener(ex =>
@@ -64,6 +70,10 @@ public class APIManager : MonoBehaviour
         getStickersRequest.Execute();
     }
 
+    /// <summary>
+    /// Mark a received thank you message as seen
+    /// </summary>
+    /// <param name="message">The message that includes a thanks</param>
     public void MarkThankedSeen(DataMessage message)
     {
         postThankedSeenRequest.OnRequestFinished.AddListener(OnThanksMarkedSeen);
@@ -72,6 +82,10 @@ public class APIManager : MonoBehaviour
         postThankedSeenRequest.Execute(new Dictionary<string, string>() { { ":id", message.Thanks.Id.ToString() } }, form);
     }
 
+    /// <summary>
+    /// The response of the MarkThankedSeen request. It updates the original message with new data.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnThanksMarkedSeen(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success)
@@ -83,17 +97,27 @@ public class APIManager : MonoBehaviour
         DataSentMessages[DataSentMessages.FindIndex(d => d.Thanks != null && d.Thanks.Id == data.Id)].Thanks = data;
     }
 
+    /// <summary>
+    /// Refreshes the user requests.
+    /// </summary>
     public void RefreshRequests()
     {
         getGiftRequestsRequest.Execute();
     }
 
+    /// <summary>
+    /// Refreshes the user messages.
+    /// </summary>
     public void RefreshMessages()
     {
         getSentMessagesRequest.Execute();
         getGiftMessagesRequest.Execute();
     }
 
+    /// <summary>
+    /// The response of the getStickersRequest. It will load all the stickers from the database.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnStickersReceived(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success)
@@ -104,6 +128,10 @@ public class APIManager : MonoBehaviour
         DataStickers = JsonConvert.DeserializeObject<List<DataSticker>>(request.downloadHandler.text);
     }
 
+    /// <summary>
+    /// The response of the getGiftMessagesRequest. It will load all the messages from the database.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnMessagesReceived(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success)
@@ -116,6 +144,10 @@ public class APIManager : MonoBehaviour
         OnMessagesRefreshed?.Invoke();
     }
 
+    /// <summary>
+    /// The response of the getGiftRequestsRequest. It will load all the gift requests from the database.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnRequestsReceived(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success)
@@ -128,12 +160,20 @@ public class APIManager : MonoBehaviour
         OnRequestsRefreshed?.Invoke();
     }
 
+    /// <summary>
+    /// Sends the request to mark a received messages as seen.
+    /// </summary>
+    /// <param name="dataMessage">The message you are marking as seen</param>
     public void MarkMessageSeen(DataMessage dataMessage)
     {
         postMessageSeenRequest.OnRequestFinished.AddListener(OnMessageMarkedSeen);
         postMessageSeenRequest.Execute(new Dictionary<string, string>() { { ":id", dataMessage.Id.ToString() } });
     }
 
+    /// <summary>
+    /// The response of the postMessageSeenRequest. It will update the received message with the new data.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnMessageMarkedSeen(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success) 
@@ -145,6 +185,12 @@ public class APIManager : MonoBehaviour
         DataReceivedMessages[DataReceivedMessages.FindIndex(d => d.Id == data.Id)] = data;
     }
 
+    /// <summary>
+    /// Send a message to an user.
+    /// </summary>
+    /// <param name="request">The request you are replying to</param>
+    /// <param name="text">The text you chose to reply with</param>
+    /// <param name="customization">The customization options for the gift</param>
     public void SendMessage(DataRequest request, DataText text, DataCustomization customization)
     {
         WWWForm data = new WWWForm();
@@ -154,6 +200,10 @@ public class APIManager : MonoBehaviour
         postGiftSendRequest.Execute(new Dictionary<string, string>() { { ":id", request.Id.ToString() } }, data);
     }
 
+    /// <summary>
+    /// The response of the getUserDataRequest and postRegisterUserRequest. It will try and load the user from the database. If no user exists it will try and register one.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnUserDataReceived(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success)
@@ -181,6 +231,10 @@ public class APIManager : MonoBehaviour
         RefreshMessages();
     }
 
+    /// <summary>
+    /// The response of the getSentMessagesRequest. It will load all the sent messages by the user.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnSentMessagesReceived(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success)
@@ -192,6 +246,10 @@ public class APIManager : MonoBehaviour
         DataSentMessages = JsonConvert.DeserializeObject<List<DataMessage>>(request.downloadHandler.text);
     }
 
+    /// <summary>
+    /// The response of the getCategoriesRequest. It will load all the text categories of the app. After loading them it will load all the text for each category.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnCategoriesReceived(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success)
@@ -212,6 +270,10 @@ public class APIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The response of the getTextsRequest. It will load all the texts by category of the app.
+    /// </summary>
+    /// <param name="request">The request response data</param>
     private void OnTextsReceived(UnityWebRequest request)
     {
         if (request.result != UnityWebRequest.Result.Success) 
@@ -224,6 +286,10 @@ public class APIManager : MonoBehaviour
         DataTexts.AddRange(newTexts);
     }
 
+    /// <summary>
+    /// Send out a request to receive messages/gifts.
+    /// </summary>
+    /// <param name="requestText">The text you chose for the request</param>
     public void SendGiftRequest(DataText requestText)
     {
         WWWForm data = new WWWForm();
@@ -241,6 +307,10 @@ public class APIManager : MonoBehaviour
         postGiftRequest.Execute(data: data);
     }
 
+    /// <summary>
+    /// Send out a thanks to the sender of your received message.
+    /// </summary>
+    /// <param name="dataMessage">The message you want to thank</param>
     public void SendMessageThanks(DataMessage dataMessage)
     {
         postMessageThankRequest.OnRequestFinished.AddListener(request =>
