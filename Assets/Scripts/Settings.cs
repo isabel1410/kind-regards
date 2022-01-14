@@ -11,9 +11,6 @@ public class Settings : MonoBehaviour
 
     [SerializeField]
     private DataSettings dataSettings;
-
-    [SerializeField]
-    private UISettings uiSettings;
     [SerializeField]
     private UIError uiError;
     [SerializeField]
@@ -78,7 +75,6 @@ public class Settings : MonoBehaviour
     /// </summary>
     public void Show()
     {
-        uiSettings.Show(dataSettings);
         musicPlayer.Show();
         navigationController.HomeToSettings();
     }

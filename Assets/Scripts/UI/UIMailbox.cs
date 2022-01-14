@@ -80,7 +80,6 @@ public class UIMailbox : MonoBehaviour
 
         //Move other mailGameObjects up if they are below the destroyable mailGameObject
         bool encounteredDestroyable = false;
-        //System.Collections.Generic.List<GameObject> mailGameObjects = mailGameObject.GetComponentsInParent<GameObject>().ToList();
         foreach (Transform otherMailGameObject in mailContainerTransform.transform)
         {
             if (!encounteredDestroyable)

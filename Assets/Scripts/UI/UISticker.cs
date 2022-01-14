@@ -28,25 +28,15 @@ public class UISticker : MonoBehaviour
     /// <param name="currentPage">Index of the page which is shown.</param>
     public void ToggleButtons(List<StickerBookPage> pages, int currentPage)
     {
-        if (currentPage == 0 && pages.Count - 1 == 0)
+        if (currentPage == 0)
         {
             uiPrevious.gameObject.SetActive(false);
-            uiNext.gameObject.SetActive(false);
-        }
-        else if (currentPage == 0)
-        {
-            uiPrevious.gameObject.SetActive(false);
-            uiNext.gameObject.SetActive(true);
-        }
-        else if (currentPage == pages.Count - 1)
-        {
-            uiPrevious.gameObject.SetActive(true);
-            uiNext.gameObject.SetActive(false);
+            uiNext.gameObject.SetActive(pages.Count - 1 != 0);
         }
         else
         {
             uiPrevious.gameObject.SetActive(true);
-            uiNext.gameObject.SetActive(true);
+            uiNext.gameObject.SetActive(currentPage != pages.Count - 1);
         }
     }
 
@@ -59,14 +49,7 @@ public class UISticker : MonoBehaviour
     {
         for (int i = 0; i < pages.Count; i++)
         {
-            if (i == currentPage)
-            {
-                pages[currentPage].gameObject.SetActive(true);
-            }
-            else
-            {
-                pages[i].gameObject.SetActive(false);
-            }
+            pages[i].gameObject.SetActive(i == currentPage);
         }
     }
 }
