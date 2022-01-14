@@ -13,9 +13,12 @@ public class Gift : MonoBehaviour
     [SerializeField]
     private UIError uiError;
     [SerializeField]
+    private StickerBook stickerBook;
+    [SerializeField]
     private Companion Companion;
     private DataRequest dataRequest;
     private DataText dataText;
+    private DataSticker dataSticker;
     private DataCustomization dataGiftCustomization = new DataCustomization();
     //public DataSticker DataSticker;
 
@@ -40,16 +43,20 @@ public class Gift : MonoBehaviour
     /// </summary>
     public void AddSticker()
     {
-        try
+        if(stickerBook.UnlockedStickerIDs.Count == 0)
         {
-            //api call
-            throw new System.NotImplementedException();
+            uiError.Show("You don't have any unlocked stickers!");
+            return;
         }
-        catch (System.Exception exception)
-        {
-            Debug.LogException(exception);
-            uiError.Show("Make sure you have an internet connection");
-        }
+
+        stickerBook.OnStickerSelected.AddListener(sticker => {
+            stickerBook.Exit();
+            dataSticker = sticker;
+            navigationController.HomeToReply();
+            navigationController.ReplyToGift();
+        });
+        navigationController.GiftToHome();
+        stickerBook.Show();
     }
 
     /// <summary>
@@ -58,7 +65,8 @@ public class Gift : MonoBehaviour
     public void Send()
     {
         // Send the API request to send a gift/message.
-        APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization);
+        if (dataSticker == null) APIManager.Instance.SendMessage(dataRequest, dataText);
+        else APIManager.Instance.SendMessage(dataRequest, dataText, dataGiftCustomization, dataSticker);
 
         //Animations, Navigate back to home
         navigationController.GiftToHome();
@@ -74,6 +82,9 @@ public class Gift : MonoBehaviour
     {
         dataRequest = request;
         dataText = text;
+        dataGiftCustomization = new DataCustomization() { Color = uiGift.GiftStartColor };
+        dataSticker = null;
+        uiGift.ChangeColor(uiGift.GiftStartColor);
         uiGift.ShowMessage(text);
         navigationController.ReplyToGift();
     }

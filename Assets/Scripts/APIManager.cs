@@ -186,17 +186,29 @@ public class APIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Send a message to an user.
+    /// Send a message with gift to an user.
     /// </summary>
     /// <param name="request">The request you are replying to</param>
     /// <param name="text">The text you chose to reply with</param>
     /// <param name="customization">The customization options for the gift</param>
-    public void SendMessage(DataRequest request, DataText text, DataCustomization customization)
+    public void SendMessage(DataRequest request, DataText text, DataCustomization customization, DataSticker sticker)
     {
         WWWForm data = new WWWForm();
         data.AddField("text_id", text.Id);
         data.AddField("customization", JsonConvert.SerializeObject(customization, Formatting.None, new ColorConverter()));
-        data.AddField("sticker_id", 1);
+        data.AddField("sticker_id", sticker.Id);
+        postGiftSendRequest.Execute(new Dictionary<string, string>() { { ":id", request.Id.ToString() } }, data);
+    }
+
+    /// <summary>
+    /// Send a non gift message to an user.
+    /// </summary>
+    /// <param name="request">The request you are replying to</param>
+    /// <param name="text">The text you chose to reply with</param>
+    public void SendMessage(DataRequest request, DataText text)
+    {
+        WWWForm data = new WWWForm();
+        data.AddField("text_id", text.Id);
         postGiftSendRequest.Execute(new Dictionary<string, string>() { { ":id", request.Id.ToString() } }, data);
     }
 
