@@ -27,7 +27,7 @@ public class UISongInstantiator : MonoBehaviour
         song.DataSong = dataSong;
         uiIncluded.isOn = dataSong.Included;
         uiName.text = dataSong.Name;
-        uiDuration.text = dataSong.AudioClip.length.ToString("#0:00");//"##:##"
+        uiDuration.text = $"{(uint)dataSong.AudioClip.length / 60}:{(uint)dataSong.AudioClip.length % 60:00}";
         song.Loading = false;
 
         Destroy(this);

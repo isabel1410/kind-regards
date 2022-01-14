@@ -15,14 +15,14 @@ public class UIReply : MonoBehaviour
     [SerializeField]
     private Transform repliesContainerTransform;
 
-    private float height;
+    private float originalHeight;
 
     /// <summary>
     /// Called before the first frame update.
     /// </summary>
     private void Start()
     {
-        height = repliesContainerTransform.GetComponentInParent<RectTransform>().rect.height;
+        originalHeight = repliesContainerTransform.GetComponentInParent<RectTransform>().rect.height;
     }
 
     /// <summary>
@@ -57,12 +57,20 @@ public class UIReply : MonoBehaviour
 
             positionY -= rectTransform.rect.height;
         }
+        SetContainerHeight(Mathf.Abs(positionY));
+    }
 
-        //Set the height of the container based on the amount of replies and the height of the prefab
+    /// <summary>
+    /// Sets the height of <see cref="repliesContainerTransform"/> based on the amount of reply messages.
+    /// </summary>
+    /// <param name="positionY">Cumulative height of all request messages.</param>
+    private void SetContainerHeight(float positionY)
+    {
+        //Set the height of the container based on the amount of messages and the height of the prefab
         RectTransform containerRectTransform = repliesContainerTransform.GetComponent<RectTransform>();
         containerRectTransform.sizeDelta = new Vector2(
             containerRectTransform.sizeDelta.x,
-            Mathf.Abs(positionY) - height);
+            positionY - originalHeight);
     }
 
     /// <summary>

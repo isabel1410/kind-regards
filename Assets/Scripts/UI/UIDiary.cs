@@ -35,22 +35,8 @@ public class UIDiary : MonoBehaviour
         SetMood(entry.Mood);
 
         //Previous / next button disabling
-        if (first)
-        {
-            uiPrevious.gameObject.SetActive(false);
-        }
-        else
-        {
-            uiPrevious.gameObject.SetActive(true);
-        }
-        if (last)
-        {
-            uiNext.gameObject.SetActive(false);
-        }
-        else
-        {
-            uiNext.gameObject.SetActive(true);
-        }
+        uiPrevious.gameObject.SetActive(!first);
+        uiNext.gameObject.SetActive(!last);
     }
 
     /// <summary>

@@ -13,14 +13,14 @@ public class UIRequest : MonoBehaviour
     [SerializeField]
     private Transform requestsContainerTransform;
 
-    private float height;
+    private float originalHeight;
 
     /// <summary>
     /// Called before the first frame update.
     /// </summary>
     private void Start()
     {
-        height = requestsContainerTransform.GetComponentInParent<RectTransform>().rect.height;
+        originalHeight = requestsContainerTransform.GetComponentInParent<RectTransform>().rect.height;
     }
 
     /// <summary>
@@ -45,11 +45,20 @@ public class UIRequest : MonoBehaviour
             positionY -= rectTransform.rect.height;
         }
 
+        SetContainerHeight(Mathf.Abs(positionY));
+    }
+
+    /// <summary>
+    /// Sets the height of <see cref="requestsContainerTransform"/> based on the amount of request messages.
+    /// </summary>
+    /// <param name="positionY">Cumulative height of all request messages.</param>
+    private void SetContainerHeight(float positionY)
+    {
         //Set the height of the container based on the amount of messages and the height of the prefab
         RectTransform containerRectTransform = requestsContainerTransform.GetComponent<RectTransform>();
         containerRectTransform.sizeDelta = new Vector2(
             containerRectTransform.sizeDelta.x,
-            Mathf.Abs(positionY) - height);
+            positionY - originalHeight);
     }
 
     /// <summary>
