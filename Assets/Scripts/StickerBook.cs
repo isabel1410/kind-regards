@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// 
@@ -15,6 +16,9 @@ public class StickerBook : MonoBehaviour
 
     [SerializeField]
     public NavigationController navigationController;
+    public UnityEvent<DataSticker> OnStickerSelected;
+
+    public IReadOnlyList<int> UnlockedStickerIDs => unlockedStickerIDs;
 
     private int currentPage;
 
@@ -77,7 +81,7 @@ public class StickerBook : MonoBehaviour
     /// Makes the pages based on the stickers in the player's inventory.
     /// </summary>
     /// <returns>All the generated pages</returns>
-    public List<List<GameObject>> GeneratePages()
+    public List<List<DataSticker>> GeneratePages()
     {
         // First we check if the API exists.
         if(!APIManager.Instance)
@@ -86,25 +90,25 @@ public class StickerBook : MonoBehaviour
         }
 
         // Then we create a list of pages where there is 1 page by default.
-        List<List<GameObject>> pages = new List<List<GameObject>>
+        List<List<DataSticker>> pages = new List<List<DataSticker>>
         {
-            new List<GameObject>()
+            new List<DataSticker>()
         };
 
         // Set the current page for the loop below.
-        List<GameObject> curPage = pages[0];
+        List<DataSticker> curPage = pages[0];
 
         // Go through the unlocked sticker ids.
         for (int i = 0; i < unlockedStickerIDs.Count; i++)
         {
             // For each sticker it adds the sticker to the page.
-            curPage.Add(APIManager.Instance.DataStickers.Find(s => s.Id == unlockedStickerIDs[i]).GetStickerObject());
+            curPage.Add(APIManager.Instance.DataStickers.Find(s => s.Id == unlockedStickerIDs[i]));
 
             // If the amount of stickers on the page is bigger then what is allowed on the page generate a new page and set that one to the current page.
             if ((i + 1) % stickerAmountPerPage == 0 && i + 1 != unlockedStickerIDs.Count)
             {
                 // Make page
-                pages.Add(new List<GameObject>());
+                pages.Add(new List<DataSticker>());
                 curPage = pages[pages.Count - 1];
             }
         }
@@ -128,18 +132,21 @@ public class StickerBook : MonoBehaviour
         stickerBookPages.Clear();
 
         // Regenerate the pages.
-        List<List<GameObject>> pages = GeneratePages();
+        List<List<DataSticker>> pages = GeneratePages();
         
         // Go through all the stickers.
-        foreach (List<GameObject> page in pages)
+        foreach (List<DataSticker> page in pages)
         {
             // Create the sticker page in the game world.
             StickerBookPage p = uiSticker.CreatePage();
-            foreach (GameObject sticker in page)
+            foreach (DataSticker sticker in page)
             {
                 // Add the sticker object to the page.
                 p.SetSticker(sticker);
             }
+            // Listen to sticker selected event
+            p.OnStickerSelect.AddListener(sticker => OnStickerSelected?.Invoke(sticker));
+
             // Add the sticker page to the cache (used for deleting the pages).
             stickerBookPages.Add(p);
         }
