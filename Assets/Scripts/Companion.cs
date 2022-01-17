@@ -15,7 +15,7 @@ public class Companion : MonoBehaviour
     [SerializeField]
     private UIError uiError;
     [SerializeField]
-    private GameObject waitingCanvas;
+    private GameObject waitingPanel;
     [SerializeField]
     private Diary diary;
     [SerializeField]
@@ -197,7 +197,7 @@ public class Companion : MonoBehaviour
 
     public void ToggleControls()
     {
-        waitingCanvas.SetActive(!waitingCanvas.activeSelf);
+        waitingPanel.SetActive(!waitingPanel.activeSelf);
     }
 
     public void OnArrivedBack()
