@@ -1,0 +1,432 @@
+fileFormatVersion: 2
+guid: 425ddc1107b69eb42bd778e91a70425a
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 8027310477405705018
+    second: Bow 1.001|Bow 1.008Action.001
+  - first:
+      74: -1564093448484214416
+    second: Bow 1.001|Bow 2.008Action.001
+  - first:
+      74: -8213416916106899593
+    second: Bow 1.001|CurveOutline 1.008Action.001
+  - first:
+      74: -2899334076173743320
+    second: Bow 1.001|CurveOutline 2.008Action.001
+  - first:
+      74: -5968286827496064222
+    second: Bow 1.001|Lid Opennig.001
+  - first:
+      74: 2927903240683117249
+    second: Bow 1.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: 2354849505174253111
+    second: Bow 1.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -8554299017815158052
+    second: Bow 1.001|Ribbon Dup X.002Action.002
+  - first:
+      74: -2645753762837724796
+    second: Bow 1.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: -2542111686628281479
+    second: Bow 1.001|TopNot.008Action.001
+  - first:
+      74: 2244484254773566141
+    second: Bow 2.001|Bow 1.008Action.001
+  - first:
+      74: -3925682028537167014
+    second: Bow 2.001|Bow 2.008Action.001
+  - first:
+      74: 5103498697297532404
+    second: Bow 2.001|CurveOutline 1.008Action.001
+  - first:
+      74: 808162868370097411
+    second: Bow 2.001|CurveOutline 2.008Action.001
+  - first:
+      74: -3669828069475946238
+    second: Bow 2.001|Lid Opennig.001
+  - first:
+      74: -6533051653800165948
+    second: Bow 2.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: 2665179459541004415
+    second: Bow 2.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -8726942046396179271
+    second: Bow 2.001|Ribbon Dup X.002Action.002
+  - first:
+      74: -2255236284421482549
+    second: Bow 2.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: -5609965792447000773
+    second: Bow 2.001|TopNot.008Action.001
+  - first:
+      74: 2880798167036616782
+    second: CurveOutline 1.001|Bow 1.008Action.001
+  - first:
+      74: 2705070456340393984
+    second: CurveOutline 1.001|Bow 2.008Action.001
+  - first:
+      74: 4729761168953615491
+    second: CurveOutline 1.001|CurveOutline 1.008Action.001
+  - first:
+      74: 4328587651916680559
+    second: CurveOutline 1.001|CurveOutline 2.008Action.001
+  - first:
+      74: 4627263806212053702
+    second: CurveOutline 1.001|Lid Opennig.001
+  - first:
+      74: 6612102928113485885
+    second: CurveOutline 1.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: 8717789478560379428
+    second: CurveOutline 1.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -8519172983008897689
+    second: CurveOutline 1.001|Ribbon Dup X.002Action.002
+  - first:
+      74: 1733549409492965367
+    second: CurveOutline 1.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: 216039952263758904
+    second: CurveOutline 1.001|TopNot.008Action.001
+  - first:
+      74: 8069405617214430973
+    second: CurveOutline 2.001|Bow 1.008Action.001
+  - first:
+      74: -1307732516719492123
+    second: CurveOutline 2.001|Bow 2.008Action.001
+  - first:
+      74: -426026590061238964
+    second: CurveOutline 2.001|CurveOutline 1.008Action.001
+  - first:
+      74: -7158424111898773149
+    second: CurveOutline 2.001|CurveOutline 2.008Action.001
+  - first:
+      74: -2659476705715729154
+    second: CurveOutline 2.001|Lid Opennig.001
+  - first:
+      74: 3095306742622841529
+    second: CurveOutline 2.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: 8425882291495221417
+    second: CurveOutline 2.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: 5239528958456093895
+    second: CurveOutline 2.001|Ribbon Dup X.002Action.002
+  - first:
+      74: 8927255432453176416
+    second: CurveOutline 2.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: -4461759767074675561
+    second: CurveOutline 2.001|TopNot.008Action.001
+  - first:
+      74: 2103478618468783404
+    second: Lid.001|Bow 1.008Action.001
+  - first:
+      74: 2777162149283889220
+    second: Lid.001|Bow 2.008Action.001
+  - first:
+      74: -7245066296709923837
+    second: Lid.001|CurveOutline 1.008Action.001
+  - first:
+      74: 398296010303002656
+    second: Lid.001|CurveOutline 2.008Action.001
+  - first:
+      74: -1280676898912247059
+    second: Lid.001|Lid Opennig.001
+  - first:
+      74: 5019683607861799812
+    second: Lid.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: 2811554365707869291
+    second: Lid.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -92228780640662037
+    second: Lid.001|Ribbon Dup X.002Action.002
+  - first:
+      74: -45442857649074027
+    second: Lid.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: 1273662058469642094
+    second: Lid.001|TopNot.008Action.001
+  - first:
+      74: 8763301144176739433
+    second: Present_Box.001|Bow 1.008Action.001
+  - first:
+      74: -779374700662550383
+    second: Present_Box.001|Bow 2.008Action.001
+  - first:
+      74: -2934760582275259462
+    second: Present_Box.001|CurveOutline 1.008Action.001
+  - first:
+      74: -8566897321426722760
+    second: Present_Box.001|CurveOutline 2.008Action.001
+  - first:
+      74: 2879212876107440351
+    second: Present_Box.001|Lid Opennig.001
+  - first:
+      74: 5009201232870634628
+    second: Present_Box.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: -8853761626677918109
+    second: Present_Box.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: 4202465875027524892
+    second: Present_Box.001|Ribbon Dup X.002Action.002
+  - first:
+      74: -745926937833976618
+    second: Present_Box.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: 928312140771543247
+    second: Present_Box.001|TopNot.008Action.001
+  - first:
+      74: -5655074801392099997
+    second: Ribbon Dup -X.002|Bow 1.008Action.001
+  - first:
+      74: 300056145726994183
+    second: Ribbon Dup -X.002|Bow 2.008Action.001
+  - first:
+      74: -5848167256422237536
+    second: Ribbon Dup -X.002|CurveOutline 1.008Action.001
+  - first:
+      74: 2604511476050733408
+    second: Ribbon Dup -X.002|CurveOutline 2.008Action.001
+  - first:
+      74: 4122715644446707549
+    second: Ribbon Dup -X.002|Lid Opennig.001
+  - first:
+      74: -7671669879021269114
+    second: Ribbon Dup -X.002|Ribbon Dup -X.001Action.002
+  - first:
+      74: -5052545526618493245
+    second: Ribbon Dup -X.002|Ribbon Dup -Y.001Action.002
+  - first:
+      74: 3611587860868020079
+    second: Ribbon Dup -X.002|Ribbon Dup X.002Action.002
+  - first:
+      74: 6901365577013321103
+    second: Ribbon Dup -X.002|Ribbon Dup Y.001Action.002
+  - first:
+      74: 9209534060726505213
+    second: Ribbon Dup -X.002|TopNot.008Action.001
+  - first:
+      74: 1527552789156265277
+    second: Ribbon Dup -Y.002|Bow 1.008Action.001
+  - first:
+      74: 1260964144562428309
+    second: Ribbon Dup -Y.002|Bow 2.008Action.001
+  - first:
+      74: 4227439425780177174
+    second: Ribbon Dup -Y.002|CurveOutline 1.008Action.001
+  - first:
+      74: 7183965904779876489
+    second: Ribbon Dup -Y.002|CurveOutline 2.008Action.001
+  - first:
+      74: -1484612137349465756
+    second: Ribbon Dup -Y.002|Lid Opennig.001
+  - first:
+      74: -9102097167991505826
+    second: Ribbon Dup -Y.002|Ribbon Dup -X.001Action.002
+  - first:
+      74: 8020351428088192555
+    second: Ribbon Dup -Y.002|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -1230279339193268393
+    second: Ribbon Dup -Y.002|Ribbon Dup X.002Action.002
+  - first:
+      74: -6341112453076960943
+    second: Ribbon Dup -Y.002|Ribbon Dup Y.001Action.002
+  - first:
+      74: 615376995653592083
+    second: Ribbon Dup -Y.002|TopNot.008Action.001
+  - first:
+      74: -6627259845269410241
+    second: Ribbon Dup X.001|Bow 1.008Action.001
+  - first:
+      74: -3945603771126034658
+    second: Ribbon Dup X.001|Bow 2.008Action.001
+  - first:
+      74: -8785074826148487437
+    second: Ribbon Dup X.001|CurveOutline 1.008Action.001
+  - first:
+      74: 5099706864894082400
+    second: Ribbon Dup X.001|CurveOutline 2.008Action.001
+  - first:
+      74: -5165294728618775622
+    second: Ribbon Dup X.001|Lid Opennig.001
+  - first:
+      74: 6262314984702688662
+    second: Ribbon Dup X.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: -1298946384794471034
+    second: Ribbon Dup X.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -4582683571892500481
+    second: Ribbon Dup X.001|Ribbon Dup X.002Action.002
+  - first:
+      74: -574646014965247024
+    second: Ribbon Dup X.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: 8664258748453413912
+    second: Ribbon Dup X.001|TopNot.008Action.001
+  - first:
+      74: -7070948546076337060
+    second: Ribbon Dup Y.002|Bow 1.008Action.001
+  - first:
+      74: 1568663604090960294
+    second: Ribbon Dup Y.002|Bow 2.008Action.001
+  - first:
+      74: 9091883138925862570
+    second: Ribbon Dup Y.002|CurveOutline 1.008Action.001
+  - first:
+      74: -2282642869783618109
+    second: Ribbon Dup Y.002|CurveOutline 2.008Action.001
+  - first:
+      74: -6002612729655309872
+    second: Ribbon Dup Y.002|Lid Opennig.001
+  - first:
+      74: 9109808717376897225
+    second: Ribbon Dup Y.002|Ribbon Dup -X.001Action.002
+  - first:
+      74: -3189878292987580362
+    second: Ribbon Dup Y.002|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -566272258135695031
+    second: Ribbon Dup Y.002|Ribbon Dup X.002Action.002
+  - first:
+      74: 5283284548418723614
+    second: Ribbon Dup Y.002|Ribbon Dup Y.001Action.002
+  - first:
+      74: -535354383671037294
+    second: Ribbon Dup Y.002|TopNot.008Action.001
+  - first:
+      74: 7055668587487764715
+    second: TopNot.001|Bow 1.008Action.001
+  - first:
+      74: -4533957772610532697
+    second: TopNot.001|Bow 2.008Action.001
+  - first:
+      74: 2583647468794503196
+    second: TopNot.001|CurveOutline 1.008Action.001
+  - first:
+      74: -8972811483337963018
+    second: TopNot.001|CurveOutline 2.008Action.001
+  - first:
+      74: 3255943137620326747
+    second: TopNot.001|Lid Opennig.001
+  - first:
+      74: 6150596337223987952
+    second: TopNot.001|Ribbon Dup -X.001Action.002
+  - first:
+      74: -1196143532022245326
+    second: TopNot.001|Ribbon Dup -Y.001Action.002
+  - first:
+      74: -9130552796537400069
+    second: TopNot.001|Ribbon Dup X.002Action.002
+  - first:
+      74: 5690403981084607963
+    second: TopNot.001|Ribbon Dup Y.001Action.002
+  - first:
+      74: 1901820625558684247
+    second: TopNot.001|TopNot.008Action.001
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
