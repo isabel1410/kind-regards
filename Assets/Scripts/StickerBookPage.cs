@@ -21,7 +21,7 @@ public class StickerBookPage : MonoBehaviour
     /// Create the sticker object in the world
     /// </summary>
     /// <param name="sticker">The gameobject of the sticker</param>
-    public void SetSticker(DataSticker sticker)
+    public GameObject SetSticker(DataSticker sticker)
     {
         // Get the spawn location for the sticker.
         for(int i =0; i < stickerSpawns.Length; i++)
@@ -31,10 +31,12 @@ public class StickerBookPage : MonoBehaviour
             if (spawn && spawn.childCount == defaultChildCount)
             {
                 stickersOnPage[i] = sticker;
-                Instantiate(sticker.GetStickerObject(), spawn);
-                break;
+                GameObject obj = Instantiate(sticker.GetStickerObject(), spawn);
+                obj.AddComponent<DataHolder>().Data = sticker;
+                return obj;
             }
         }
+        return null;
     }
 
     public void StickerSelected(int positionId)

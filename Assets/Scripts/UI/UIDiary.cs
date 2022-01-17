@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ public class UIDiary : MonoBehaviour
     [SerializeField]
     private Button uiMoodPositive;
     [SerializeField]
+    private StickerDecorationSlot uiStickerSlot;
+    [SerializeField]
     private Button uiPrevious;
     [SerializeField]
     private Button uiNext;
@@ -32,6 +35,7 @@ public class UIDiary : MonoBehaviour
         //Load info
         uiDate.text = entry.Date.ToShortDateString();
         uiEntry.text = entry.Entry;
+        if(APIManager.Instance) uiStickerSlot.SetSticker(APIManager.Instance.DataStickers.FirstOrDefault(s => s.Id == entry.StickerId));
         SetMood(entry.Mood);
 
         //Previous / next button disabling

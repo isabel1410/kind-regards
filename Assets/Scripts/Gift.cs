@@ -56,7 +56,7 @@ public class Gift : MonoBehaviour
             navigationController.ReplyToGift();
         });
         navigationController.GiftToHome();
-        stickerBook.Show();
+        stickerBook.Show(false);
     }
 
     /// <summary>

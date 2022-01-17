@@ -84,7 +84,7 @@ public class Diary : MonoBehaviour
     {
         try
         {
-            string entryPath = $"{DIARYDIRECTORYPATH}{Path.DirectorySeparatorChar}{currentEntry.Date.ToShortDateString()}.json";
+            string entryPath = $"{DIARYDIRECTORYPATH}{Path.DirectorySeparatorChar}{currentEntry.Date:dd-MM-yyyy}.json";
             SetEntry(uiDiary.GetEntry());
 
             //Empty diary, delete if existing
@@ -123,7 +123,7 @@ public class Diary : MonoBehaviour
     {
         try
         {
-            string entryPath = $"{DIARYDIRECTORYPATH}{Path.DirectorySeparatorChar}{currentEntry.Date.ToShortDateString()}.json";
+            string entryPath = $"{DIARYDIRECTORYPATH}{Path.DirectorySeparatorChar}{currentEntry.Date:dd-MM-yyyy}.json";
             File.Delete(entryPath);
             Debug.Log("Diary entry deleted");
 
@@ -190,12 +190,17 @@ public class Diary : MonoBehaviour
     }
 
     /// <summary>
-    /// Creates a sticker.
+    /// Add a sticker.
     /// </summary>
     /// <exception cref="NotImplementedException">This function is not yet implemented.</exception>
-    public void CreateSticker()
+    public void AddSticker(DataSticker sticker)
     {
-        throw new NotImplementedException();
+        if (sticker == null)
+        {
+            currentEntry.StickerId = 0;
+            return;
+        }
+        currentEntry.StickerId = sticker.Id;
     }
 
     #endregion
@@ -274,6 +279,7 @@ public class Diary : MonoBehaviour
         private string date;
         public DiaryMood Mood;
         public string Entry;
+        public int StickerId;
 
         public DateTime Date
         {
