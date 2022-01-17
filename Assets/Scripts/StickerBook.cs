@@ -12,23 +12,23 @@ public class StickerBook : MonoBehaviour
     private string STICKERSTORAGEPATH => $"{Application.persistentDataPath}{Path.DirectorySeparatorChar}Stickers.json";
     private List<int> unlockedStickerIDs = new List<int>();
     private const int stickerAmountPerPage = 2;
-    private List<StickerBookPage> stickerBookPages = new List<StickerBookPage>();
+    protected List<StickerBookPage> stickerBookPages = new List<StickerBookPage>();
 
     [SerializeField]
-    public NavigationController navigationController;
+    private NavigationController navigationController;
     public UnityEvent<DataSticker> OnStickerSelected;
 
     public IReadOnlyList<int> UnlockedStickerIDs => unlockedStickerIDs;
 
-    private int currentPage;
+    protected int currentPage;
 
     [SerializeField]
-    private UISticker uiSticker;
+    protected UISticker uiSticker;
 
     /// <summary>
     /// Sticker book opens the first page by default.
     /// </summary>
-    private void Start()
+    public virtual void Start()
     {
         LoadStickers();
         currentPage = 0;
@@ -42,6 +42,7 @@ public class StickerBook : MonoBehaviour
         // If the file doesn't exist create it.
         if(!File.Exists(STICKERSTORAGEPATH))
         {
+            if (APIManager.Instance && APIManager.Instance.DataStickers.Count > 0) unlockedStickerIDs.Add(APIManager.Instance.DataStickers.Random().Id);
             SaveStickerFile();
             return;
         }
@@ -122,8 +123,10 @@ public class StickerBook : MonoBehaviour
     /// <summary>
     /// Transitions from the home screen to the sticker screen.
     /// </summary>
-    public void Show()
+    public void Show(bool clearListeners = true)
     {
+        if (clearListeners) OnStickerSelected?.RemoveAllListeners();
+
         // On show clear all the pages that exist.
         foreach (StickerBookPage page in stickerBookPages)
         {
@@ -161,7 +164,7 @@ public class StickerBook : MonoBehaviour
     /// <summary>
     /// Transitions from the sticker screen to the home screen.
     /// </summary>
-    public void Exit()
+    public virtual void Exit()
     {
         navigationController.StickerToHome();
     }
